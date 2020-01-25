@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "HelloReactNative",
-    "slug": "HelloReactNative",
+    "name": "NavDrawerDemo",
+    "slug": "NavDrawerDemo",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
