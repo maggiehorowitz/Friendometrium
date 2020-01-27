@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Share } from 'react-native';
 import { createAppContainer } from "react-navigation";
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from "react-navigation-stack"
@@ -28,9 +28,29 @@ const Home = ({navigation}) => (
     Friendometrium is a great app for women to form a strong community for supporting women's health. Don't forget to check
     out the maps section and the chat section!
     </Text>
+    <TouchableOpacity style={styles.shareBtn} onPress={()=>SharePost()}>
+            <Text style={styles.shareTxt}>SHARE</Text>
+    </TouchableOpacity>
 
   </View>
 )
+
+const SharePost = async () => {
+  try {
+    const result = await Share.share({
+      url:"https://github.com/maggiehorowitz/Friendometrium"
+    });
+
+    if (result.action === Share.sharedAction) {
+      alert("Post Shared")
+    } else if (result.action === Share.dismissedAction) {
+      // dismissed
+      alert("Post cancelled")
+    }
+  } catch (error) {
+    alert(error.message);
+  }
+};
 
 const Profile = ({navigation}) => (
   <View style={styles.container}>
@@ -158,6 +178,8 @@ const AppContainer = createAppContainer(AppNavigator);
 
 
 export default class App extends React.Component {
+  
+  
   render(){
 
     return (
