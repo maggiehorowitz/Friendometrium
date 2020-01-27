@@ -5,6 +5,9 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from "react-navigation-stack"
 import { Ionicons } from '@expo/vector-icons';
 
+import MapPage from './MapPage';
+
+
 const Header =({name, openDrawer})=> (
   <View style={styles.header}>
     <TouchableOpacity onPress={()=>openDrawer()}>
@@ -42,18 +45,23 @@ const Profile = ({navigation}) => (
   </View>
 )
 
-const Map = ({navigation}) => (
-  <View style={styles.container}>
-    <Header name="Map" openDrawer={navigation.openDrawer}/>
-    <Image source ={require("./assets/map.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
-    <Text style={{padding:20}}>
-    This is the Map page.
-    </Text>
-    <Text style={{padding:20}}>
-    Map 2nd block of text.
-    </Text>
-  </View>
-)
+// const Map = ({navigation}) => (
+//   <View style={styles.container}>
+//     <Header name="Map" openDrawer={navigation.openDrawer}/>
+//     <Image source ={require("./assets/map.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
+//     <Text style={{padding:20}}>
+//     This is the Map page.
+//     </Text>
+//     <Text style={{padding:20}}>
+//     Map 2nd block of text.
+//     </Text>
+//     <Button
+//       title = "View Map"
+//       color = '#1abc9c'
+//       onPress = {() =>this.props.navigation.navigate('Map')}
+//       />
+//   </View>
+// )
 
 const Forum = ({navigation}) => (
   <View style={styles.container}>
@@ -122,7 +130,7 @@ const Drawer = createDrawerNavigator(
   {
     Home:{ screen: Home},
     Profile:{ screen: Profile},
-    Map:{ screen: Map},
+    Map:{ screen: MapPage}, //can get rid of constant and put actually screen there
     Forum:{ screen: Forum}
 
   },
