@@ -19,11 +19,13 @@ const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
 export default class screens extends Component {
     state = {
+        showsUserLocation: true,
+        followsUserLocation: true,
         markers: [
           {
             coordinate: {
-              latitude: 45.524548,
-              longitude: -122.6749817,
+              latitude: 38.835220,
+              longitude: -104.819800,
             },
             title: "Starbucks",
             description: "Offer free tampons",
@@ -31,8 +33,8 @@ export default class screens extends Component {
           },
           {
             coordinate: {
-              latitude: 45.524698,
-              longitude: -122.6655507,
+              latitude: 36.289558,
+              longitude: -95.844925,
             },
             title: "Target",
             description: "Offer free pads",
@@ -40,8 +42,8 @@ export default class screens extends Component {
           },
           {
             coordinate: {
-              latitude: 45.5230786,
-              longitude: -122.6701034,
+              latitude: 35.5230786,
+              longitude: -105.6701034,
             },
             title: "Costco",
             description: "Offer free tampons",
@@ -49,8 +51,8 @@ export default class screens extends Component {
           },
           {
             coordinate: {
-              latitude: 45.521016,
-              longitude: -122.6561917,
+              latitude: 37.521016,
+              longitude: -100.6561917,
             },
             title: "McDonald's",
             description: "Offer free pads",
@@ -58,11 +60,11 @@ export default class screens extends Component {
           },
         ],
         region: {
-          latitude: 45.52220671242907,
-          longitude: -122.6653281029795,
-          latitudeDelta: 0.04864195044303443,
-          longitudeDelta: 0.040142817690068,
-        },
+           latitude: 37.6,
+           longitude: -103.5,
+           latitudeDelta: 0.003,
+           longitudeDelta: 0.003,
+         },
       };
 
     componentWillMount() {
@@ -72,6 +74,8 @@ export default class screens extends Component {
     componentDidMount() {
    // We should detect when scrolling has stopped then animate
    // We should just debounce the event listener here
+
+
         this.animation.addListener(({ value }) => {
          let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
          if (index >= this.state.markers.length) {
@@ -122,8 +126,11 @@ export default class screens extends Component {
         <View style={styles.container}>
           <MapView
             ref={map => this.map = map}
-            showsUserLocation= {true}
+            //showsUserLocation= {true}
             initialRegion={this.state.region}
+            onUserLocationChange={event => console.log(event.nativeEvent)}
+            showsUserLocation={this.state.showsUserLocation}
+            //followsUserLocation={this.state.followsUserLocation}
             style={styles.container}
           >
             {this.state.markers.map((marker, index) => {

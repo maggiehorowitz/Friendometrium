@@ -1,8 +1,4 @@
 
-
-
-
-
 import React, {Component} from 'react';
 import { Button, View, Text , StyleSheet, TextInput, TouchableOpacity,Image, FlatList } from 'react-native';
 import { createAppContainer } from 'react-navigation';
