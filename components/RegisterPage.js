@@ -13,27 +13,59 @@ export default class HomePage extends Component{
       <View style ={styles.container}>
         <Text style = {styles.text}> Welcome to Registration Page </Text>
         <Text style = {styles.text}> Fixing a bug, under construction </Text>
-        <Button
-          title = "Go back to login"
-          color = '#1abc9c'
-          onPress = {() =>this.props.navigation.navigate('Login')}
-          />
-      </View>
+// SignUp.js
+import React from 'react'
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+export default class SignUp extends React.Component {
+  state = { email: '', password: '', errorMessage: null }
+handleSignUp = () => {
+  // TODO: Firebase stuff...
+  console.log('handleSignUp')
+}
+render() {
+    return (
+      <View style={styles.container}>
+        <Text>Sign Up</Text>
+        {this.state.errorMessage &&
+          <Text style={{ color: 'red' }}>
+            {this.state.errorMessage}
+          </Text>}
+        <TextInput
+          placeholder="Email"
+          autoCapitalize="none"
+          style={styles.textInput}
+          onChangeText={email => this.setState({ email })}
+          value={this.state.email}
+        />
+        <TextInput
+          secureTextEntry
+          placeholder="Password"
+          autoCapitalize="none"
+          style={styles.textInput}
+          onChangeText={password => this.setState({ password })}
+          value={this.state.password}
+        />
+        <Button title="Sign Up" onPress={this.handleSignUp} />
 
-    );
+        <Button
+          title="Already have an account? Login"
+          onPress={() => this.props.navigation.navigate('Login')}
+        />
+      </View>
+    )
   }
 }
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#003f5c',
-    alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  text: {
-    textAlign: 'center',
-    color:"black"
+  textInput: {
+    height: 40,
+    width: '90%',
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginTop: 8
   }
-});
+})
