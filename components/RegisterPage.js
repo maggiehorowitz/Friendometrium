@@ -5,7 +5,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
-
+//Fix sign up bug
 
 export default class HomePage extends Component{
   render(){
@@ -13,7 +13,6 @@ export default class HomePage extends Component{
       <View style ={styles.container}>
         <Text style = {styles.text}> Welcome to Registration Page </Text>
         <Text style = {styles.text}> Fixing a bug, under construction </Text>
-// SignUp.js
 import React from 'react'
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
 export default class SignUp extends React.Component {
