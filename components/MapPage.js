@@ -33,8 +33,8 @@ export default class screens extends Component {
           },
           {
             coordinate: {
-              latitude: 36.289558,
-              longitude: -95.844925,
+              latitude: 38.289558,
+              longitude: -104.844925,
             },
             title: "Target",
             description: "Offer free pads",
@@ -42,8 +42,8 @@ export default class screens extends Component {
           },
           {
             coordinate: {
-              latitude: 35.5230786,
-              longitude: -105.6701034,
+              latitude: 38.5230786,
+              longitude: -104.6701034,
             },
             title: "Costco",
             description: "Offer free tampons",
@@ -51,8 +51,8 @@ export default class screens extends Component {
           },
           {
             coordinate: {
-              latitude: 37.521016,
-              longitude: -100.6561917,
+              latitude: 38.521016,
+              longitude: -104.6561917,
             },
             title: "McDonald's",
             description: "Offer free pads",
