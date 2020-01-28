@@ -1,1 +1,9 @@
-{}
+{
+  "expoServerPort": 19005,
+  "expoServerNgrokUrl": "https://q4-byq.anonymous.friendometrium.exp.direct",
+  "packagerNgrokUrl": "https://packager.q4-byq.anonymous.friendometrium.exp.direct",
+  "ngrokPid": 67051,
+  "devToolsPort": 19004,
+  "packagerPort": 19006,
+  "packagerPid": 67038
+}
