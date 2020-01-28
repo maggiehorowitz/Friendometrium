@@ -1,18 +1,10 @@
 {
   "devToolsPort": 19002,
-<<<<<<< HEAD
-  "expoServerPort": 19000,
-  "packagerPort": 19003,
-  "packagerPid": 68338,
-  "expoServerNgrokUrl": "https://q4-byq.m-horowitz.friendometrium.exp.direct",
-  "packagerNgrokUrl": "https://packager.q4-byq.m-horowitz.friendometrium.exp.direct",
-  "ngrokPid": 68374
-=======
   "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
   "expoServerNgrokUrl": null,
   "packagerNgrokUrl": null,
-  "ngrokPid": null
->>>>>>> Firebase
+  "ngrokPid": null,
+  "devToolsPort": 19004,
+  "packagerPort": null,
+  "packagerPid": null
 }
