@@ -1,10 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-
-  "packagerPid": 47741,
-  "expoServerNgrokUrl": "https://un-8qt.anonymous.friendometrium.exp.direct",
-  "packagerNgrokUrl": "https://packager.un-8qt.anonymous.friendometrium.exp.direct",
-  "ngrokPid": 47751
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
