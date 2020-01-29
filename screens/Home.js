@@ -8,14 +8,12 @@ import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
 import MapPage from './MapPage';
 
-
-
 const Header =({name, openDrawer})=> (
   <View style={styles.header}>
     <TouchableOpacity onPress={()=>openDrawer()}>
       <Ionicons name="ios-menu" size={32} />
     </TouchableOpacity>
-    <Text>{name}</Text>
+    <Text></Text>
     <Text style={{width:50}}></Text>
   </View>
 )
@@ -119,10 +117,6 @@ class Sidebar extends React.Component {
           },
       ]
   }
-
-
-
-
   render(){
       return (
           <View style={styles.container}>
@@ -162,9 +156,10 @@ const AppNavigator = createStackNavigator(
     Drawer : {screen: Drawer},
   },
   {
-    initialRouteName: "Drawer",
     headerMode: "none",
+    initialRouteName: "Drawer",
     unmountInactiveRoutes: true
+
   }
 )
 
@@ -203,11 +198,11 @@ const styles = StyleSheet.create({
   },
   header:{
     width:"100%",
-    height:60,
+    height:30,
     flexDirection:"row",
     justifyContent:"space-between",
     alignItems:"center",
-    paddingHorizontal:20
+    paddingHorizontal:20,
   },
   profileImg:{
     width:80,
@@ -220,7 +215,7 @@ const styles = StyleSheet.create({
     width:"100%",
     backgroundColor:"lightgray",
     marginVertical:10
-  }
+  },
 });
 
 
