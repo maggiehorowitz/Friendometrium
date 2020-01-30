@@ -16,12 +16,14 @@ const Header =({name, openDrawer})=> (
     <TouchableOpacity onPress={()=>openDrawer()}>
       <Ionicons name="ios-menu" size={32} />
     </TouchableOpacity>
-    <Text>{name}</Text>
+    <Text></Text>
     <Text style={{width:50}}></Text>
   </View>
 )
 
-const Home2 = ({navigation}) => (
+
+
+const Home = ({navigation}) => (
   <View style={styles.container}>
     <Header name="Home2" openDrawer={navigation.openDrawer}/>
     <Image source ={require("./assets/friendometrium.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
@@ -35,14 +37,6 @@ const Home2 = ({navigation}) => (
     <TouchableOpacity style={styles.shareBtn} onPress={()=>SharePost()}>
             <Text style={styles.shareTxt}>SHARE</Text>
     </TouchableOpacity>
-            <Button
-              title='Signout'
-              onPress={this.handleSignout}
-              titleStyle={{
-                color: '#F57C00'
-              }}
-              type='clear'
-            />
   </View>
 )
 const SharePost = async () => {
@@ -63,6 +57,7 @@ const SharePost = async () => {
 };
 
 
+
 const Profile = ({navigation}) => (
   <View style={styles.container}>
     <Header name="Profile" openDrawer={navigation.openDrawer}/>
@@ -73,6 +68,7 @@ const Profile = ({navigation}) => (
     <Text style={{padding:20}}>
     Add some information about the Friendometrium user here
     </Text>
+    <SignOut />
   </View>
 )
 
@@ -88,6 +84,8 @@ const Profile = ({navigation}) => (
 //     </Text>
 //   </View>
 // )
+
+
 
 function Item({ item, navigate }) {
   return (
@@ -118,12 +116,12 @@ class Sidebar extends React.Component {
               name:"Forum",
               icon:"ios-chatboxes"
           },
+          {
+              name:"Sign Out",
+              icon:"ios-log-out"
+          },
       ]
   }
-
-
-
-
   render(){
       return (
           <View style={styles.container}>
@@ -144,7 +142,7 @@ class Sidebar extends React.Component {
 
 const Drawer = createDrawerNavigator(
   {
-    Home:{ screen: Home2},
+    Home:{ screen: Home},
     Profile:{ screen: Profile},
     Map:{ screen: MapPage}, //can get rid of constant and put actually screen there
     Forum:{ screen: ForumPage}
@@ -163,9 +161,10 @@ const AppNavigator = createStackNavigator(
     Drawer : {screen: Drawer},
   },
   {
-    initialRouteName: "Drawer",
     headerMode: "none",
+    initialRouteName: "Drawer",
     unmountInactiveRoutes: true
+
   }
 )
 
@@ -204,11 +203,11 @@ const styles = StyleSheet.create({
   },
   header:{
     width:"100%",
-    height:60,
+    height:30,
     flexDirection:"row",
     justifyContent:"space-between",
     alignItems:"center",
-    paddingHorizontal:20
+    paddingHorizontal:20,
   },
   profileImg:{
     width:80,
@@ -221,7 +220,7 @@ const styles = StyleSheet.create({
     width:"100%",
     backgroundColor:"lightgray",
     marginVertical:10
-  }
+  },
 });
 
 
