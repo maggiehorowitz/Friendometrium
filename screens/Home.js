@@ -7,6 +7,7 @@ import { Button } from 'react-native-elements'
 import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
 import MapPage from './MapPage';
+import SignOut from './SignOut';
 
 const Header =({name, openDrawer})=> (
   <View style={styles.header}>
@@ -18,7 +19,9 @@ const Header =({name, openDrawer})=> (
   </View>
 )
 
-const Home2 = ({navigation}) => (
+
+
+const Home = ({navigation}) => (
   <View style={styles.container}>
     <Header name="Home2" openDrawer={navigation.openDrawer}/>
     <Image source ={require("./assets/friendometrium.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
@@ -32,14 +35,6 @@ const Home2 = ({navigation}) => (
     <TouchableOpacity style={styles.shareBtn} onPress={()=>SharePost()}>
             <Text style={styles.shareTxt}>SHARE</Text>
     </TouchableOpacity>
-            <Button
-              title='Signout'
-              onPress={this.handleSignout}
-              titleStyle={{
-                color: '#F57C00'
-              }}
-              type='clear'
-            />
   </View>
 )
 const SharePost = async () => {
@@ -60,6 +55,7 @@ const SharePost = async () => {
 };
 
 
+
 const Profile = ({navigation}) => (
   <View style={styles.container}>
     <Header name="Profile" openDrawer={navigation.openDrawer}/>
@@ -70,6 +66,7 @@ const Profile = ({navigation}) => (
     <Text style={{padding:20}}>
     Add some information about the Friendometrium user here
     </Text>
+    <SignOut />
   </View>
 )
 
@@ -85,6 +82,8 @@ const Forum = ({navigation}) => (
     </Text>
   </View>
 )
+
+
 
 function Item({ item, navigate }) {
   return (
@@ -115,6 +114,10 @@ class Sidebar extends React.Component {
               name:"Forum",
               icon:"ios-chatboxes"
           },
+          {
+              name:"Sign Out",
+              icon:"ios-log-out"
+          },
       ]
   }
   render(){
@@ -137,10 +140,10 @@ class Sidebar extends React.Component {
 
 const Drawer = createDrawerNavigator(
   {
-    Home:{ screen: Home2},
+    Home:{ screen: Home},
     Profile:{ screen: Profile},
     Map:{ screen: MapPage}, //can get rid of constant and put actually screen there
-    Forum:{ screen: Forum}
+    Forum:{ screen: Forum},
 
   },
   {
