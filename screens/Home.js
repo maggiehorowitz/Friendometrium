@@ -8,6 +8,8 @@ import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
 import MapPage from './MapPage';
 import SignOut from './SignOut';
+import ChatIndex from './ChatIndex';
+
 
 const Header =({name, openDrawer})=> (
   <View style={styles.header}>
@@ -53,6 +55,21 @@ const SharePost = async () => {
     alert(error.message);
   }
 };
+
+const DemoChat = ({navigation}) => (
+  <View style={styles.container}>
+    <Header name="DemoChat" openDrawer={navigation.openDrawer}/>
+    <Text style={{padding:20}}>
+    Welcome to Friendometrium's Chat
+    </Text>
+    <Text style={{padding:20}}>
+    TestingOut Chat Navigation!
+    </Text>
+    <TouchableOpacity style={styles.shareBtn} onPress={()=>SharePost()}>
+            <Text style={styles.shareTxt}>SHARE</Text>
+    </TouchableOpacity>
+  </View>
+)
 
 
 
@@ -115,6 +132,10 @@ class Sidebar extends React.Component {
               icon:"ios-chatboxes"
           },
           {
+              name:"Chat",
+              icon:"ios-text"
+          },
+          {
               name:"Sign Out",
               icon:"ios-log-out"
           },
@@ -144,6 +165,7 @@ const Drawer = createDrawerNavigator(
     Profile:{ screen: Profile},
     Map:{ screen: MapPage}, //can get rid of constant and put actually screen there
     Forum:{ screen: Forum},
+    Chat: {screen: ChatIndex}
 
   },
   {
