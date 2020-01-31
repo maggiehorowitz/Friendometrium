@@ -9,7 +9,6 @@ import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
 import MapPage from './MapPage';
 
-
 class SignOut extends Component {
   handleSignout = async () => {
     try {
@@ -22,9 +21,9 @@ class SignOut extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Not this user?  </Text>
+        <Text>Home</Text>
         <Button
-          title='Signout Now'
+          title='Signout'
           onPress={this.handleSignout}
           titleStyle={{
             color: '#F57C00'

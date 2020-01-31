@@ -6,7 +6,7 @@ import ChatScreen from './ChatScreen'
 
 const AppNavigator = createStackNavigator(
   {
-    Login: LoginToChatScreen,
+    // Login: LoginToChatScreen,
     Chat: ChatScreen
   },
   {

@@ -56,6 +56,15 @@ const SharePost = async () => {
   }
 };
 
+const HandleSignout = async () => {
+      try {
+        await this.props.firebase.signOut()
+        this.props.navigation.navigate('Auth')
+      } catch (error) {
+        console.log(error)
+      }
+    };
+
 const DemoChat = ({navigation}) => (
   <View style={styles.container}>
     <Header name="DemoChat" openDrawer={navigation.openDrawer}/>
@@ -136,7 +145,7 @@ class Sidebar extends React.Component {
               icon:"ios-text"
           },
           {
-              name:"Sign Out",
+              name:"SignOut",
               icon:"ios-log-out"
           },
       ]
@@ -165,7 +174,8 @@ const Drawer = createDrawerNavigator(
     Profile:{ screen: Profile},
     Map:{ screen: MapPage}, //can get rid of constant and put actually screen there
     Forum:{ screen: Forum},
-    Chat: {screen: ChatIndex}
+    Chat: {screen: ChatIndex},
+    SignOut: {screen:SignOut}
 
   },
   {
