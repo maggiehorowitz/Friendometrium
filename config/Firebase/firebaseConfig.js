@@ -1,13 +1,13 @@
 // Rename this file to "firebaeConfig.js" before use
 // Replace all Xs with real Firebase API keys
 
-//FirebaseForumDemo
 export default {
-  apiKey: "AIzaSyBptO5PJeP1F7w_p8S3SmQDWi0Iq4JV3mA",
-  authDomain: "fir-forumdemo-7a164.firebaseapp.com",
-  databaseURL: "https://fir-forumdemo-7a164.firebaseio.com",
-  projectId: "fir-forumdemo-7a164",
-  storageBucket: "fir-forumdemo-7a164.appspot.com",
-  messagingSenderId: "1038334155242",
-  appId: "1:1038334155242:web:c48532c1c2af2cd3ecfa93"
+
+    apiKey: "AIzaSyCffIcqJZ6DVzHXSgsGXJsK7AbmtmQuJKc",
+    authDomain: "fir-logindemo-306e6.firebaseapp.com",
+    databaseURL: "https://fir-logindemo-306e6.firebaseio.com",
+    projectId: "fir-logindemo-306e6",
+    storageBucket: "fir-logindemo-306e6.appspot.com",
+    messagingSenderId: "279040448862",
+    appId: "1:279040448862:web:5338bfe2422eba3a9a17cf",
 }
