@@ -1,13 +1,15 @@
+.expo/packager-info.json
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+web-report/
 
-.expo/packager-info.json
-<<<<<<< HEAD
-node_modules
-=======
-.expo/packager-info.json
-.expo/packager-info.json
-*.json
-<<<<<<< HEAD
->>>>>>> parent of 9bbf02cf... Update the Database
-.expo/packager-info.json
-=======
->>>>>>> parent of 9bbf02cf... Update the Database
+# macOS
+.DS_Store
