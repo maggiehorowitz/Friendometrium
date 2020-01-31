@@ -7,3 +7,4 @@ node_modules
 .expo/packager-info.json
 *.json
 >>>>>>> parent of 9bbf02cf... Update the Database
+.expo/packager-info.json
