@@ -87,18 +87,18 @@ const Profile = ({navigation}) => (
   </View>
 )
 
-// const Forum = ({navigation}) => (
-//   <View style={styles.container}>
-//     <Header name="Forum" openDrawer={navigation.openDrawer}/>
-//     <Image source ={require("./assets/chat.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
-//     <Text style={{padding:20}}>
-//     This is the Forum Chat page. It is not yet implemented.
-//     </Text>
-//     <Text style={{padding:20}}>
-//     Option to add more text here.
-//     </Text>
-//   </View>
-// )
+const Forum = ({navigation}) => (
+  <View style={styles.container}>
+    <Header name="Forum" openDrawer={navigation.openDrawer}/>
+    <Image source ={require("./assets/chat.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
+    <Text style={{padding:20}}>
+    This is the Forum Chat page. It is not yet implemented.
+    </Text>
+    <Text style={{padding:20}}>
+    Option to add more text here.
+    </Text>
+  </View>
+)
 
 
 
