@@ -7,32 +7,21 @@ import { createStackNavigator } from "react-navigation-stack";
 import { Button } from 'react-native-elements'
 import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
+import MapPage from './MapPage';
 
-class SignOutPage extends Component {
-  handleSignout = async () => {
-    try {
-      await this.props.firebase.signOut()
-      this.props.navigation.navigate('Auth')
-    } catch (error) {
-      console.log(error)
-    }
-  }
+export default class ProfilePage extends Component {
   render() {
     return (
 
       <View style={styles.container}>
-        <Text>Not this user? </Text>
-
-        <Button
-          title='Signout now'
-          onPress={this.handleSignout}
-          titleStyle={{
-            color: '#F57C00'
-          }}
-          type='clear'
-        />
+        <Image source ={require("./assets/t_roberts.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
+        <Text style={{padding:0}}>
+        This is the Profile Page
+        </Text>
+        <Text style={{padding:20}}>
+        Add some information about the Friendometrium user here
+        </Text>
       </View>
-
     )
   }
 }
@@ -45,5 +34,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
-
-export default withFirebaseHOC(SignOutPage)

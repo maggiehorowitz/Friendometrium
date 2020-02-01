@@ -15,3 +15,5 @@ web-report/
 .DS_Store
 *.json
 .expo/packager-info.json
+*.json
+.expo/packager-info.json

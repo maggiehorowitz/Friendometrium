@@ -1,12 +1,15 @@
 import { createStackNavigator } from 'react-navigation-stack'
-import Home from '../screens/Home'
+import NavDrawer from '../screens/NavDrawer'
+import ProfilePage from '../screens/ProfilePage'
 
 const AppNavigation = createStackNavigator(
   {
-    Home: { screen: Home }
+    Home: { screen: NavDrawer },
+    Profile: { screen: ProfilePage },
+
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Profile',
     headerMode: 'none'
   }
 

@@ -7,8 +7,10 @@ import { Button } from 'react-native-elements'
 import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
 import MapPage from './MapPage';
-import SignOut from './SignOut';
-import ChatIndex from './ChatIndex';
+import HomePage from './HomePage';
+import ForumPage from './ForumPage';
+import ProfilePage from './ProfilePage';
+import SignOutPage from './SignOut';
 
 
 const Header =({name, openDrawer})=> (
@@ -25,58 +27,9 @@ const Header =({name, openDrawer})=> (
 
 const Home = ({navigation}) => (
   <View style={styles.container}>
-    <Header name="Home2" openDrawer={navigation.openDrawer}/>
+    <Header name="Home" openDrawer={navigation.openDrawer}/>
     <Image source ={require("./assets/friendometrium.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
-    <Text style={{padding:20}}>
-    Welcome to Friendometrium!
-    </Text>
-    <Text style={{padding:20}}>
-    Friendometrium is a great app for women to form a strong community for supporting women's health. Don't forget to check
-    out the maps section and the chat section!
-    </Text>
-    <TouchableOpacity style={styles.shareBtn} onPress={()=>SharePost()}>
-            <Text style={styles.shareTxt}>SHARE</Text>
-    </TouchableOpacity>
-  </View>
-)
-const SharePost = async () => {
-  try {
-    const result = await Share.share({
-      url:"https://github.com/maggiehorowitz/Friendometrium"
-    });
-
-    if (result.action === Share.sharedAction) {
-      alert("Post Shared")
-    } else if (result.action === Share.dismissedAction) {
-      // dismissed
-      alert("Post cancelled")
-    }
-  } catch (error) {
-    alert(error.message);
-  }
-};
-
-const HandleSignout = async () => {
-      try {
-        await this.props.firebase.signOut()
-        this.props.navigation.navigate('Auth')
-      } catch (error) {
-        console.log(error)
-      }
-    };
-
-const DemoChat = ({navigation}) => (
-  <View style={styles.container}>
-    <Header name="DemoChat" openDrawer={navigation.openDrawer}/>
-    <Text style={{padding:20}}>
-    Welcome to Friendometrium's Chat
-    </Text>
-    <Text style={{padding:20}}>
-    TestingOut Chat Navigation!
-    </Text>
-    <TouchableOpacity style={styles.shareBtn} onPress={()=>SharePost()}>
-            <Text style={styles.shareTxt}>SHARE</Text>
-    </TouchableOpacity>
+    <HomePage/>
   </View>
 )
 
@@ -86,13 +39,7 @@ const Profile = ({navigation}) => (
   <View style={styles.container}>
     <Header name="Profile" openDrawer={navigation.openDrawer}/>
     <Image source ={require("./assets/t_roberts.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
-    <Text style={{padding:20}}>
-    This is the Profile Page
-    </Text>
-    <Text style={{padding:20}}>
-    Add some information about the Friendometrium user here
-    </Text>
-    <SignOut />
+    <ProfilePage/>
   </View>
 )
 
@@ -100,12 +47,14 @@ const Forum = ({navigation}) => (
   <View style={styles.container}>
     <Header name="Forum" openDrawer={navigation.openDrawer}/>
     <Image source ={require("./assets/chat.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
-    <Text style={{padding:20}}>
-    This is the Forum Chat page. It is not yet implemented.
-    </Text>
-    <Text style={{padding:20}}>
-    Option to add more text here.
-    </Text>
+    <ForumPage/>
+  </View>
+)
+
+const SignOut = ({navigation}) => (
+  <View style={styles.container}>
+    <Header name="SignOut" openDrawer={navigation.openDrawer}/>
+    <SignOutPage/>
   </View>
 )
 
@@ -174,8 +123,7 @@ const Drawer = createDrawerNavigator(
     Profile:{ screen: Profile},
     Map:{ screen: MapPage}, //can get rid of constant and put actually screen there
     Forum:{ screen: Forum},
-    Chat: {screen: ChatIndex},
-    SignOut: {screen:SignOut}
+    SignOut:{screen:SignOut}
 
   },
   {
@@ -199,7 +147,6 @@ const AppNavigator = createStackNavigator(
 )
 
 const AppContainer = createAppContainer(AppNavigator);
-
 
 
 export default class App extends React.Component {
@@ -252,44 +199,3 @@ const styles = StyleSheet.create({
     marginVertical:10
   },
 });
-
-
-//Old home from the demo below: Allows you to sign out of Firebase as well
-// The code exiting firebase: export default withFirebaseHOC(Home)
-
-// class Home extends Component {
-//   handleSignout = async () => {
-//     try {
-//       await this.props.firebase.signOut()
-//       this.props.navigation.navigate('Auth')
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   }
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <Text>Home</Text>
-//         <Button
-//           title='Signout'
-//           onPress={this.handleSignout}
-//           titleStyle={{
-//             color: '#F57C00'
-//           }}
-//           type='clear'
-//         />
-//       </View>
-//     )
-//   }
-// }
-//
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center'
-//   }
-// })
-//
-// export default withFirebaseHOC(Home)

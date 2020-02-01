@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Share } from 'react-native';
 import { createAppContainer } from "react-navigation";
@@ -8,31 +7,19 @@ import { Button } from 'react-native-elements'
 import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
 
-class SignOutPage extends Component {
-  handleSignout = async () => {
-    try {
-      await this.props.firebase.signOut()
-      this.props.navigation.navigate('Auth')
-    } catch (error) {
-      console.log(error)
-    }
-  }
+
+export default class ForumPage extends Component {
   render() {
     return (
-
       <View style={styles.container}>
-        <Text>Not this user? </Text>
-
-        <Button
-          title='Signout now'
-          onPress={this.handleSignout}
-          titleStyle={{
-            color: '#F57C00'
-          }}
-          type='clear'
-        />
+        <Image source ={require("./assets/chat.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
+        <Text style={{padding:0}}>
+        This is the Forum Page
+        </Text>
+        <Text style={{padding:20}}>
+        Currently Being Implemented
+        </Text>
       </View>
-
     )
   }
 }
@@ -45,5 +32,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
-
-export default withFirebaseHOC(SignOutPage)
