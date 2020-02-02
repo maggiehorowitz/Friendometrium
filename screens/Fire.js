@@ -1,9 +1,5 @@
 import firebase from 'firebase'
 
-//Currently connecting to a DIFFERENT database than the main app, need to change this ASAP!
-//TODO !!
-
-
 
 class Fire{
   constructor(){
