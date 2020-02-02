@@ -14,9 +14,9 @@ export default class ProfilePage extends Component {
     return (
 
       <View style={styles.container}>
-        <Image source ={require("./assets/t_roberts.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
+        <Image source ={require("../assets/t_roberts.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
         <Text style={{padding:0}}>
-        This is the Profile Page
+        This is the Profile Page!
         </Text>
         <Text style={{padding:20}}>
         Add some information about the Friendometrium user here

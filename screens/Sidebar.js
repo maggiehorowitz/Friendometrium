@@ -10,55 +10,7 @@ import MapPage from './MapPage';
 import HomePage from './HomePage';
 import ForumPage from './ForumPage';
 import ProfilePage from './ProfilePage';
-import SignOutPage from './SignOut';
-
-
-const Header =({name, openDrawer})=> (
-  <View style={styles.header}>
-    <TouchableOpacity onPress={()=>openDrawer()}>
-      <Ionicons name="ios-menu" size={32} />
-    </TouchableOpacity>
-    <Text></Text>
-    <Text style={{width:50}}></Text>
-  </View>
-)
-
-
-
-const Home = ({navigation}) => (
-  <View style={styles.container}>
-    <Header name="Home" openDrawer={navigation.openDrawer}/>
-    <Image source ={require("./assets/friendometrium.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
-    <HomePage/>
-  </View>
-)
-
-
-
-const Profile = ({navigation}) => (
-  <View style={styles.container}>
-    <Header name="Profile" openDrawer={navigation.openDrawer}/>
-    <Image source ={require("./assets/t_roberts.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
-    <ProfilePage/>
-  </View>
-)
-
-const Forum = ({navigation}) => (
-  <View style={styles.container}>
-    <Header name="Forum" openDrawer={navigation.openDrawer}/>
-    <Image source ={require("./assets/chat.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
-    <ForumPage/>
-  </View>
-)
-
-const SignOut = ({navigation}) => (
-  <View style={styles.container}>
-    <Header name="SignOut" openDrawer={navigation.openDrawer}/>
-    <SignOutPage/>
-  </View>
-)
-
-
+import SignOutPage from './SignOutPage';
 
 function Item({ item, navigate }) {
   return (
@@ -69,8 +21,8 @@ function Item({ item, navigate }) {
   );
 }
 
+export default class SideBar extends React.Component {
 
-class Sidebar extends React.Component {
   state = {
       routes:[
           {
@@ -102,7 +54,7 @@ class Sidebar extends React.Component {
   render(){
       return (
           <View style={styles.container}>
-              <Image source={require("./assets/t_roberts.jpg")} style={styles.profileImg}/>
+              <Image source={require("../assets/t_roberts.jpg")} style={styles.profileImg}/>
               <Text style={{fontWeight:"bold",fontSize:16,marginTop:10}}>Tomi-Ann Roberts</Text>
               <Text style={{color:"gray",marginBottom:10}}>troberts@coloradocollege.edu</Text>
               <View style={styles.sidebarDivider}></View>
@@ -117,49 +69,6 @@ class Sidebar extends React.Component {
   }
 }
 
-const Drawer = createDrawerNavigator(
-  {
-    Home:{ screen: Home},
-    Profile:{ screen: Profile},
-    Map:{ screen: MapPage}, //can get rid of constant and put actually screen there
-    Forum:{ screen: Forum},
-    SignOut:{screen:SignOut}
-
-  },
-  {
-    initialRouteName: "Home",
-    headerMode: "none",
-    unmountInactiveRoutes: true,
-    contentComponent: props => <Sidebar {...props} />
-  }
-)
-
-const AppNavigator = createStackNavigator(
-  {
-    Drawer : {screen: Drawer},
-  },
-  {
-    headerMode: "none",
-    initialRouteName: "Drawer",
-    unmountInactiveRoutes: true
-
-  }
-)
-
-const AppContainer = createAppContainer(AppNavigator);
-
-
-export default class App extends React.Component {
-
-
-  render(){
-
-    return (
-      <AppContainer />
-    );
-  }
-
-}
 
 const styles = StyleSheet.create({
   container: {

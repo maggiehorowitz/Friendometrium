@@ -13,7 +13,7 @@ export default class HomePage extends React.Component {
 render() {
     return (
       <View style={styles.container}>
-      <Image source ={require("./assets/friendometrium.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
+      <Image source ={require("../assets/friendometrium.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
         <Text style={{padding:0}}>
         Welcome to Friendometrium!
         </Text>
