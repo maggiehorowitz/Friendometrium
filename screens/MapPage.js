@@ -340,7 +340,7 @@ render() {
             >
               <Image
                   style={styles.profile}
-                  source={require('../assets/car.png')}
+                  source={require('../assets/person.png')}
               />
             </Marker>
           ))}
