@@ -1,22 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Button, } from 'react-native';
 import { Card } from 'react-native-elements';
 
 //displays the actual list
 
 //the clicked post method (second parameter ) will be linked with our reducer
-const NewPostList = ({ NewPosts, ClickedPost }) => (
+const NewPostList = ({ NewPosts, ClickedPost, }) => (
 
     //map over all the NewPosts and display a component
 
-    <View style={{padding:20}}>
+    <View style={styles.container}>
+        
         {NewPosts.map(NewPost => 
         <TouchableOpacity key={NewPost.id} onPress = {() => ClickedPost(NewPost.id)}>
-            <Card>
+            <Card
+            title = {NewPost.title}>
             <Text style = {{
                     fontSize:24,
                     textDecorationLine: NewPost.completed ? 'line-through' : 'none'
-                }}>{NewPost.text}</Text>
+                }}>{NewPost.body}</Text>
             </Card>
                 
 

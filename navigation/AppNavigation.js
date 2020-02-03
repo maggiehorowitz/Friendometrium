@@ -18,6 +18,7 @@ import Sidebar from '../screens/Sidebar'
 import ChatIndex from '../screens/ChatIndex'
 import ForumApp from '../src/ForumApp'
 import AddNewPostSimple from '../src/containers/AddNewPostSimple'
+import FunFacts from '../screens/Cards/FunFacts';
 
 // const Home = ({navigation}) => (
 //   <View style={styles.container}>
@@ -59,7 +60,8 @@ const Drawer = createDrawerNavigator(
   {
     Home:{ screen: HomePage},
     Profile:{ screen: ProfilePage},
-    Map:{ screen: MapPage}, //can get rid of constant and put actually screen there
+    Places:{ screen: MapPage}, //can get rid of constant and put actually screen there
+    People:{ screen: UsersMap}, //can get rid of constant and put actually screen there
     Forum:{ screen: ForumApp},
     SignOut:{screen:SignOutPage},
     Chat: {screen: ChatIndex},
