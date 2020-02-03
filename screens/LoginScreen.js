@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import {Ionicons} from '@expo/vector-icons'
+import Fire from "../config/Firebase/Fire";
+// import Fire2 from "../config/Firebase/Fire2";
 
 export default class LoginScreen extends React.Component {
   state = {
@@ -31,7 +33,7 @@ export default class LoginScreen extends React.Component {
           <Text style={styles.header}>Username</Text>
           <TextInput
             style={styles.input}
-            placeholder = "Enter your username"
+            placeholder = "Enter your name to chat"
             onChangeText = {name => {this.setState({name});}}
             value = {this.state.name}
             />
