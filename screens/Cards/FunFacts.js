@@ -4,16 +4,16 @@ import { Card } from 'react-native-elements';
 import { withNavigation } from 'react-navigation';
 
 class FunFacts extends React.Component {
-    
+
     constructor(props){
         super(props);
-        
+
     }
-    
+
 
 
     render(){
-    
+
     return (
       <View style={styles.container}>
 
@@ -28,12 +28,12 @@ class FunFacts extends React.Component {
                 onPress = {() => this.props.navigation.navigate('FunFactsChat',{name: 'Ben'})}
                 />
           </Card>
-        
+
       </View>
     );
-  
+
   }
-  
+
 }
 
 export default withNavigation(FunFacts)
@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    
+
   },
 });
