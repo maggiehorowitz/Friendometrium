@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 
 
-class Fire2{
+class Fire3{
   constructor(){
     this.init()
     this.checkAuth()
@@ -66,7 +66,7 @@ class Fire2{
   }
 
   get db() {
-    return firebase.database().ref("AdviceChat");
+    return firebase.database().ref("ProductReviewChat");
   }
 
   get uid(){
@@ -74,4 +74,4 @@ class Fire2{
   }
 }
 
-export default new Fire2();
+export default new Fire3();
