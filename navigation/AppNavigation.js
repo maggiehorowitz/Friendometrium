@@ -14,42 +14,43 @@ import MapPage from '../screens/MapPage'
 import ForumPage from '../screens/ForumPage'
 import SignOutPage from '../screens/SignOutPage'
 import Sidebar from '../screens/Sidebar'
+import ChatIndex from '../screens/ChatIndex'
 
-const Home = ({navigation}) => (
-  <View style={styles.container}>
-    <Header name="Home" openDrawer={navigation.openDrawer}/>
-    <HomePage/>
-  </View>
-)
-
-
-
-const Profile = ({navigation}) => (
-  <View style={styles.container}>
-    <Header name="Profile" openDrawer={navigation.openDrawer}/>
-    <ProfilePage/>
-  </View>
-)
-
-const Forum = ({navigation}) => (
-  <View style={styles.container}>
-    <Header name="Forum" openDrawer={navigation.openDrawer}/>
-    <ForumPage/>
-  </View>
-)
-const Map = ({navigation}) => (
-  <View style={styles.container}>
-    <Header name="Map" openDrawer={navigation.openDrawer}/>
-    <MapPage/>
-  </View>
-)
-
-const SignOut = ({navigation}) => (
-  <View style={styles.container}>
-    <Header name="SignOut" openDrawer={navigation.openDrawer}/>
-    <SignOutPage/>
-  </View>
-)
+// const Home = ({navigation}) => (
+//   <View style={styles.container}>
+//     <Header name="Home" openDrawer={navigation.openDrawer}/>
+//     <HomePage/>
+//   </View>
+// )
+//
+//
+//
+// const Profile = ({navigation}) => (
+//   <View style={styles.container}>
+//     <Header name="Profile" openDrawer={navigation.openDrawer}/>
+//     <ProfilePage/>
+//   </View>
+// )
+//
+// const Forum = ({navigation}) => (
+//   <View style={styles.container}>
+//     <Header name="Forum" openDrawer={navigation.openDrawer}/>
+//     <ForumPage/>
+//   </View>
+// )
+// const Map = ({navigation}) => (
+//   <View style={styles.container}>
+//     <Header name="Map" openDrawer={navigation.openDrawer}/>
+//     <MapPage/>
+//   </View>
+// )
+//
+// const SignOut = ({navigation}) => (
+//   <View style={styles.container}>
+//     <Header name="SignOut" openDrawer={navigation.openDrawer}/>
+//     <SignOutPage/>
+//   </View>
+// )
 
 const Drawer = createDrawerNavigator(
   {
@@ -57,7 +58,8 @@ const Drawer = createDrawerNavigator(
     Profile:{ screen: ProfilePage},
     Map:{ screen: MapPage}, //can get rid of constant and put actually screen there
     Forum:{ screen: ForumPage},
-    SignOut:{screen:SignOutPage}
+    SignOut:{screen:SignOutPage},
+    Chat: {screen: ChatIndex}
 
   },
   {

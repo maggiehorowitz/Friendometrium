@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 
 
-class Fire{
+class Fire2{
   constructor(){
     this.init()
     this.checkAuth()
@@ -18,7 +18,6 @@ class Fire{
         storageBucket: "fir-forumdemo-7a164.appspot.com",
         messagingSenderId: "1038334155242",
         appId: "1:1038334155242:web:c48532c1c2af2cd3ecfa93"
-
       });
     }
   };
@@ -67,7 +66,7 @@ class Fire{
   }
 
   get db() {
-    return firebase.database().ref("messages");
+    return firebase.database().ref("new chats");
   }
 
   get uid(){
@@ -75,4 +74,4 @@ class Fire{
   }
 }
 
-export default new Fire();
+export default new Fire2();

@@ -12,7 +12,7 @@ export default class ForumPage extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source ={require("../assets/chat.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
+        <Image source ={require("../assets/chat.png")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
         <Text style={{padding:0}}>
         This is the Forum Page
         </Text>
