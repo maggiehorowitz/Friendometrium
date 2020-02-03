@@ -6,6 +6,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { Button } from 'react-native-elements'
 import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
+import UsersMap from './UsersMap';
 import MapPage from './MapPage';
 import SignOut from './SignOut';
 import ChatIndex from './ChatIndex';
@@ -133,7 +134,11 @@ class Sidebar extends React.Component {
               icon:"ios-contact"
           },
           {
-              name:"Map",
+              name:"UsersMap",
+              icon:"ios-map"
+          },
+          {
+              name:"PinMap",
               icon:"ios-map"
           },
           {
@@ -172,7 +177,8 @@ const Drawer = createDrawerNavigator(
   {
     Home:{ screen: Home},
     Profile:{ screen: Profile},
-    Map:{ screen: MapPage}, //can get rid of constant and put actually screen there
+    UsersMap:{ screen: UsersMap}, //can get rid of constant and put actually screen there
+    PinMap: {screen: MapPage},
     Forum:{ screen: Forum},
     Chat: {screen: ChatIndex},
     SignOut: {screen:SignOut}
