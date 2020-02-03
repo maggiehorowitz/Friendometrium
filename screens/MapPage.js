@@ -1,14 +1,26 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableOpacity, Switch, Image} from 'react-native';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import MapView, {Marker, ProviderPropType} from 'react-native-maps';
-import PubNubReact from 'pubnub-react';
+//focus on current location
+//add input to markers
 
+import React from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
+
+import MapView, { Marker, ProviderPropType } from 'react-native-maps';
+
+
+const { width, height } = Dimensions.get('window');
+
+const ASPECT_RATIO = width / height;
+const LATITUDE = 37.78825;
+const LONGITUDE = -122.4324;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 let id = 0;
-const Images = [
-  { uri: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTjh-_FRZOs267JLTuDMazMCzmxXw1v8qR2xepIJGVL0FZARie_lpqdGJvwNQJ7TuXkF3EVih_JQcZBq8NL9AY6pU1htdHLFo_iATdaKHlXUBRNXDzPO4MBiw&usqp=CAc" },
-  { uri: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSBuPc3V6Vi22dgAorFauicda50AnF7HDVAEusP87c0vLZTQD60nmrr0LcKlNcT6N6hFbFq609L72OSPj7plIpxPXP76zM_3x8fZ1GMKBcZRirbrAzg52levg&usqp=CAc" },
-]
 
 function randomColor() {
   return `#${Math.floor(Math.random() * 16777215)
@@ -17,426 +29,137 @@ function randomColor() {
 }
 
 
-type Props = {};
-export default class MapPage extends Component<Props> {
 
-    constructor(props) {
-      super(props);
-      this.pubnub = new PubNubReact({
-        publishKey: "pub-c-d3b8e8f9-c334-4da8-be5e-93044d72edad",
-        subscribeKey: "sub-c-f7f6d73a-4217-11ea-afe9-722fee0ed680"
-      });
+class DefaultMarkers extends React.Component {
+  constructor(props) {
+    super(props);
 
-  //Base State
-        this.state = {
+    this.state = {
+      initalRegion: {
+        latitude: LATITUDE,
+        longitude: LONGITUDE,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA,
+      },
+      markers: [],
+    };
+  }
 
-            currentLoc: { //Track user's current location
-                latitude: -1,
-                longitude: -1
-            },
-        numUsers: 0, //track number of users on the app
-        username: "A Naughty Moose", //user's username
-        fixedOnUUID: "",
-        focusOnMe: false, //zoom map to user's current location if true
-        users: new Map(), //store data of each user in a Map
-        isFocused: false,
-        allowGPS: true, //toggle the app's ability to gather GPS data of the user
-        userCount: 0,
+  onMapPress(e) {
 
-            markers: [
-              {
-                coordinate: {
-                  latitude: 38.835220,
-                  longitude: -104.819800,
-                },
-                title: "Starbucks",
-                description: "Offer free tampons",
-                image: Images[0],
-              },
-              {
-                coordinate: {
-                  latitude: 38.289558,
-                  longitude: -104.844925,
-                },
-                title: "Target",
-                description: "Offer free pads",
-                image: Images[1],
-              },
-              {
-                coordinate: {
-                  latitude: 38.5230786,
-                  longitude: -104.6701034,
-                },
-                title: "Costco",
-                description: "Offer free tampons",
-                image: Images[0],
-              },
-              {
-                coordinate: {
-                  latitude: 38.521016,
-                  longitude: -104.6561917,
-                },
-                title: "McDonald's",
-                description: "Offer free pads",
-                image: Images[1],
-              },
-            ],
-        };
-
-
-
-    this.pubnub.init(this);
-    }
-
-
-    async componentDidMount() {
-      this.setUpApp()
-    }
-
-    onMapPress(e) {
-      this.setState({
-        markers: [
-          ...this.state.markers,
-          {
-            coordinate: e.nativeEvent.coordinate,
-            key: id++,
-            color: randomColor(),
-            title: "New Marker",
-            description: "Input what they got",
-            image: Images[0],
-          },
-        ],
-      });
-    }
-
-    focusLoc = () => {
-     if (this.state.focusOnMe || this.state.fixedOnUUID) {
-       this.setState({
-         focusOnMe: false,
-         fixedOnUUID: ""
-       });
-     } else {
-       region = {
-         latitude: this.state.currentLoc.latitude,
-         longitude: this.state.currentLoc.longitude,
-         latitudeDelta: 0.01,
-         longitudeDelta: 0.01
-       };
-       this.setState({
-         focusOnMe: true
-       });
-       this.map.animateToRegion(region, 2000);
-        }
-    }
-
-    toggleGPS = () => {
-       this.setState({
-         allowGPS: !this.state.allowGPS
-       });
-     };
-
-    async setUpApp(){
-        this.pubnub.getMessage("global", msg => {
-
-            let users = this.state.users;
-            if (msg.message.hideUser) {
-              users.delete(msg.publisher);
-              this.setState({
-                users
-              });
-            }else{
-                coord = [msg.message.latitude, msg.message.longitude]; //Format GPS Coordinates for Payload
-                let oldUser = this.state.users.get(msg.publisher);
-                let newUser = {
-                  uuid: msg.publisher,
-                  latitude: msg.message.latitude,
-                  longitude: msg.message.longitude,
-                };
-                if(msg.message.message){
-                  Timeout.set(msg.publisher, this.clearMessage, 5000, msg.publisher);
-                  newUser.message = msg.message.message;
-                }else if(oldUser){
-                  newUser.message = oldUser.message
-                }
-                this.updateUserCount();
-                users.set(newUser.uuid, newUser);
-                this.setState({
-                    users
-                });
-            }
-        });
-
-      this.pubnub.subscribe({
-        channels: ["global"],
-        withPresence: true
-      });
-
-  //Get Stationary Coordinate
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          if (this.state.allowGPS) {
-            this.pubnub.publish({
-              message: {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-              },
-              channel: "global"
-            });
-            let users = this.state.users;
-            let tempUser = {
-              uuid: this.pubnub.getUUID(),
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-            };
-            users.set(tempUser.uuid, tempUser);
-            this.setState({
-              users,
-              currentLoc: position.coords
-            });
-          }
+    this.setState({
+      markers: [
+        ...this.state.markers,
+        {
+          coordinate: e.nativeEvent.coordinate,
+          key: id++,
+          color: randomColor(),
         },
-        error => console.log("Maps Error: ", error),
-        { enableHighAccuracy: true,}
-      );
+      ],
+    });
+  }
 
+  goToInitialRegion() {
+    let initialRegion = Object.assign({}, this.state.initialRegion);
+    initialRegion["latitudeDelta"] = 0.005;
+    initialRegion["longitudeDelta"] = 0.005;
+    this.mapView.animateToRegion(initialRegion, 2000);
+  }
 
-  //Track motional Coordinates
-  navigator.geolocation.watchPosition(
-    position => {
-      this.setState({
-        currentLoc: position.coords
-      });
-      if (this.state.allowGPS) {
-        this.pubnub.publish({
-          message: {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          },
-          channel: "channel"
-        });
-      }
-      //console.log(positon.coords);
-    },
-    error => console.log("Maps Error: ", error),
-    {
-      enableHighAccuracy: true,
-      distanceFilter: 100 //grab the location whenever the user's location changes by 100 meters
-    }
-  );
-}
-  componentDidUpdate(prevProps, prevState) {
-
-      if (prevState.allowGPS != this.state.allowGPS) { //check whether the user just toggled their GPS settings
-        if (this.state.allowGPS) { //if user toggled to show their GPS data
-          if (this.state.focusOnMe) { //if user toggled to focus map view on themselves
-            this.animateToCurrent(this.state.currentLoc, 1000);
-          }
-          let users = this.state.users;
-          let tempUser = {
-            uuid: this.pubnub.getUUID(),
-            latitude: this.state.currentLoc.latitude,
-            longitude: this.state.currentLoc.longitude,
-            image: this.state.currentPicture,
-            username: this.state.username,
-            //Save dropped pins
-            pins: this.state.markers
-          };
-          users.set(tempUser.uuid, tempUser);
-          this.setState(
-            {
-              users
-            },
-            () => {
-              this.pubnub.publish({
-                message: tempUser,
-                channel: "global"
+  async getCurrentLocation() {
+      navigator.geolocation.getCurrentPosition(
+          position => {
+          let region = {
+                  latitude: parseFloat(position.coords.latitude),
+                  longitude: parseFloat(position.coords.longitude),
+                  latitudeDelta: 5,
+                  longitudeDelta: 5
+              };
+              this.setState({
+                  initialRegion: region
               });
-            }
-          );
-        } else { //if user toggled to hide their GPS data
-          let users = this.state.users;
-          let uuid = this.pubnub.getUUID();
-
-          users.delete(uuid);
-          this.setState({
-            users,
-          });
-          this.pubnub.publish({
-            message: {
-              hideUser: true
-            },
-            channel: "global"
-          });
-        }
-      }
-    }
-
-updateUserCount = () => {
-  var presenceUsers = 0;
-  this.pubnub.hereNow({
-      includeUUIDs: true,
-      includeState: true
-  },
-  function (status, response) {
-      // handle status, response
-      presenceUsers = response.totalOccupancy;
-  });
-  var totalUsers = Math.max(presenceUsers, this.state.users.size)
-  this.setState({userCount: totalUsers})
-
-};
-
-
-animateToCurrent = (coords, speed) => {
-  region = {
-    latitude: coords.latitude,
-    longitude: coords.longitude,
-    latitudeDelta: 0.01,
-    longitudeDelta: 0.01
-  };
-  this.map.animateToRegion(region, speed);
-};
-
-
-render() {
-
-  let usersArray = Array.from(this.state.users.values());
-  return (
-
-    <View style={styles.container}  >
-        <MapView
-          style={styles.map}
-          ref={ref => (this.map = ref)}
-          onMoveShouldSetResponder={this.draggedMap}
-          initialRegion={{
-            latitude: 36.81808,
-            longitude: -98.640297,
-            latitudeDelta: 60.0001,
-            longitudeDelta: 60.0001
-          }}
-          onPress={e => this.onMapPress(e)
+          },
+          error => console.log(error),
+          {
+              enableHighAccuracy: true,
+              timeout: 20000,
+              maximumAge: 1000
           }
+      );
+  }
 
+  componentDidMount() {
+    this.getCurrentLocation();
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <MapView
+          provider={this.props.provider}
+          style={styles.map}
+          ref={ref => (this.mapView = ref)}
+          initialRegion={this.state.initialRegion}
+          followUserLocation = {true}
+          showsUserLocation = {true}
+          onMapReady={this.goToInitialRegion.bind(this)}
+          onPress={e => this.onMapPress(e)}
         >
-            {this.state.markers.map(marker => (
-                <MapView.Marker
-                coordinate = {marker.coordinate}
-                title = {marker.title}
-                description = {marker.description}
-            />
-            ))}
-          {console.log("users: ", this.state.users.values())}
-          {usersArray.map((item) => (
+          {this.state.markers.map(marker => (
             <Marker
-              style={styles.marker}
-              key={item.uuid}
-              coordinate={{
-                latitude: item.latitude,
-                longitude: item.longitude
-              }}
-              ref={marker => {
-                this.marker = marker;
-              }}
-            >
-              <Image
-                  style={styles.profile}
-                  source={require('../assets/person.png')}
-              />
-            </Marker>
+              key={marker.key}
+              coordinate={marker.coordinate}
+              pinColor={marker.color}
+            />
           ))}
         </MapView>
-
-
-        <View style={styles.topBar}>
-          <View style={styles.leftBar}>
-            <View style={styles.userCount}>
-                <Text>{this.state.userCount}</Text>
-            </View>
-          </View>
-        </View>
-
-        <View style={styles.topBar}>
-          <View style={styles.rightBar}>
-              <Switch
-              value={this.state.allowGPS}
-              style={styles.locationSwitch}
-              onValueChange={this.toggleGPS}
-              />
-          </View>
-        </View>
-
-        <View style={styles.bottom}>
-        <View style={styles.bottomRow}>
-          <TouchableOpacity onPress={this.focusLoc}>
-            <Image style={styles.focusLoc} source={require('../assets/crosshair.png')} />
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            onPress={() => this.setState({ markers: [] })}
+            style={styles.bubble}
+          >
+            <Text>Tap to create a marker of random color</Text>
           </TouchableOpacity>
         </View>
-        </View>
-    </View>
-
-
-  );
+      </View>
+    );
+  }
 }
-}
+
+DefaultMarkers.propTypes = {
+  provider: ProviderPropType,
+};
 
 const styles = StyleSheet.create({
-bottomRow:{
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center"
-},
-marker: {
-  justifyContent: "center",
-  alignItems: "center",
-  marginTop: Platform.OS === "android" ? 100 : 0,
-},
-topBar: {
-  top: Platform.OS === "android" ? hp('2%') : hp('5%'),
-
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginHorizontal: wp("2%"),
-},
-rightBar: {
-  flexDirection: "row",
-  justifyContent: "flex-end",
-  alignItems: "center"
-},
-leftBar: {
-  flexDirection: "row",
-  justifyContent: "flex-start",
-  alignItems: "center"
-},
-locationSwitch: {
-  left: 300,
-},
-container: {
-  flex: 1
-},
-bottom: {
-  position: "absolute",
-  flexDirection:'column',
-  bottom: 0,
-  justifyContent: "center",
-  alignSelf: "center",
-  width: "100%",
-  marginBottom: hp("4%"),
-},
-focusLoc: {
-  width: hp("4.5%"),
-  height: hp("4.5%"),
-  marginRight: wp("2%"),
-  left: 15
-},
-userCount: {
-  marginHorizontal: 10
-},
-map: {
-  ...StyleSheet.absoluteFillObject
-},
-profile: {
-  width: hp("4.5%"),
-  height: hp("4.5%")
-},
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  bubble: {
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    borderRadius: 20,
+  },
+  latlng: {
+    width: 200,
+    alignItems: 'stretch',
+  },
+  button: {
+    width: 80,
+    paddingHorizontal: 12,
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    marginVertical: 20,
+    backgroundColor: 'transparent',
+  },
 });
+
+export default DefaultMarkers;

@@ -11,6 +11,7 @@ import { Ionicons } from '@expo/vector-icons';
 import HomePage from '../screens/HomePage'
 import ProfilePage from '../screens/ProfilePage'
 import MapPage from '../screens/MapPage'
+import UsersMap from '../screens/UsersMap'
 import ForumPage from '../screens/ForumPage'
 import SignOutPage from '../screens/SignOutPage'
 import Sidebar from '../screens/Sidebar'

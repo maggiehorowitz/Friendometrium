@@ -7,6 +7,7 @@ import { Button } from 'react-native-elements'
 import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
 import MapPage from './MapPage';
+import UsersMap from './UsersMap';
 import HomePage from './HomePage';
 import ForumPage from './ForumPage';
 import ProfilePage from './ProfilePage';
@@ -34,9 +35,15 @@ export default class SideBar extends React.Component {
               icon:"ios-contact"
           },
           {
-              name:"Map",
+              name:"Places",
               icon:"ios-map"
           },
+
+          {
+              name:"People",
+              icon:"ios-map"
+          },
+
           {
               name:"Forum",
               icon:"ios-chatboxes"
