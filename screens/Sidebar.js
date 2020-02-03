@@ -41,7 +41,7 @@ export default class SideBar extends React.Component {
 
           {
               name:"People",
-              icon:"ios-map"
+              icon:"ios-people"
           },
 
           {
