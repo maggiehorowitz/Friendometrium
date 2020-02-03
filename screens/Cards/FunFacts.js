@@ -3,16 +3,16 @@ import { StyleSheet, Text, View, Button, } from 'react-native';
 import { Card } from 'react-native-elements';
 
 class FunFacts extends React.Component {
-    
+
     constructor(props){
         super(props);
-        
+
     }
-    
+
 
 
     render(){
-    
+
     return (
       <View style={styles.container}>
 
@@ -24,15 +24,15 @@ class FunFacts extends React.Component {
               <Button
                 buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                 title='Chat Now!'
-                onPress = {() => this.props.navigation.navigate('Chat')}
+                onPress = {() => this.props.navigation.navigate('FunFactsChat')}
                 />
           </Card>
-        
+
       </View>
     );
-  
+
   }
-  
+
 }
 
 export default FunFacts;
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    
+
   },
 });
