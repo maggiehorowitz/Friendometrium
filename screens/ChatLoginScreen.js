@@ -11,15 +11,31 @@ export default class ChatLoginScreen extends React.Component {
 
 
   continue = () => {
+    if (this.state.name== ""){
+      Alert.alert('Please enter a name');
+    }
+    else{
     this.props.navigation.navigate("FunFactsChat", {name: this.state.name})
+
+  }
   };
 
   continue2 = () => {
+    if (this.state.name== ""){
+      Alert.alert('Please enter a name');
+    }
+    else{
     this.props.navigation.navigate("AdviceChat", {name: this.state.name})
+  }
   };
 
   continue3 = () => {
+    if (this.state.name== ""){
+      Alert.alert('Please enter a name');
+    }
+    else{
     this.props.navigation.navigate("ProductReviewChat", {name: this.state.name})
+  }
   };
 
 
@@ -41,22 +57,27 @@ export default class ChatLoginScreen extends React.Component {
             onChangeText = {name => {this.setState({name});}}
             value = {this.state.name}
             />
+
+            <View style={styles.chatbuttons}>
             <Button
             title="Fun Facts Chat"
-            style = {styles.chatbuttons}
             onPress={this.continue}
             />
+            </View>
+
+            <View style={styles.chatbuttons}>
             <Button
-            style = {styles.chatbuttons}
             title="Advice Chat"
             onPress={this.continue2}
             />
+            </View>
 
+            <View style={styles.chatbuttons}>
             <Button
             title="Product Review Chat"
-            style = {styles.chatbuttons}
             onPress={this.continue3}
             />
+            </View>
 
             </View>
           </View>
@@ -113,7 +134,8 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     fontSize: 20,
     color: '#514E5A',
-    marginTop: 32
+    marginTop: 32,
+    // marginBottom: 32
   },
   input:{
     marginTop:32,
@@ -133,15 +155,17 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   chatbuttons:{
-    backgroundColor: 'blue',
-    borderColor: 'white',
+    backgroundColor: 'lightblue',
+    borderColor: 'lightblue',
     borderWidth: 1,
-    borderRadius: 12,
+    borderRadius: 4,
     color: 'white',
-    fontSize: 40,
+    fontSize: 20,
     fontWeight: 'bold',
     overflow: 'hidden',
-    padding: 30,
+    padding: 10,
+    paddingTop: 20,
+    marginTop: 20,
     textAlign:'center',
   }
 });
