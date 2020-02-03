@@ -1,16 +1,18 @@
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 
-import LoginToChatScreen from './LoginToChatScreen'
+import LoginScreen from './LoginScreen'
 import ChatScreen from './ChatScreen'
+import ChatScreen2 from './ChatScreen2'
 
 const AppNavigator = createStackNavigator(
   {
-    // Login: LoginToChatScreen,
-    Chat: ChatScreen
+    Login: LoginScreen,
+    Chat: ChatScreen,
+    Chat2: ChatScreen2
   },
   {
-    headerMode: "none",
+    headerMode: "none"
   }
 );
 

@@ -261,8 +261,7 @@ render() {
             >
               <Image
                   style={styles.profile}
-                  source={require('./assets/car.png')}
-
+                  source={require('../assets/person.png')}
               />
             </Marker>
           ))}
@@ -290,7 +289,7 @@ render() {
         <View style={styles.bottom}>
         <View style={styles.bottomRow}>
           <TouchableOpacity onPress={this.focusLoc}>
-            <Image style={styles.focusLoc} source={require('./assets/crosshair.png')} />
+            <Image style={styles.focusLoc} source={require('../assets/crosshair.png')} />
           </TouchableOpacity>
         </View>
         </View>
