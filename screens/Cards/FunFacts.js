@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, } from 'react-native';
 import { Card } from 'react-native-elements';
+import ForumChat from '../FunFactsChat'
+
 
 class FunFacts extends React.Component {
 
@@ -24,7 +26,7 @@ class FunFacts extends React.Component {
               <Button
                 buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                 title='Chat Now!'
-                onPress = {() => this.props.navigation.navigate('FunFactsChat')}
+                onPress = {() => this.props.navigation.navigate('ChatLoginScreen')}
                 />
           </Card>
 
