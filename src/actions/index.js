@@ -1,10 +1,12 @@
 import { ADD_NEW_POST, CLICKED_POST } from './actionTypes';
 let nextId = 0
 
-export const addNewPost = (text) =>({
+export const addNewPost = (title,body) =>({
     type: ADD_NEW_POST,
     id: nextId++,
-    text,
+    title,
+    body,
+
 })
 
 export const ClickedPost = (id) => ({

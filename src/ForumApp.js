@@ -1,6 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Icon } from 'react-native';
 import VisiblePosts from './containers/VisiblePosts';
+import { ScrollView } from 'react-native-gesture-handler';
+import FunFacts from '../screens/Cards/FunFacts';
+import InTheWorkPlace from '../screens/Cards/InTheWorkPlace';
+import Products from '../screens/Cards/Products';
 
 class ForumApp extends React.Component {
     
@@ -12,14 +16,23 @@ class ForumApp extends React.Component {
     render(){
     
     return (
-      <View style={{padding:20}}>
+      <View style={styles.container}>
+          <Text style={{marginTop:10, fontSize:30, textAlign:'center'}}>Forum!</Text>
           <Button
             title="New Post"
             onPress={() => this.props.navigation.navigate('NewPostSimple')}
             />
-        <View>
+
+          <ScrollView>
+
+            <FunFacts/>
+            <InTheWorkPlace/>
+            <Products/>
             <VisiblePosts/>
-        </View>
+
+          </ScrollView>
+            
+        
       </View>
     );
   

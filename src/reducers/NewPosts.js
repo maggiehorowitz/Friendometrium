@@ -8,7 +8,8 @@ const NewPosts = ( state=[],action)=>{
             return [
                 ...state, {
                     id: nextId++,
-                    text: action.text,
+                    title: action.title,
+                    body: action.body,
                     clicked: false,
                 }
             ]

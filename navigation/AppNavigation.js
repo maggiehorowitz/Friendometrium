@@ -18,6 +18,7 @@ import Sidebar from '../screens/Sidebar'
 import ChatIndex from '../screens/ChatIndex'
 import ForumApp from '../src/ForumApp'
 import AddNewPostSimple from '../src/containers/AddNewPostSimple'
+import FunFacts from '../screens/Cards/FunFacts';
 
 // const Home = ({navigation}) => (
 //   <View style={styles.container}>
