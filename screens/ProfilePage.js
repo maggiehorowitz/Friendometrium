@@ -19,7 +19,8 @@ export default class ProfilePage extends Component {
         This is the Profile Page!
         </Text>
         <Text style={{padding:20}}>
-        Add some information about the Friendometrium user here
+        User id: {Fire.uid}
+        User email: {Fire.email}
         </Text>
       </View>
     )
