@@ -8,6 +8,7 @@ import { Button } from 'react-native-elements'
 import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
 import MapPage from './MapPage';
+import Fire from "../config/Firebase/Fire";
 
 export default class ProfilePage extends Component {
   render() {
