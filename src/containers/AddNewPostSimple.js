@@ -22,6 +22,11 @@ class AddNewPostSimple extends React.Component {
         this.setState({body: ''})
     }
 
+    goBackToForum = () => {
+      this.props.navigation.navigate('Forum')
+    }
+
+
     render(){
     
     return (
@@ -56,7 +61,7 @@ class AddNewPostSimple extends React.Component {
                 {/* </View> */}
             {/* </TouchableOpacity> */}
             <Button style={{padding:20}}
-            onPress={() => this.addNewPost(this.state.title, this.state.body)}
+            onPress={() => {this.addNewPost(this.state.title, this.state.body);this.goBackToForum()}}
             title = 'Post Now'
             />
 

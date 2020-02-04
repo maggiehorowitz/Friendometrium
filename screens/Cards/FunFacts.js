@@ -10,8 +10,6 @@ class FunFacts extends React.Component {
 
     }
 
-
-
     render(){
 
     return (

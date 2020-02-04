@@ -13,3 +13,8 @@ export const ClickedPost = (id) => ({
     type: CLICKED_POST,
     id
 })
+
+export const GetPosts = (data) => ({
+    type: GET_POSTS,
+    posts: data,
+})
