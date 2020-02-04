@@ -4,15 +4,26 @@ import {Ionicons} from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { addNewPost } from '../actions';
 import { Button } from 'react-native-elements';
+import FireForumData from "../../config/Firebase/FireForumData";
+
+
+
+
 
 class AddNewPostSimple extends React.Component {
-    
-  
+
+
+  //
+  // continueYES = () => {
+  //
+  // };
+
+
+
     state = {
         title: '',
-        body: '',
+        body: ''
     }
-
 
     addNewPost = (title, body) => {
         //redux store
@@ -22,38 +33,54 @@ class AddNewPostSimple extends React.Component {
         this.setState({body: ''})
     }
 
-    goBackToForum = () => {
-      this.props.navigation.navigate('Forum')
+
+
+// firebase.database().ref("pathName").set({[variable] : 'MoreStuff'});
+
+    continueNow = async () => {
+      FireForumData.forumPost.update({
+         [this.state.title]: {
+            title: this.state.title,
+            body: this.state.body,
+            u_email: FireForumData.email
+         }
+      });
     }
 
-
     render(){
-    
+
     return (
       <View style={styles.container}>
           <Text style={{marginTop:10, fontSize:30, textAlign:'center'}}>New Topic!</Text>
-          
+
           <View style={styles.container}>
-            <TextInput 
+            <TextInput
               onChangeText={(title) => this.setState({title})}
+
+
+              //here set the title
               value = {this.state.title}
+              //send this to firebase
+
+
               placeholder = "Title"
               style = {{borderWidth:1,height:75,padding:20}}
               />
 
-            
+
           </View>
-          
+
           <View style={styles.container}>
-            <TextInput 
+            <TextInput
               onChangeText={(body) => this.setState({body})}
               value = {this.state.body}
+              //send this to firebase
               placeholder = "Body"
               style = {{borderWidth:1,height:100,padding:20}}
               />
           </View>
-          
-            
+
+
             {/* <TouchableOpacity onPress={()=> this.addNewPost(this.state.text)}> */}
                 {/* <View style={{height:50, alignItems:'center',justifyContent:'center'}}> */}
                     {/* <Ionicons name = "md-add" size ={30} style={{padding:10}}/> */}
@@ -61,18 +88,33 @@ class AddNewPostSimple extends React.Component {
                 {/* </View> */}
             {/* </TouchableOpacity> */}
             <Button style={{padding:20}}
-            onPress={() => {this.addNewPost(this.state.title, this.state.body);this.goBackToForum()}}
+            // onPress={() => this.addNewPost(this.state.title, this.state.body)}
+            onPress = {() => this.continueNow()}
+            // onPress={()=>ContinueNow()}
             title = 'Post Now'
             />
 
       </View>
     );
-  
+
   }
-  
+
+
+
+
 }
 //connecting store to component
 export default connect()(AddNewPostSimple)
+
+
+  // const ContinueNow = async () => {
+  //   FireForumData.forumPost.set({
+  //      A_Post: {
+  //         title: this.state.title,
+  //         body: this.state.body
+  //      }
+  //   });
+  // };
 
 const styles = StyleSheet.create({
   container: {

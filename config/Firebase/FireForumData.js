@@ -1,11 +1,16 @@
 import firebase from 'firebase'
 
 
-class Fire{
+class FireForumData{
   constructor(){
     this.init()
     this.checkAuth()
   }
+
+  // forumPost = firebase.database().ref("ForumPosts/");
+  forumPost = firebase.database().ref("ForumPosts/");
+  // forumPost2 = firebase.database().ref("ForumPosts/" + this.uid);
+
 
 
   init = () => {
@@ -66,7 +71,7 @@ class Fire{
   }
 
   get db() {
-    return firebase.database().ref("FunFactsChat");
+    return firebase.database().ref("ForumPosts");
     //
     // //create
     // Fire.database().ref("FunFactsChat");
@@ -89,4 +94,4 @@ class Fire{
 
 }
 
-export default new Fire();
+export default new FireForumData();
