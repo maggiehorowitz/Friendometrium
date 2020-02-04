@@ -6,10 +6,12 @@ import FireForumData from '../../config/Firebase/FireForumData';
 
 //displays the actual list
 
+
 //the clicked post method (second parameter ) will be linked with our reducer
 const NewPostList = ({ NewPosts, removePost, }) => (
 
     //map over all the NewPosts and display a component
+    
 
     <View style={styles.container}>
         
@@ -24,7 +26,7 @@ const NewPostList = ({ NewPosts, removePost, }) => (
                 }}>{NewPost.body}</Text>
                 <Button 
                 title = 'Remove Post'
-                onPress = {() => removePost(NewPost.id)}/>
+                onPress = {() => {removePost(NewPost.id); FireForumData.removeNow(NewPost.title) }}/>
             </Card>
                 
 
