@@ -2,6 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, } from 'react-native';
 import { Card } from 'react-native-elements';
 import ForumChat from '../FunFactsChat'
+import {withNavigation} from 'react-navigation'
+import Fire from "../../config/Firebase/Fire";
+import FireForumData from "../../config/Firebase/FireForumData";
+
 
 
 class FunFacts extends React.Component {
@@ -26,7 +30,9 @@ class FunFacts extends React.Component {
               <Button
                 buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                 title='Chat Now!'
-                onPress = {() => this.props.navigation.navigate('ChatLoginScreen')}
+
+                onPress = {() => this.props.navigation.navigate('FunFactsChat', {name: Fire.email})}
+                // onPress = {() => navigate("ChatLoginScreen")}
                 />
           </Card>
 
@@ -37,7 +43,7 @@ class FunFacts extends React.Component {
 
 }
 
-export default FunFacts;
+export default withNavigation(FunFacts);
 
 const styles = StyleSheet.create({
   container: {

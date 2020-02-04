@@ -2,8 +2,8 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://hm-sss.m-horowitz.friendometrium.exp.direct",
   "packagerNgrokUrl": "https://packager.hm-sss.m-horowitz.friendometrium.exp.direct",
-  "ngrokPid": 70000,
+  "ngrokPid": 71241,
   "devToolsPort": 19002,
   "packagerPort": 19007,
-  "packagerPid": 69986
+  "packagerPid": 71227
 }
