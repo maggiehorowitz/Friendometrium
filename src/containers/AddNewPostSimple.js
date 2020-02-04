@@ -36,7 +36,7 @@ class AddNewPostSimple extends React.Component {
 
 // firebase.database().ref("pathName").set({[variable] : 'MoreStuff'});
 
-    continueNow = async (random) => {
+    continueNow = async () => {
       FireForumData.forumPost.update({
          [this.state.title]: {
             title: this.state.title,
@@ -90,7 +90,7 @@ class AddNewPostSimple extends React.Component {
             {/* </TouchableOpacity> */}
             <Button style={{padding:20}}
             // onPress={() => this.addNewPost(this.state.title, this.state.body)}
-            onPress = {() => this.continueNow(this.state.randnum)}
+            onPress = {() => this.continueNow()}
             // onPress={()=>ContinueNow()}
             title = 'Post Now'
             />
