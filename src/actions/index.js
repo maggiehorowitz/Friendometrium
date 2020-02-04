@@ -1,4 +1,4 @@
-import { ADD_NEW_POST, CLICKED_POST } from './actionTypes';
+import { ADD_NEW_POST, CLICKED_POST, REMOVE_POST } from './actionTypes';
 let nextId = 0
 
 export const addNewPost = (title,body) =>({
@@ -14,7 +14,9 @@ export const ClickedPost = (id) => ({
     id
 })
 
-export const GetPosts = (data) => ({
-    type: GET_POSTS,
-    posts: data,
+export const removePost = (id) => ({
+    type: REMOVE_POST,
+    id
 })
+
+

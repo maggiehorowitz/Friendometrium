@@ -20,6 +20,10 @@ const NewPosts = ( state=[],action)=>{
                     ? { ...NewPost, clicked: 
                     !NewPost.clicked} : 
                     NewPost)
+
+        case 'REMOVE_POST':
+            return state.filter(NewPost => NewPost.id !== action.id)
+
         default:
             return state
     }
