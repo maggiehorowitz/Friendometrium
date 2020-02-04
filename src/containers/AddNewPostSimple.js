@@ -33,7 +33,9 @@ class AddNewPostSimple extends React.Component {
         this.setState({body: ''})
     }
 
-
+    goBackToForum = () => {
+      this.props.navigation.navigate('Forum')
+    }
 
 // firebase.database().ref("pathName").set({[variable] : 'MoreStuff'});
 
@@ -89,7 +91,7 @@ class AddNewPostSimple extends React.Component {
             {/* </TouchableOpacity> */}
             <Button style={{padding:20}}
             // onPress={() => this.addNewPost(this.state.title, this.state.body)}
-            onPress = {() => this.continueNow()}
+            onPress = {() =>{ this.continueNow(); this.goBackToForum(); this.addNewPost(this.state.title, this.state.body);}}
             // onPress={()=>ContinueNow()}
             title = 'Post Now'
             />
