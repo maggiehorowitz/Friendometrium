@@ -12,6 +12,7 @@ import HomePage from '../screens/HomePage'
 import ProfilePage from '../screens/ProfilePage'
 import MapPage from '../screens/MapPage'
 import UsersMap from '../screens/UsersMap'
+import Places from '../screens/Places'
 import ForumPage from '../screens/ForumPage'
 import SignOutPage from '../screens/SignOutPage'
 import Sidebar from '../screens/Sidebar'
@@ -60,6 +61,7 @@ const Drawer = createDrawerNavigator(
     Home:{ screen: HomePage},
     Profile:{ screen: ProfilePage},
     Places:{ screen: MapPage}, //can get rid of constant and put actually screen there
+    Locations: { screen: Places},
     People:{ screen: UsersMap}, //can get rid of constant and put actually screen there
     Forum:{ screen: ForumApp},
     SignOut:{screen:SignOutPage},

@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19003,
-  "packagerPid": 52289,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPid": 55346,
+  "expoServerNgrokUrl": "https://e8-eze.anonymous.friendometrium.exp.direct",
+  "packagerNgrokUrl": "https://packager.e8-eze.anonymous.friendometrium.exp.direct",
+  "ngrokPid": 55356
 }

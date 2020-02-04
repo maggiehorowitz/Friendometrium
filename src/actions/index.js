@@ -11,3 +11,5 @@ export const ClickedPost = (id) => ({
     type: CLICKED_POST,
     id
 })
+
+export { addPlaces, deletePlaces } from './locations';
