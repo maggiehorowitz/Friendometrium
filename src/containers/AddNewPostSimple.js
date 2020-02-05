@@ -84,7 +84,7 @@ class AddNewPostSimple extends React.Component {
             {/* </TouchableOpacity> */}
             <Button style={{padding:20}}
             // onPress={() => this.addNewPost(this.state.title, this.state.body)}
-            onPress = {() =>{ this.continueNow(); this.goBackToForum(); this.addNewPost(this.state.title, this.state.body);}}
+            onPress = {() =>{ this.continueNow(); this.goBackToForum(); }}
             // onPress={()=>ContinueNow()}
             title = 'Post Now'
             />

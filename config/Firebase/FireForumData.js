@@ -15,6 +15,8 @@ class FireForumData{
     firebase.database().ref('/ForumPosts/' + Post).remove();
   }
 
+
+
   init = () => {
     if(!firebase.apps.length) {
       firebase.initializeApp({
