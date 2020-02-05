@@ -66,12 +66,27 @@ class Fire{
   }
 
   get db() {
-    return firebase.database().ref("messages");
+    return firebase.database().ref("FunFactsChat");
+    //
+    // //create
+    // Fire.database().ref("FunFactsChat");
+    //
+    // //open
+
   }
 
   get uid(){
     return(firebase.auth().currentUser || {}).uid;
   }
+
+  get email(){
+  return(firebase.auth().currentUser.email)
+}
+
+  get name(){
+    return (firebase.auth().currentUser.displayName)
+  }
+
 }
 
 export default new Fire();

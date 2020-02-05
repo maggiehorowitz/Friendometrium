@@ -1,9 +1,9 @@
 import React from 'react';
 import { Platform, KeyboardAvoidingView,SafeAreaView } from 'react-native';
 import {GiftedChat} from 'react-native-gifted-chat';
-import Fire from "../config/Firebase/Fire";
+import Fire from "../config/Firebase/Fire3";
 
-export default class ChatScreen extends React.Component {
+export default class ProductReviewChat extends React.Component {
 
 
   state = {
