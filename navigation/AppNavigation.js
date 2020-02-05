@@ -20,41 +20,6 @@ import ForumApp from '../src/ForumApp'
 import AddNewPostSimple from '../src/containers/AddNewPostSimple'
 import FunFacts from '../screens/Cards/FunFacts';
 
-// const Home = ({navigation}) => (
-//   <View style={styles.container}>
-//     <Header name="Home" openDrawer={navigation.openDrawer}/>
-//     <HomePage/>
-//   </View>
-// )
-//
-//
-//
-// const Profile = ({navigation}) => (
-//   <View style={styles.container}>
-//     <Header name="Profile" openDrawer={navigation.openDrawer}/>
-//     <ProfilePage/>
-//   </View>
-// )
-//
-// const Forum = ({navigation}) => (
-//   <View style={styles.container}>
-//     <Header name="Forum" openDrawer={navigation.openDrawer}/>
-//     <ForumPage/>
-//   </View>
-// )
-// const Map = ({navigation}) => (
-//   <View style={styles.container}>
-//     <Header name="Map" openDrawer={navigation.openDrawer}/>
-//     <MapPage/>
-//   </View>
-// )
-//
-// const SignOut = ({navigation}) => (
-//   <View style={styles.container}>
-//     <Header name="SignOut" openDrawer={navigation.openDrawer}/>
-//     <SignOutPage/>
-//   </View>
-// )
 
 const Drawer = createDrawerNavigator(
   {

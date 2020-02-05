@@ -16,13 +16,14 @@ class Initial extends Component {
       this.loadLocalAsync()
 
       await this.props.firebase.checkUserAuth(user => {
-        if (user) {
-          // if the user has previously logged in
+        if (user && user.email != null) {
+          // if the user has previously logged in or the user is anonymous
           this.props.navigation.navigate('App')
         } else {
           // if the user has previously signed out from the app
           this.props.navigation.navigate('Auth')
         }
+
       })
     } catch (error) {
       console.log(error)
