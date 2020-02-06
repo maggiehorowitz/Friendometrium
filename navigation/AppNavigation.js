@@ -14,6 +14,8 @@ import MapPage from '../screens/MapPage'
 import UsersMap from '../screens/UsersMap'
 import ForumPage from '../screens/ForumPage'
 import SignOutPage from '../screens/SignOutPage'
+import PrivateMessaging from '../screens/PrivateMessaging'
+
 import Sidebar from '../screens/Sidebar'
 import ChatIndex from '../screens/ChatIndex'
 import ForumApp from '../src/ForumApp'
@@ -29,7 +31,8 @@ const Drawer = createDrawerNavigator(
     People:{ screen: UsersMap}, //can get rid of constant and put actually screen there
     Forum:{ screen: ForumApp},
     SignOut:{screen:SignOutPage},
-    Chat: {screen: ChatIndex},
+    GroupChat: {screen: ChatIndex},
+    PrivateChat: {screen: PrivateMessaging},
     NewPostSimple: {screen: AddNewPostSimple},
 
   },
