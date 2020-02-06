@@ -39,12 +39,17 @@ import FireForumData from '../../config/Firebase/FireForumData';
 
 class NewPostList extends React.Component {
 
-  componentDidMount () {
-    this.props.watchNewPosts()
-  }
+  // componentDidMount () {
+  //   this.props.watchNewPosts()
+  // }
   
-  componentWillUnmount (){
-     this.props.clearPosts() 
+  // componentWillUnmount (){
+  //    this.props.clearPosts() 
+  // }
+  constructor(props){
+    super(props);
+    this.props.clearPosts();
+    this.props.watchNewPosts();
   }
 
   render(){
@@ -63,7 +68,7 @@ class NewPostList extends React.Component {
               }}>{NewPost.body}</Text> 
               <Button 
               title = 'Remove Post'
-              onPress = {() => {removePost(NewPost.id); FireForumData.removeNow(NewPost.title) }}/>
+              onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title) }}/>
           </Card>
               
 
