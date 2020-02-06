@@ -54,7 +54,7 @@ export default class SideBar extends React.Component {
               icon:"ios-chatbubbles"
           },
           {
-              name:"PrivateChat",
+              name:"PMChat",
               icon:"ios-text"
           },
           {

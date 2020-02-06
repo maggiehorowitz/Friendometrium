@@ -14,7 +14,7 @@ import MapPage from '../screens/MapPage'
 import UsersMap from '../screens/UsersMap'
 import ForumPage from '../screens/ForumPage'
 import SignOutPage from '../screens/SignOutPage'
-import PrivateMessaging from '../screens/PrivateMessaging'
+import PMIndex from '../screens/PMIndex'
 
 import Sidebar from '../screens/Sidebar'
 import ChatIndex from '../screens/ChatIndex'
@@ -32,7 +32,7 @@ const Drawer = createDrawerNavigator(
     Forum:{ screen: ForumApp},
     SignOut:{screen:SignOutPage},
     GroupChat: {screen: ChatIndex},
-    PrivateChat: {screen: PrivateMessaging},
+    PMChat: {screen:PMIndex},
     NewPostSimple: {screen: AddNewPostSimple},
 
   },
