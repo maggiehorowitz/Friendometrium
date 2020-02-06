@@ -2,8 +2,8 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://g9-zxv.anonymous.thesis.exp.direct",
   "packagerNgrokUrl": "https://packager.g9-zxv.anonymous.thesis.exp.direct",
-  "ngrokPid": 4781,
+  "ngrokPid": 5995,
   "devToolsPort": 19002,
   "packagerPort": 19003,
-  "packagerPid": 4764
+  "packagerPid": 5978
 }

@@ -5,6 +5,7 @@ import { removePost, watchNewPosts } from '../actions';
 import FireForumData from '../../config/Firebase/FireForumData';
 import Fire from "../../config/Firebase/FireForumChat";
 import {withNavigation} from 'react-navigation'
+import {Collapse, CollapseHeader, CollapseBody} from "accordion-collapse-react-native";
 
 //displays the actual list
 
@@ -69,20 +70,46 @@ class NewPostList extends React.Component {
       
       {this.props.NewPosts.map(NewPost => 
       // <TouchableOpacity key={NewPost.id} onPress = {() => ClickedPost(NewPost.id)}>
-          <Card key = {NewPost.id}
-          title = {NewPost.title}>
-          <Text style = {{
-                  fontSize:24,
-                  textDecorationLine: NewPost.completed ? 'line-through' : 'none'
-              }}>{NewPost.body}</Text> 
-              <Button 
-              title = 'Remove Post'
-              onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title);  }}/>
+          
+          // <Card key = {NewPost.id}
+          // title = {NewPost.title}>
+          // <Text style = {{
+          //         fontSize:24,
+          //         textDecorationLine: NewPost.completed ? 'line-through' : 'none'
+          //     }}>{NewPost.body}</Text> 
+          //     <Button 
+          //     title = 'Remove Post'
+          //     onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title); }}/>
+          //     <Button
+          //     title = 'Go to chat'
+          //     onPress = {() => this.goToChat(NewPost.title,NewPost.email)}/>
+          // </Card>
+
+        <Collapse key={NewPost.id} 
+        style={{padding:10, marginTop:10, marginBotton:10 }}>
+          <CollapseHeader style = {{alignItems:'center',padding:10, backgroundColor: '#E6E6E6'}}>
+            <View>
+              <Text style ={{fontSize: 24}}>{NewPost.title}</Text>
+            </View>
+          </CollapseHeader>
+          <CollapseBody>
+            <View>
+              <Text style ={{fontSize: 24}}>{NewPost.body}</Text>
+            </View>
+            <View>
               <Button
-              title = 'Go to chat'
-              onPress = {() => this.goToChat(NewPost.title,NewPost.email)}/>
-          </Card>
-              
+                title = 'Remove Post'
+                onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title); }}/>
+            </View>
+            <View>
+              <Button
+                title = 'Go to chat'
+                onPress = {() => this.goToChat(NewPost.title,NewPost.email)}/>            
+              </View>
+          </CollapseBody>
+        </Collapse>
+        
+          
 
       // </TouchableOpacity> 
       )}
