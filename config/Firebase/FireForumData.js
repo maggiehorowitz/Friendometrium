@@ -11,6 +11,8 @@ class FireForumData{
   forumPost = firebase.database().ref("ForumPosts/");
   // forumPost2 = firebase.database().ref("ForumPosts/" + this.uid);
 
+  myName = ""
+
 
   init = () => {
     if(!firebase.apps.length) {
