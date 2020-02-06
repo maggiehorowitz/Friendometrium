@@ -8,21 +8,49 @@ import { Button } from 'react-native-elements'
 import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
 import MapPage from './MapPage';
-import Fire from "../config/Firebase/Fire";
+import Fire from "../config/Firebase/FireForumData";
+
 
 export default class ProfilePage extends Component {
   render() {
     return (
 
       <View style={styles.container}>
-        <Image source ={require("../assets/t_roberts.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
-        <Text style={{padding:0}}>
-        This is the Profile Page!
+      <View>
+      <Image
+        style={{width: 200, height: 200}}
+        source={{uri: Fire.photo}}
+      />
+      </View>
+        <Text style={styles.profileheader}>
+        Welcome  {Fire.name} !
         </Text>
         <Text style={{padding:20}}>
         User id: {Fire.uid}
-        User email: {Fire.email}
+
+
         </Text>
+
+        <Text style={{padding:20}}>
+        User id: {Fire.email}
+        </Text>
+
+
+        <Text style={{padding:20}}>
+        User name: {Fire.name}
+        </Text>
+
+        <Text style={{padding:20}}>
+        Photo URI: {Fire.photo}
+        </Text>
+
+        <Button
+        title="Update My Profile"
+        onPress={Fire.updateInfo("Maggie Horowitz", 'https://i.pinimg.com/474x/e3/0b/ca/e30bcaff86a4258a1b799ca60c8c49a4.jpg')}
+        />
+
+
+
       </View>
     )
   }
@@ -34,5 +62,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  profileheader: {
+    fontWeight: "800",
+    fontSize: 20,
+    color: '#514E5A',
+    marginTop: 32,
+    // marginBottom: 32
   }
 })

@@ -72,6 +72,30 @@ class Fire2{
   get uid(){
     return(firebase.auth().currentUser || {}).uid;
   }
+  get email(){
+  return(firebase.auth().currentUser.email)
+}
+
+// async updateProfile(){
+//   await firebase.auth().currentUser.updateProfile(update);
+//
+// }
+
+  updateInfo = (display_name, photo_url) => {
+    firebase.auth().currentUser.updateProfile({
+    displayName: display_name,
+    photoURL: photo_url
+    });
+  };
+
+  get name(){
+    return (firebase.auth().currentUser.displayName)
+  }
+
+  get photo(){
+    return (firebase.auth().currentUser.photoURL)
+  }
+
 }
 
 export default new Fire2();

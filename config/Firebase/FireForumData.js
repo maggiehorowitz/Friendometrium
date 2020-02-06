@@ -74,14 +74,17 @@ class FireForumData{
     this.db.off()
   }
 
-  get db() {
-    return firebase.database().ref("ForumPosts");
-    //
-    // //create
-    // Fire.database().ref("FunFactsChat");
-    //
-    // //open
 
+  get db() {
+    return firebase.database().ref("FunFactsChat");
+  }
+
+  get db2() {
+    return firebase.database().ref("AdviceChat");
+  }
+
+  get db3() {
+    return firebase.database().ref("ProductReviewChat");
   }
 
   get uid(){
@@ -92,8 +95,30 @@ class FireForumData{
   return(firebase.auth().currentUser.email)
 }
 
+// async updateProfile(){
+//   await firebase.auth().currentUser.updateProfile(update);
+//
+// }
+
+  updateInfo = (display_name, photo_url) => {
+    firebase.auth().currentUser.updateProfile({
+    displayName: display_name,
+    photoURL: photo_url
+    });
+  };
+
   get name(){
     return (firebase.auth().currentUser.displayName)
+  }
+
+  get photo(){
+    return (firebase.auth().currentUser.photoURL)
+  }
+
+  set photo(photouri){
+    firebase.auth().currentUser.updateProfile({
+    photoURL: photo_url
+    });
   }
 
 }

@@ -12,6 +12,7 @@ import HomePage from './HomePage';
 import ForumPage from './ForumPage';
 import ProfilePage from './ProfilePage';
 import SignOutPage from './SignOutPage';
+import Fire from "../config/Firebase/FireForumData";
 
 function Item({ item, navigate }) {
   return (
@@ -49,7 +50,11 @@ export default class SideBar extends React.Component {
               icon:"ios-chatboxes"
           },
           {
-              name:"Chat",
+              name:"GroupChat",
+              icon:"ios-chatbubbles"
+          },
+          {
+              name:"PMChat",
               icon:"ios-text"
           },
           {
@@ -61,9 +66,9 @@ export default class SideBar extends React.Component {
   render(){
       return (
           <View style={styles.container}>
-              <Image source={require("../assets/t_roberts.jpg")} style={styles.profileImg}/>
-              <Text style={{fontWeight:"bold",fontSize:16,marginTop:10}}>Tomi-Ann Roberts</Text>
-              <Text style={{color:"gray",marginBottom:10}}>troberts@coloradocollege.edu</Text>
+              <Image source={{uri: Fire.photo}} style={styles.profileImg}/>
+              <Text style={{fontWeight:"bold",fontSize:16,marginTop:10}}>{Fire.name}</Text>
+              <Text style={{color:"gray",marginBottom:10}}>{Fire.email}</Text>
               <View style={styles.sidebarDivider}></View>
               <FlatList
                   style={{width:"100%",marginLeft:30}}

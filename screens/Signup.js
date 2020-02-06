@@ -8,6 +8,7 @@ import FormInput from '../components/FormInput'
 import FormButton from '../components/FormButton'
 import ErrorMessage from '../components/ErrorMessage'
 import { withFirebaseHOC } from '../config/Firebase'
+import Fire from "../config/Firebase/FireForumData";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,6 +28,8 @@ const validationSchema = Yup.object().shape({
     .required('Confirm Password is required'),
   check: Yup.boolean().oneOf([true], 'Please check the agreement')
 })
+
+
 
 class Signup extends Component {
   state = {
@@ -54,6 +57,10 @@ class Signup extends Component {
     }))
   }
 
+
+
+
+
   handleOnSignup = async (values, actions) => {
     const { name, email, password } = values
 
@@ -75,6 +82,13 @@ class Signup extends Component {
     } finally {
       actions.setSubmitting(false)
     }
+  }
+
+
+  setMyName = (name) => {
+    Fire.auth().currentUser.updateProfile({
+    displayName: name,
+    });
   }
 
   render() {
@@ -183,7 +197,7 @@ class Signup extends Component {
               <View style={styles.buttonContainer}>
                 <FormButton
                   buttonType='outline'
-                  onPress={handleSubmit}
+                  onPress={()=> {handleSubmit; this.setMyName(this.name)}}
                   title='SIGNUP'
                   buttonColor='#F57C00'
                   disabled={!isValid || isSubmitting}
@@ -206,6 +220,7 @@ class Signup extends Component {
     )
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {

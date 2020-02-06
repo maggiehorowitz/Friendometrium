@@ -1,11 +1,14 @@
 import firebase from 'firebase'
 
 
-class Fire{
+class FirePrivateChat{
   constructor(){
     this.init()
     this.checkAuth()
   }
+
+
+  cID = "default"
 
 
   init = () => {
@@ -65,8 +68,10 @@ class Fire{
     this.db.off()
   }
 
+
+
   get db() {
-    return firebase.database().ref("FunFactsChat");
+    return firebase.database().ref("PrivateMessages/" + this.cID);
     //
     // //create
     // Fire.database().ref("FunFactsChat");
@@ -105,4 +110,4 @@ class Fire{
 
 }
 
-export default new Fire();
+export default new FirePrivateChat();
