@@ -2,8 +2,8 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://hm-sss.anonymous.thesis.exp.direct",
   "packagerNgrokUrl": "https://packager.hm-sss.anonymous.thesis.exp.direct",
-  "ngrokPid": 45056,
+  "ngrokPid": 50441,
   "devToolsPort": 19002,
-  "packagerPort": 19010,
-  "packagerPid": 45043
+  "packagerPort": 19011,
+  "packagerPid": 50430
 }

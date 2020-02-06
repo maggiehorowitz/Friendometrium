@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import NewPostList from '../components/NewPostList'
-import { removePost, watchNewPosts } from '../actions';
+import { removePost, watchNewPosts, clearPosts } from '../actions';
 
 
 const mapStateToProps = state => ({
@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     removePost: id => dispatch(removePost(id)),
     watchNewPosts: () => dispatch(watchNewPosts()),
+    clearPosts: () => dispatch(clearPosts()),
 })
 
 //This is where we connect our NewPostList UI to redux

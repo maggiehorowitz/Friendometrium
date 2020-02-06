@@ -1,4 +1,4 @@
-import { ADD_NEW_POST, CLICKED_POST, REMOVE_POST, FETCH_POSTS } from './actionTypes';
+import { ADD_NEW_POST, CLICKED_POST, REMOVE_POST, FETCH_POSTS, CLEAR } from './actionTypes';
 import FireForumData from '../../config/Firebase/FireForumData';
 import * as firebase from 'firebase';
 let nextId = 0
@@ -19,6 +19,10 @@ export const ClickedPost = (id) => ({
 export const removePost = (id) => ({
     type: REMOVE_POST,
     id
+})
+
+export const clearPosts = () => ({
+    type: CLEAR,
 })
 
 export const fetchPosts = (postData) => {

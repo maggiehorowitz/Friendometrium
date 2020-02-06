@@ -8,38 +8,76 @@ import FireForumData from '../../config/Firebase/FireForumData';
 
 
 //the clicked post method (second parameter ) will be linked with our reducer
-const NewPostList = ({ NewPosts, removePost, watchNewPosts }) => (
+// const NewPostList = ({ NewPosts, removePost, watchNewPosts }) => (
 
-    //map over all the NewPosts and display a component
+//     //map over all the NewPosts and display a component
     
     
-    <View style={styles.container}>
-      <Button
-      title = 'FetchPosts'
-      onPress = {() => watchNewPosts()}/>
+//     <View style={styles.container}>
+//       <Button
+//       title = 'FetchPosts' 
+//       onPress = {() => watchNewPosts()}/>
         
-        {NewPosts.map(NewPost => 
-        // <TouchableOpacity key={NewPost.id} onPress = {() => ClickedPost(NewPost.id)}>
+//         {NewPosts.map(NewPost => 
+//         // <TouchableOpacity key={NewPost.id} onPress = {() => ClickedPost(NewPost.id)}>
             
-            <Card key = {NewPost.id}
-            title = {NewPost.title}>
-            <Text style = {{
-                    fontSize:24,
-                    textDecorationLine: NewPost.completed ? 'line-through' : 'none'
-                }}>{NewPost.body}</Text>
-                <Button 
-                title = 'Remove Post'
-                onPress = {() => {removePost(NewPost.id); FireForumData.removeNow(NewPost.title) }}/>
-            </Card>
+//             <Card key = {NewPost.id}
+//             title = {NewPost.title}>
+//             <Text style = {{
+//                     fontSize:24,
+//                     textDecorationLine: NewPost.completed ? 'line-through' : 'none'
+//                 }}>{NewPost.body}</Text> 
+//                 <Button 
+//                 title = 'Remove Post'
+//                 onPress = {() => {removePost(NewPost.id); FireForumData.removeNow(NewPost.title) }}/>
+//             </Card>
                 
  
-        // </TouchableOpacity>
-        )}
-    </View>
+//         // </TouchableOpacity>
+//         )}
+//     </View>
 
+class NewPostList extends React.Component {
 
+  componentDidMount () {
+    this.props.watchNewPosts()
+  }
+  
+  componentWillUnmount (){
+     this.props.clearPosts() 
+  }
+
+  render(){
+    return(
+      <View style={styles.container}>
     
-)
+      
+      {this.props.NewPosts.map(NewPost => 
+      // <TouchableOpacity key={NewPost.id} onPress = {() => ClickedPost(NewPost.id)}>
+          
+          <Card key = {NewPost.id}
+          title = {NewPost.title}>
+          <Text style = {{
+                  fontSize:24,
+                  textDecorationLine: NewPost.completed ? 'line-through' : 'none'
+              }}>{NewPost.body}</Text> 
+              <Button 
+              title = 'Remove Post'
+              onPress = {() => {removePost(NewPost.id); FireForumData.removeNow(NewPost.title) }}/>
+          </Card>
+              
+
+      // </TouchableOpacity>
+      )}
+  </View>
+    )
+  }
+  //map over all the NewPosts and display a component
+  
+  
+  
+    
+  }
   
   export default NewPostList;
   

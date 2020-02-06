@@ -31,6 +31,9 @@ const NewPosts = ( state=[],action)=>{
                 body: action.value.body, 
             }
         ]
+        case 'CLEAR':
+            return state = []
+            
         default:
             return state
     }
