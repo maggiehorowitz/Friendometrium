@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 
 
-class FirePrivateChat{
+class FireForumChat{
   constructor(){
     this.init()
     this.checkAuth()
@@ -68,10 +68,12 @@ class FirePrivateChat{
     this.db.off()
   }
 
-  
+  removeNow = async () => {
+    firebase.database().ref('/ForumChats/' + this.cID).remove();
+  }
 
   get db() {
-    return firebase.database().ref("PrivateMessages/" + this.cID);
+    return firebase.database().ref("ForumChats/" + this.cID);
     //
     // //create
     // Fire.database().ref("FunFactsChat");
@@ -110,4 +112,4 @@ class FirePrivateChat{
 
 }
 
-export default new FirePrivateChat();
+export default new FireForumChat();

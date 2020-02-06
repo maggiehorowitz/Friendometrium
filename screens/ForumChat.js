@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform, KeyboardAvoidingView,SafeAreaView } from 'react-native';
 import {GiftedChat} from 'react-native-gifted-chat';
-import Fire from "../config/Firebase/Fire2";
+import Fire from "../config/Firebase/FireForumChat";
 
 export default class ForumChat extends React.Component {
 

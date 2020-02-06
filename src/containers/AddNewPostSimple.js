@@ -8,8 +8,6 @@ import FireForumData from "../../config/Firebase/FireForumData";
 
 
 
-
-
 class AddNewPostSimple extends React.Component {
 
 
@@ -41,6 +39,8 @@ class AddNewPostSimple extends React.Component {
          }
       });
     }
+
+   
 
     render(){
 

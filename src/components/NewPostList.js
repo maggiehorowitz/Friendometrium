@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, Button, } from 'react-native'
 import { Card } from 'react-native-elements';
 import { removePost, watchNewPosts } from '../actions';
 import FireForumData from '../../config/Firebase/FireForumData';
+import Fire from "../../config/Firebase/FireForumChat";
+import {withNavigation} from 'react-navigation'
 
 //displays the actual list
 
@@ -53,6 +55,13 @@ class NewPostList extends React.Component {
     this.props.watchNewPosts();
   }
 
+  goToChat = (title,email) => { 
+    Fire.cID= title;
+    this.props.navigation.navigate("ForumChat", {name: email});
+  };
+
+  
+
   render(){
     return(
       <View style={styles.container}>
@@ -60,7 +69,6 @@ class NewPostList extends React.Component {
       
       {this.props.NewPosts.map(NewPost => 
       // <TouchableOpacity key={NewPost.id} onPress = {() => ClickedPost(NewPost.id)}>
-          
           <Card key = {NewPost.id}
           title = {NewPost.title}>
           <Text style = {{
@@ -69,11 +77,14 @@ class NewPostList extends React.Component {
               }}>{NewPost.body}</Text> 
               <Button 
               title = 'Remove Post'
-              onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title) }}/>
+              onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title); Fire.removeNow(); }}/>
+              <Button
+              title = 'Go to chat'
+              onPress = {() => this.goToChat(NewPost.title,NewPost.email)}/>
           </Card>
               
 
-      // </TouchableOpacity>
+      // </TouchableOpacity> 
       )}
   </View>
     )
@@ -85,7 +96,7 @@ class NewPostList extends React.Component {
     
   }
   
-  export default NewPostList;
+  export default withNavigation( NewPostList ) ;
   
   const styles = StyleSheet.create({
     container: {
