@@ -86,15 +86,15 @@ class NewPostList extends React.Component {
           // </Card>
 
         <Collapse key={NewPost.id} 
-        style={{padding:10, marginTop:10, marginBotton:10 }}>
-          <CollapseHeader style = {{alignItems:'center',padding:10, backgroundColor: '#E6E6E6'}}>
+        style={{padding:10, marginTop:10, marginBotton:10, borderWidth: .5, borderColor: '#C7C9C9'  }}>
+          <CollapseHeader style = {{alignItems:'center',padding:10, }}>
             <View>
               <Text style ={{fontSize: 24}}>{NewPost.title}</Text>
             </View>
           </CollapseHeader>
-          <CollapseBody>
+          <CollapseBody style ={{alignItems:'center',justifyContent:'center', borderTopWidth: .25, margin: 10}}>
             <View>
-              <Text style ={{fontSize: 24}}>{NewPost.body}</Text>
+              <Text style ={{fontSize: 24, margin: 10}}>{NewPost.body}</Text>
             </View>
             <View>
               <Button
@@ -129,6 +129,7 @@ class NewPostList extends React.Component {
     container: {
       flex: 1,
       padding: 20,
+
       
     },
   });
