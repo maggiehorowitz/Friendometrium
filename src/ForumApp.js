@@ -24,7 +24,8 @@ class ForumApp extends React.Component {
             onPress={() => this.props.navigation.navigate('NewPostSimple')}
             />
 
-          <ScrollView>
+          <ScrollView
+          showsVerticalScrollIndicator = {false}>
 
             <FunFacts/>
             <InTheWorkPlace/>

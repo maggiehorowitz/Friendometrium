@@ -46,6 +46,7 @@ class NewPostList extends React.Component {
   // componentWillUnmount (){
   //    this.props.clearPosts() 
   // }
+  
   constructor(props){
     super(props);
     this.props.clearPosts();
