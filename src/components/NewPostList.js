@@ -77,7 +77,7 @@ class NewPostList extends React.Component {
               }}>{NewPost.body}</Text> 
               <Button 
               title = 'Remove Post'
-              onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title); Fire.removeNow(); }}/>
+              onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title);  }}/>
               <Button
               title = 'Go to chat'
               onPress = {() => this.goToChat(NewPost.title,NewPost.email)}/>
