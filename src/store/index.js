@@ -1,9 +1,6 @@
-import { createStore, combineReducers} from 'redux';
-import locationsReducer from '../reducers/locations';
-import NewPosts from '../reducers/NewPosts'
+import { createStore, combineReducers, applyMiddleware} from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import rootReducer from '../reducers';
 
-const rootReducer = combineReducers({
-    NewPosts,
-    locationsList: locationsReducer
-});
-export default store = createStore(rootReducer)
+
+export default store = createStore(rootReducer, applyMiddleware(thunkMiddleware))

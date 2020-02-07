@@ -1,11 +1,18 @@
+//after line 13 add something for a dropdown of description? go back to cards to navigate
+
 import React from 'react';
+import { deletePlaces } from '../actions/index';
 import { TouchableOpacity, View, Text, StyleSheet, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 const ListItem = props => (
     <View style={styles.listItem}>
       <View style={styles.contain}>
-        <View style={{width: "70%"}}><Text style={styles.text}>{props.placeName}</Text></View>
-          <TouchableOpacity>
+        <View style={{width: "70%"}}>
+            <Text style={styles.text}>
+                {props.placeName}
+            </Text>
+        </View>
+          <TouchableOpacity >
             <View style={styles.trash}>
               <Icon size={25} name="ios-trash" color="red"/>
             </View>
@@ -16,7 +23,7 @@ const ListItem = props => (
 const styles = StyleSheet.create({
   listItem: {
     width: "95%",
-    marginBottom: 7,
+    marginBottom: 10,
     marginLeft: 10,
     padding: 10,
     backgroundColor: "white",

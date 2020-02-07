@@ -1,19 +1,32 @@
+//Connect to firebase, fix delete button, make prettier
+
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { Modal, View, Text, TextInput, Button, StyleSheet,TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { addPlaces } from '../src/actions/index';
 import PickLocation from '../src/components/PickLocation';
 import Places from './Places';
+import AddLocationModal from '../src/containers/AddLocationModal';
+
 class Map extends Component {
+    constructor() {
+        super()
+        this.state.upsertingComment = false,
+        this.toggleModalVisibility = this.toggleModalVisibility.bind(this);
+
+    }
 state = {
     placeName: "",
     controls: {
       location: {
         value: null,
-        valid: false
+        valid: false,
+        upsertingComment: false
       }
     }
+
   };
+
 placeNameChangedHandler = val => {
     this.setState(prevState => {
       return {
@@ -35,34 +48,53 @@ locationPickedHandler = location => {
       };
     });
   };
+
+toggleModalVisibility(){
+    this.setState({ upsertingComment: true})
+}
+
+
+
+
 locationAddedHandler = () => {
     this.props.onAddLocation(
       this.state.placeName,
-      this.state.controls.location.value
+      this.state.controls.location.value,
+      this.description
     );
     this.props.navigation.navigate('Locations')
   };
 render() {
 return (
         <View style={styles.container}>
-          <PickLocation onLocationPick={this.locationPickedHandler} />
             <View style={styles.button}>
               <TextInput
                 placeholder="Type a Place Name"
                 value={this.state.placeName}
-                onChangeText={this.placeNameChangedHandler}
+                onChangeText= {this.placeNameChangedHandler}
                 style={styles.placeInput}
               />
-            <Button title="Save Location" onPress={this.locationAddedHandler} />
+            <Button title="Save Location" onPress={this.toggleModalVisibility} />
+            <AddLocationModal
+                topBarText="New comment"
+                visible={this.state.upsertingComment}
+                onSubmit={this.locationAddedHandler}
+            />
             </View>
+            <PickLocation onLocationPick={this.locationPickedHandler} />
         </View>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+<<<<<<< Updated upstream
+    flex: 2,
+    alignItems: "center",
+=======
+    flex: 3,
     alignItems: "center"
+>>>>>>> Stashed changes
   },
   placeholder: {
     borderWidth: 1,
@@ -72,14 +104,24 @@ const styles = StyleSheet.create({
     height: 150
   },
   button: {
-    margin: 8
+<<<<<<< Updated upstream
+    margin: 30,
+    padding: 10
+=======
+    margin: 8,
+    flex: 1
+>>>>>>> Stashed changes
   },
   previewImage: {
     width: "100%",
     height: "100%"
   },
   placeInput: {
-    width: "70%"
+    width: "70%",
+<<<<<<< Updated upstream
+    fontSize: 18
+=======
+>>>>>>> Stashed changes
   }
 });
 const mapDispatchToProps = dispatch => {
@@ -89,171 +131,3 @@ const mapDispatchToProps = dispatch => {
   };
 };
 export default connect(null, mapDispatchToProps)(Map);
-
-
-
-
-// //add input to markers
-//
-// import React from 'react';
-// import {
-//   StyleSheet,
-//   View,
-//   Text,
-//   Dimensions,
-//   TouchableOpacity,
-// } from 'react-native';
-//
-// import MapView, { Marker, ProviderPropType } from 'react-native-maps';
-//
-//
-// const { width, height } = Dimensions.get('window');
-//
-// const ASPECT_RATIO = width / height;
-// const LATITUDE = 37.78825;
-// const LONGITUDE = -122.4324;
-// const LATITUDE_DELTA = 0.0922;
-// const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-// let id = 0;
-//
-// function randomColor() {
-//   return `#${Math.floor(Math.random() * 16777215)
-//     .toString(16)
-//     .padStart(6, 0)}`;
-// }
-//
-//
-//
-// class DefaultMarkers extends React.Component {
-//   constructor(props) {
-//     super(props);
-//
-//     this.state = {
-//       initalRegion: {
-//         latitude: LATITUDE,
-//         longitude: LONGITUDE,
-//         latitudeDelta: LATITUDE_DELTA,
-//         longitudeDelta: LONGITUDE_DELTA,
-//       },
-//       markers: [],
-//     };
-//   }
-//
-//   onMapPress(e) {
-//
-//     this.setState({
-//       markers: [
-//         ...this.state.markers,
-//         {
-//           coordinate: e.nativeEvent.coordinate,
-//           key: id++,
-//           color: randomColor(),
-//         },
-//       ],
-//     });
-//   }
-//
-//   goToInitialRegion() {
-//     let initialRegion = Object.assign({}, this.state.initialRegion);
-//     initialRegion["latitudeDelta"] = 0.005;
-//     initialRegion["longitudeDelta"] = 0.005;
-//     this.mapView.animateToRegion(initialRegion, 2000);
-//   }
-//
-//   async getCurrentLocation() {
-//       navigator.geolocation.getCurrentPosition(
-//           position => {
-//           let region = {
-//                   latitude: parseFloat(position.coords.latitude),
-//                   longitude: parseFloat(position.coords.longitude),
-//                   latitudeDelta: 5,
-//                   longitudeDelta: 5
-//               };
-//               this.setState({
-//                   initialRegion: region
-//               });
-//           },
-//           error => console.log(error),
-//           {
-//               enableHighAccuracy: true,
-//               timeout: 20000,
-//               maximumAge: 1000
-//           }
-//       );
-//   }
-//
-//   componentDidMount() {
-//     this.getCurrentLocation();
-//   }
-//
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <MapView
-//           provider={this.props.provider}
-//           style={styles.map}
-//           ref={ref => (this.mapView = ref)}
-//           initialRegion={this.state.initialRegion}
-//           followUserLocation = {true}
-//           showsUserLocation = {true}
-//           onMapReady={this.goToInitialRegion.bind(this)}
-//           onPress={e => this.onMapPress(e)}
-//         >
-//           {this.state.markers.map(marker => (
-//             <Marker
-//               key={marker.key}
-//               coordinate={marker.coordinate}
-//               pinColor={marker.color}
-//             />
-//           ))}
-//         </MapView>
-//         <View style={styles.buttonContainer}>
-//           <TouchableOpacity
-//             onPress={() => this.setState({ markers: [] })}
-//             style={styles.bubble}
-//           >
-//             <Text>Tap to create a marker of random color</Text>
-//           </TouchableOpacity>
-//         </View>
-//       </View>
-//     );
-//   }
-// }
-//
-// DefaultMarkers.propTypes = {
-//   provider: ProviderPropType,
-// };
-//
-// const styles = StyleSheet.create({
-//   container: {
-//     ...StyleSheet.absoluteFillObject,
-//     justifyContent: 'flex-end',
-//     alignItems: 'center',
-//   },
-//   map: {
-//     ...StyleSheet.absoluteFillObject,
-//   },
-//   bubble: {
-//     backgroundColor: 'rgba(255,255,255,0.7)',
-//     paddingHorizontal: 18,
-//     paddingVertical: 12,
-//     borderRadius: 20,
-//   },
-//   latlng: {
-//     width: 200,
-//     alignItems: 'stretch',
-//   },
-//   button: {
-//     width: 80,
-//     paddingHorizontal: 12,
-//     alignItems: 'center',
-//     marginHorizontal: 10,
-//   },
-//   buttonContainer: {
-//     flexDirection: 'row',
-//     marginVertical: 20,
-//     backgroundColor: 'transparent',
-//   },
-// });
-//
-// export default DefaultMarkers;

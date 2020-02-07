@@ -10,6 +10,7 @@ const locationsReducer = (state = initialState, action) => {
       locations: state.locations.concat({
         placeName: action.placeName,
         location: action.location,
+        description: action.description,
         key: Math.random()
       })
     };

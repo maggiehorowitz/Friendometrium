@@ -1,6 +1,11 @@
 import {combineReducers} from 'redux'
+import NewPosts from './NewPosts'
+import locationsReducer from '../reducers/locations';
 
 
-export default combineReducers({
+const rootReducer = combineReducers({
     NewPosts,
-})
+    locationsList: locationsReducer
+});
+
+export default rootReducer

@@ -6,7 +6,7 @@ import ListItem from './ListItem';
 const LocationList = props => {
   return (
     <FlatList
-      keyExtractor = { (item, index) => index.toString() }
+      keyExtractor = {(item, index) => index.toString() }
       style={styles.listContainer}
       data={props.locations}
       extraData={this.state}
@@ -14,8 +14,11 @@ const LocationList = props => {
         <ListItem
           placeName={info.item.placeName}
           placeLocation={info.item.location}
+          placeDescription = {info.item.description}
           onItemDeleted={() => props.onItemSelected(info.item.key)}
         />
+
+
       )}
     />
   );
