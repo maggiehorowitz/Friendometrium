@@ -27,13 +27,10 @@ RCT_EXPORT_MODULE()
     AIRMapMarker *marker = [AIRMapMarker new];
     [marker addTapGestureRecognizer];
     marker.bridge = self.bridge;
-    marker.isAccessibilityElement = YES;
-    marker.accessibilityElementsHidden = NO;
     return marker;
 }
 
 RCT_EXPORT_VIEW_PROPERTY(identifier, NSString)
-RCT_REMAP_VIEW_PROPERTY(testID, accessibilityIdentifier, NSString)
 //RCT_EXPORT_VIEW_PROPERTY(reuseIdentifier, NSString)
 RCT_EXPORT_VIEW_PROPERTY(title, NSString)
 RCT_REMAP_VIEW_PROPERTY(description, subtitle, NSString)

@@ -28,3 +28,4 @@ web-report/
 screens/MapPage.js
 *.json
 .expo/packager-info.json
+*.json
