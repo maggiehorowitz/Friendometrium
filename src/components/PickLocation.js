@@ -79,11 +79,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: "100%",
-<<<<<<< Updated upstream
     height: 600
-=======
-    height: 500
->>>>>>> Stashed changes
   },
   button: {
     margin: 8

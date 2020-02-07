@@ -76,7 +76,7 @@ return (
               />
             <Button title="Save Location" onPress={this.toggleModalVisibility} />
             <AddLocationModal
-                topBarText="New comment"
+                topBarText={this.state.placeName}
                 visible={this.state.upsertingComment}
                 onSubmit={this.locationAddedHandler}
             />
@@ -88,13 +88,8 @@ return (
 }
 const styles = StyleSheet.create({
   container: {
-<<<<<<< Updated upstream
-    flex: 2,
     alignItems: "center",
-=======
-    flex: 3,
-    alignItems: "center"
->>>>>>> Stashed changes
+    flex: 2
   },
   placeholder: {
     borderWidth: 1,
@@ -104,13 +99,8 @@ const styles = StyleSheet.create({
     height: 150
   },
   button: {
-<<<<<<< Updated upstream
     margin: 30,
     padding: 10
-=======
-    margin: 8,
-    flex: 1
->>>>>>> Stashed changes
   },
   previewImage: {
     width: "100%",
@@ -118,10 +108,7 @@ const styles = StyleSheet.create({
   },
   placeInput: {
     width: "70%",
-<<<<<<< Updated upstream
     fontSize: 18
-=======
->>>>>>> Stashed changes
   }
 });
 const mapDispatchToProps = dispatch => {

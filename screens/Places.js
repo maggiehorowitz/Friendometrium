@@ -23,11 +23,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-<<<<<<< Updated upstream
     marginTop: 35
-=======
-    marginTop: 10
->>>>>>> Stashed changes
+
   }
 });
 const mapStateToProps = state => {
