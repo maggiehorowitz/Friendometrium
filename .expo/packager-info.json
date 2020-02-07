@@ -1,1 +1,9 @@
-{}
+{
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://yg-35m.anonymous.friendometrium.exp.direct",
+  "packagerNgrokUrl": "https://packager.yg-35m.anonymous.friendometrium.exp.direct",
+  "ngrokPid": 11269,
+  "devToolsPort": 19002,
+  "packagerPort": 19003,
+  "packagerPid": 11257
+}
