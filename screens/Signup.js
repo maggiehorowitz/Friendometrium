@@ -59,8 +59,6 @@ class Signup extends Component {
 
 
 
-
-
   handleOnSignup = async (values, actions) => {
     const { name, email, password } = values
 
@@ -82,13 +80,6 @@ class Signup extends Component {
     } finally {
       actions.setSubmitting(false)
     }
-  }
-
-
-  setMyName = (name) => {
-    Fire.auth().currentUser.updateProfile({
-    displayName: name,
-    });
   }
 
   render() {
@@ -197,7 +188,7 @@ class Signup extends Component {
               <View style={styles.buttonContainer}>
                 <FormButton
                   buttonType='outline'
-                  onPress={()=> {handleSubmit; this.setMyName(this.name)}}
+                  onPress={handleSubmit}
                   title='SIGNUP'
                   buttonColor='#F57C00'
                   disabled={!isValid || isSubmitting}

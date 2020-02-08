@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, } from 'react-native';
 import { Card } from 'react-native-elements';
-import {withNavigation} from 'react-navigation'
-import Fire from "../../config/Firebase/Fire";
 
 class Products extends React.Component {
 
@@ -24,7 +22,7 @@ class Products extends React.Component {
               <Button
                 buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                 title='Chat Now!'
-                onPress = {() => this.props.navigation.navigate('ProductReviewChat', {name: Fire.email})}
+                onPress = {() => this.props.navigation.navigate('ProductReviewChat')}
                 />
           </Card>
 
@@ -35,7 +33,7 @@ class Products extends React.Component {
 
 }
 
-export default withNavigation(Products);
+export default Products;
 
 const styles = StyleSheet.create({
   container: {

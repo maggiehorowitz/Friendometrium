@@ -8,7 +8,16 @@ import FireForumData from "../../config/Firebase/FireForumData";
 
 
 
+
+
 class AddNewPostSimple extends React.Component {
+
+
+  //
+  // continueYES = () => {
+  //
+  // };
+
 
 
     state = {
@@ -35,20 +44,17 @@ class AddNewPostSimple extends React.Component {
          [this.state.title]: {
             title: this.state.title,
             body: this.state.body,
-            u_email: FireForumData.email,
-            timestamp: FireForumData.timestamp,
+            u_email: FireForumData.email
          }
       });
     }
-
-   
 
     render(){
 
     return (
       <View style={styles.container}>
-          <Text style={{flexDirection:'row', marginTop:10, fontSize:30, textAlign:'center'}}>New Topic!</Text>
-          
+          <Text style={{marginTop:10, fontSize:30, textAlign:'center'}}>New Topic!</Text>
+
           <View style={styles.container}>
             <TextInput
               onChangeText={(title) => this.setState({title})}
@@ -85,13 +91,10 @@ class AddNewPostSimple extends React.Component {
             {/* </TouchableOpacity> */}
             <Button style={{padding:20}}
             // onPress={() => this.addNewPost(this.state.title, this.state.body)}
-            onPress = {() =>{ this.continueNow(); this.goBackToForum(); }}
+            onPress = {() =>{ this.continueNow(); this.goBackToForum(); this.addNewPost(this.state.title, this.state.body);}}
             // onPress={()=>ContinueNow()}
             title = 'Post Now'
             />
-            <Button 
-          title = "Back"
-          onPress ={()=> this.goBackToForum()}/> 
 
       </View>
     );
