@@ -99,7 +99,7 @@ class NewPostList extends React.Component {
             <View>
               <Button
                 title = 'Remove Post'
-                onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title); }}/>
+                onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title); Fire.removeNow()}}/>
             </View>
             <View>
               <Button

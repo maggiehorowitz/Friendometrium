@@ -69,11 +69,11 @@ class FireForumChat{
   }
 
   removeNow = async () => {
-    firebase.database().ref('/ForumPosts/' + this.cID + "/Chat/").remove();
+    firebase.database().ref('/ForumChats/' + this.cID ).remove();
   }
 
   get db() {
-    return firebase.database().ref("ForumPosts/" + this.cID + "/Chat/");
+    return firebase.database().ref("ForumChats/" + this.cID );
     //
     // //create
     // Fire.database().ref("FunFactsChat");
