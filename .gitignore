@@ -25,6 +25,7 @@ web-report/
 .expo/packager-info.json
 .expo/packager-info.json
 *.json
-screens/MapPage.js
 *.json
 .expo/packager-info.json
+
+*.json

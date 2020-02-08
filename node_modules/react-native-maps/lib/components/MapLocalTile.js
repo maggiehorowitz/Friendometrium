@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { ViewPropTypes, View } from 'react-native';
+import {
+  ViewPropTypes,
+  View,
+} from 'react-native';
 
 import decorateMapComponent, {
   USES_DEFAULT_IMPLEMENTATION,
@@ -39,7 +42,11 @@ const propTypes = {
 class MapLocalTile extends React.Component {
   render() {
     const AIRMapLocalTile = this.getAirComponent();
-    return <AIRMapLocalTile {...this.props} />;
+    return (
+      <AIRMapLocalTile
+        {...this.props}
+      />
+    );
   }
 }
 

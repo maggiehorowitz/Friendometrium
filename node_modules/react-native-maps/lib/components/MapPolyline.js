@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ColorPropType, ViewPropTypes, View } from 'react-native';
+import {
+  ColorPropType,
+  ViewPropTypes,
+  View,
+} from 'react-native';
 import decorateMapComponent, {
   USES_DEFAULT_IMPLEMENTATION,
   SUPPORTED,
@@ -15,15 +19,13 @@ const propTypes = {
   /**
    * An array of coordinates to describe the polygon
    */
-  coordinates: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * Latitude/Longitude coordinates
-       */
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-    })
-  ),
+  coordinates: PropTypes.arrayOf(PropTypes.shape({
+    /**
+     * Latitude/Longitude coordinates
+     */
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
+  })),
 
   /**
    * Callback that is called when the user presses on the polyline
@@ -31,8 +33,8 @@ const propTypes = {
   onPress: PropTypes.func,
 
   /* Boolean to allow a polyline to be tappable and use the
-   * onPress function
-   */
+  * onPress function
+  */
   tappable: PropTypes.bool,
 
   /**
@@ -70,7 +72,11 @@ const propTypes = {
    *
    * @platform ios
    */
-  lineCap: PropTypes.oneOf(['butt', 'round', 'square']),
+  lineCap: PropTypes.oneOf([
+    'butt',
+    'round',
+    'square',
+  ]),
 
   /**
    * The line join style to apply to corners of the path.
@@ -78,7 +84,11 @@ const propTypes = {
    *
    * @platform ios
    */
-  lineJoin: PropTypes.oneOf(['miter', 'round', 'bevel']),
+  lineJoin: PropTypes.oneOf([
+    'miter',
+    'round',
+    'bevel',
+  ]),
 
   /**
    * The limiting value that helps avoid spikes at junctions between connected line segments.
@@ -145,12 +155,7 @@ class MapPolyline extends React.Component {
   render() {
     const AIRMapPolyline = this.getAirComponent();
     return (
-      <AIRMapPolyline
-        {...this.props}
-        ref={ref => {
-          this.polyline = ref;
-        }}
-      />
+      <AIRMapPolyline {...this.props} ref={ref => { this.polyline = ref; }} />
     );
   }
 }

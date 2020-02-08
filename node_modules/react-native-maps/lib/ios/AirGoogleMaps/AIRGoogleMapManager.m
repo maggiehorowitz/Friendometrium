@@ -48,11 +48,9 @@ RCT_EXPORT_MODULE()
   AIRGoogleMap *map = [AIRGoogleMap new];
   map.bridge = self.bridge;
   map.delegate = self;
-  map.isAccessibilityElement = YES;
-  map.accessibilityElementsHidden = NO;
-  map.settings.consumesGesturesInView = NO;
   map.indoorDisplay.delegate = self;
   self.map = map;
+  map.settings.consumesGesturesInView = NO;
 
   UIPanGestureRecognizer *drag = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleMapDrag:)];
   [drag setMinimumNumberOfTouches:1];
@@ -65,7 +63,6 @@ RCT_EXPORT_MODULE()
   return map;
 }
 
-RCT_REMAP_VIEW_PROPERTY(testID, accessibilityIdentifier, NSString)
 RCT_EXPORT_VIEW_PROPERTY(initialCamera, GMSCameraPosition)
 RCT_REMAP_VIEW_PROPERTY(camera, cameraProp, GMSCameraPosition)
 RCT_EXPORT_VIEW_PROPERTY(initialRegion, MKCoordinateRegion)
@@ -87,7 +84,6 @@ RCT_EXPORT_VIEW_PROPERTY(customMapStyleString, NSString)
 RCT_EXPORT_VIEW_PROPERTY(mapPadding, UIEdgeInsets)
 RCT_REMAP_VIEW_PROPERTY(paddingAdjustmentBehavior, paddingAdjustmentBehaviorString, NSString)
 RCT_EXPORT_VIEW_PROPERTY(onMapReady, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onMapLoaded, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onKmlReady, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPress, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onLongPress, RCTBubblingEventBlock)
@@ -574,11 +570,6 @@ RCT_EXPORT_METHOD(setIndoorActiveLevelIndex:(nonnull NSNumber *)reactTag
 - (void)mapViewDidStartTileRendering:(GMSMapView *)mapView {
   AIRGoogleMap *googleMapView = (AIRGoogleMap *)mapView;
   [googleMapView didPrepareMap];
-}
-
-- (void)mapViewDidFinishTileRendering:(GMSMapView *)mapView {
-  AIRGoogleMap *googleMapView = (AIRGoogleMap *)mapView;
-  [googleMapView mapViewDidFinishTileRendering];
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {

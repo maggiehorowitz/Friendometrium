@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { StyleSheet, ViewPropTypes, View } from 'react-native';
+import {
+  StyleSheet,
+  ViewPropTypes,
+  View,
+} from 'react-native';
 import decorateMapComponent, {
   SUPPORTED,
   USES_DEFAULT_IMPLEMENTATION,
@@ -24,12 +28,7 @@ const defaultProps = {
 class MapCallout extends React.Component {
   render() {
     const AIRMapCallout = this.getAirComponent();
-    return (
-      <AIRMapCallout
-        {...this.props}
-        style={[styles.callout, this.props.style]}
-      />
-    );
+    return <AIRMapCallout {...this.props} style={[styles.callout, this.props.style]} />;
   }
 }
 
