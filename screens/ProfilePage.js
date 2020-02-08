@@ -11,8 +11,6 @@ import MapPage from './MapPage';
 import Fire from "../config/Firebase/FireForumData";
 
 
-
-
 export default class ProfilePage extends Component {
 
 

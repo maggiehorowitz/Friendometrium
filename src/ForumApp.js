@@ -5,6 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import FunFacts from '../screens/Cards/FunFacts';
 import InTheWorkPlace from '../screens/Cards/InTheWorkPlace';
 import Products from '../screens/Cards/Products';
+import { watchNewPosts } from './actions';
 
 class ForumApp extends React.Component {
     
@@ -23,7 +24,8 @@ class ForumApp extends React.Component {
             onPress={() => this.props.navigation.navigate('NewPostSimple')}
             />
 
-          <ScrollView>
+          <ScrollView
+          showsVerticalScrollIndicator = {false}>
 
             <FunFacts/>
             <InTheWorkPlace/>

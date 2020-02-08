@@ -1,22 +1,14 @@
 import firebase from 'firebase'
 
 
-class FireForumData{
+class FireForumChat{
   constructor(){
     this.init()
     this.checkAuth()
   }
 
-  // forumPost = firebase.database().ref("ForumPosts/");
-  forumPost = firebase.database().ref("ForumPosts/");
-  // forumPost2 = firebase.database().ref("ForumPosts/" + this.uid);
 
-  removeNow = async (Post) => {
-    firebase.database().ref('/ForumPosts/' + Post).remove();
-  }
-
- 
-
+  cID = "default"
 
 
   init = () => {
@@ -76,17 +68,18 @@ class FireForumData{
     this.db.off()
   }
 
+  removeNow = async () => {
+    firebase.database().ref('/ForumChats/' + this.cID ).remove();
+  }
 
   get db() {
-    return firebase.database().ref("FunFactsChat");
-  }
+    return firebase.database().ref("ForumChats/" + this.cID );
+    //
+    // //create
+    // Fire.database().ref("FunFactsChat");
+    //
+    // //open
 
-  get db2() {
-    return firebase.database().ref("AdviceChat");
-  }
-
-  get db3() {
-    return firebase.database().ref("ProductReviewChat");
   }
 
   get uid(){
@@ -95,23 +88,7 @@ class FireForumData{
 
   get email(){
   return(firebase.auth().currentUser.email)
-  }
-
-  get timestamp() {
-    return (firebase.database.ServerValue.TIMESTAMP);
-  }
-
-// async updateProfile(){
-//   await firebase.auth().currentUser.updateProfile(update);
-//
-// }
-
-  updateInfo = (display_name, photo_url) => {
-    firebase.auth().currentUser.updateProfile({
-    displayName: display_name,
-    photoURL: photo_url
-    });
-  };
+}
 
 // async updateProfile(){
 //   await firebase.auth().currentUser.updateProfile(update);
@@ -133,12 +110,6 @@ class FireForumData{
     return (firebase.auth().currentUser.photoURL)
   }
 
-  set photo(photouri){
-    firebase.auth().currentUser.updateProfile({
-    photoURL: photo_url
-    });
-  }
-
 }
 
-export default new FireForumData();
+export default new FireForumChat();
