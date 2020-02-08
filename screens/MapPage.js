@@ -3,27 +3,31 @@
 import React, { Component } from 'react';
 import { Modal, View, Text, TextInput, Button, StyleSheet,TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
-import { addPlaces } from '../src/actions/index';
+import { addPlaces, watchNewPlaces } from '../src/actions';
 import PickLocation from '../src/components/PickLocation';
 import Places from './Places';
 import AddLocationModal from '../src/containers/AddLocationModal';
+import FirePlaceData from '../config/Firebase/FirePlaceData';
 
 class Map extends Component {
-    constructor() {
-        super()
-    }
 
-state = { 
+
+state = {
     placeName: "",
     upsertingComment: false,
+    description: "",
+    key: 0,
     controls: {
       location: {
         value: null,
         valid: false,
       }
     }
-
   };
+
+  updateDesc = value => {
+    this.setState({description: value});
+  }
 
 placeNameChangedHandler = val => {
     this.setState(prevState => {
@@ -41,8 +45,8 @@ locationPickedHandler = location => {
           location: {
             value: location,
             valid: true
-          }
-        }
+        },
+      },
       };
     });
   };
@@ -50,8 +54,8 @@ locationPickedHandler = location => {
   toggleModalVisibilityOn = () => {
       this.setState(prevState => {
         return {
-            ...prevState.controls,
-            upsertingComment: true
+            ...prevState,
+            upsertingComment: true,
         };
       });
     };
@@ -60,21 +64,29 @@ locationPickedHandler = location => {
     toggleModalVisibilityOff = () => {
         this.setState(prevState => {
           return {
-              ...prevState.controls,
+              ...prevState,
               upsertingComment: false
           };
         });
       };
 
 
+//this is done in Ben's addnewpost container
 locationAddedHandler = () => {
     this.props.onAddLocation(
       this.state.placeName,
       this.state.controls.location.value,
-      this.description
+      this.state.description
     );
+    FirePlaceData.savedPlace.push({
+      placeName: this.state.placeName,
+      location: this.state.controls.location.value,
+      description: this.state.description
+    });
     this.props.navigation.navigate('Locations')
   };
+
+
 render() {
 return (
         <View style={styles.container}>
@@ -90,6 +102,7 @@ return (
                 topBarText={this.state.placeName}
                 onTopBarPress = {this.toggleModalVisibilityOff}
                 visible={this.state.upsertingComment}
+                updateDesc = {this.updateDesc}
                 onSubmit={this.locationAddedHandler}
             />
             </View>
@@ -126,7 +139,8 @@ const styles = StyleSheet.create({
 const mapDispatchToProps = dispatch => {
   return {
     onAddLocation: (placeName, location, description) =>
-      dispatch(addPlaces(placeName, location, description))
+      dispatch(addPlaces(placeName, location, description)),
+    watchNewPosts : () => dispatch(watchNewPosts())
   };
 };
 export default connect(null, mapDispatchToProps)(Map);

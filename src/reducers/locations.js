@@ -1,4 +1,4 @@
-import { ADD_PLACES, DELETE_PLACE } from '../actions/actionTypes';
+import { ADD_PLACES, DELETE_PLACE, FETCH_PLACES } from '../actions/actionTypes';
 const initialState = {
   locations: []
 };
@@ -11,8 +11,8 @@ const locationsReducer = (state = initialState, action) => {
         placeName: action.placeName,
         location: action.location,
         description: action.description,
-        key: Math.random()
       })
+
     };
     case DELETE_PLACE:
     return {
@@ -21,6 +21,16 @@ const locationsReducer = (state = initialState, action) => {
         return location.key !== action.key;
       })
     };
+
+    case FETCH_PLACES:
+            return [...state, {
+                placeName: action.value.placeName,
+                location: action.value.location,
+                description: action.value.description,
+                key: action.value.key
+            }
+        ]
+
     default:
       return state;
   }

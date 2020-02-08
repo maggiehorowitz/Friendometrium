@@ -1,6 +1,6 @@
-import { ADD_NEW_POST, CLICKED_POST, ADD_PLACES, DELETE_PLACE  } from './actionTypes';
-
-
+import { ADD_NEW_POST, CLICKED_POST, ADD_PLACES, DELETE_PLACE, FETCH_PLACES  } from './actionTypes';
+import FirePlaceData from '../../config/Firebase/FirePlaceData';
+import * as firebase from 'firebase';
 let nextId = 0
 
 export const addNewPost = (text) =>({
@@ -14,13 +14,15 @@ export const ClickedPost = (id) => ({
     id
 })
 
-export const addPlaces = (placeName, location, description) => {
+export const addPlaces = (placeName, location, description, key) => {
   return {
     type: ADD_PLACES,
     placeName: placeName,
     location: location,
-    description: description
+    description: description,
+    key: key
   };
+
 };
 export const deletePlaces = (key) => {
   return {
@@ -28,3 +30,12 @@ export const deletePlaces = (key) => {
     key: key
   };
 };
+
+
+export const fetchPlaces = (placeData) => {
+    return {
+        type: FETCH_PLACES,
+        value: placeData
+    }
+
+}

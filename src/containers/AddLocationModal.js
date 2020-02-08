@@ -23,18 +23,17 @@ class AddLocationModal extends Component {
                textValue={this.props.topBarText}
              />
                     <FormInput
-                      value={this.state.commentForm.description}
+                      value={this.state.description}
                       placeholder='Enter a description here'
                       onChangeText={
-                        (value) => this.updateCommentForm('description', value)
+                        (value) => this.props.updateDesc(value)
                       }
                     />
                     <Button
                       title="Add location"
                       buttonStyle={styles.submitBtn}
                       onPress={() => {
-                        this.setState({ commentForm: {} });
-                        this.props.onSubmit(this.state.commentForm);
+                        this.props.onSubmit(this.state.description);
                       }}
                     />
                </View>
@@ -45,19 +44,11 @@ class AddLocationModal extends Component {
 
 constructor(props) {
   super(props);
-   this.updateCommentForm = this.updateCommentForm.bind(this);
 }
 
 state = {
-  commentForm: {}
+  description: null
 };
-
-updateCommentForm(field, value) {
-  const commentForm = Object.assign(
-    {}, this.state.commentForm, { [`${field}`]: value }
-  );
-  this.setState({ commentForm });
-}
 
 
 
