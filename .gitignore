@@ -27,3 +27,4 @@ web-report/
 *.json
 screens/MapPage.js
 *.json
+.expo/packager-info.json

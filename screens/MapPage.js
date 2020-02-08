@@ -11,17 +11,15 @@ import AddLocationModal from '../src/containers/AddLocationModal';
 class Map extends Component {
     constructor() {
         super()
-        this.state.upsertingComment = false,
-        this.toggleModalVisibility = this.toggleModalVisibility.bind(this);
-
     }
-state = {
+
+state = { 
     placeName: "",
+    upsertingComment: false,
     controls: {
       location: {
         value: null,
         valid: false,
-        upsertingComment: false
       }
     }
 
@@ -49,11 +47,24 @@ locationPickedHandler = location => {
     });
   };
 
-toggleModalVisibility(){
-    this.setState({ upsertingComment: true})
-}
+  toggleModalVisibilityOn = () => {
+      this.setState(prevState => {
+        return {
+            ...prevState.controls,
+            upsertingComment: true
+        };
+      });
+    };
 
 
+    toggleModalVisibilityOff = () => {
+        this.setState(prevState => {
+          return {
+              ...prevState.controls,
+              upsertingComment: false
+          };
+        });
+      };
 
 
 locationAddedHandler = () => {
@@ -74,9 +85,10 @@ return (
                 onChangeText= {this.placeNameChangedHandler}
                 style={styles.placeInput}
               />
-            <Button title="Save Location" onPress={this.toggleModalVisibility} />
+            <Button title="Save Location" onPress={this.toggleModalVisibilityOn} />
             <AddLocationModal
                 topBarText={this.state.placeName}
+                onTopBarPress = {this.toggleModalVisibilityOff}
                 visible={this.state.upsertingComment}
                 onSubmit={this.locationAddedHandler}
             />
@@ -113,8 +125,8 @@ const styles = StyleSheet.create({
 });
 const mapDispatchToProps = dispatch => {
   return {
-    onAddLocation: (placeName, location) =>
-      dispatch(addPlaces(placeName, location))
+    onAddLocation: (placeName, location, description) =>
+      dispatch(addPlaces(placeName, location, description))
   };
 };
 export default connect(null, mapDispatchToProps)(Map);

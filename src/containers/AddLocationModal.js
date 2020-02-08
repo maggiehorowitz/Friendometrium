@@ -17,7 +17,6 @@ class AddLocationModal extends Component {
                transparent = {false}
                visible={this.props.visible}
                onRequestClose={() => {}}
-               //topBarText = {this.props.placename}
              >
              <View style = {styles.container}>
              <TopBar

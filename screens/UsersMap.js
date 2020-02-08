@@ -270,7 +270,7 @@ render() {
               <Callout tooltip>
                   <View style={styles.viewStyle}>
                       <Text style={styles.textStyle}>
-                        {item.username}
+                        {"Chat with User410"}
                       </Text>
                 </View>
                </Callout>
