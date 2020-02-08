@@ -107,8 +107,8 @@ class NewPostList extends React.Component {
             <View>
               <Button
                 title = 'Go to chat'
-                onPress = {() => this.goToChat(NewPost.title,NewPost.email)}/>            
-              </View>
+                onPress = {() => this.goToChat(NewPost.title,Fire.email)}/>            
+              </View> 
           </CollapseBody>
         </Collapse>
         
