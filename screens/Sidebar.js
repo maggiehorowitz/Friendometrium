@@ -67,7 +67,7 @@ export default class SideBar extends React.Component {
       return (
           <View style={styles.container}>
               <Image source={{uri: Fire.photo}} style={styles.profileImg}/>
-              <Text style={{fontWeight:"bold",fontSize:16,marginTop:10}}>{Fire.name}</Text>
+              <Text style={{fontWeight:"bold",fontSize:16,marginTop:10}}>{Fire.email}</Text>
               <Text style={{color:"gray",marginBottom:10}}>{Fire.email}</Text>
               <View style={styles.sidebarDivider}></View>
               <FlatList

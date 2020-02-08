@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Share } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Share,Alert } from 'react-native';
 import { createAppContainer } from "react-navigation";
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from "react-navigation-stack";
@@ -11,7 +11,12 @@ import MapPage from './MapPage';
 import Fire from "../config/Firebase/FireForumData";
 
 
+
+
 export default class ProfilePage extends Component {
+
+
+
   render() {
     return (
 
@@ -23,16 +28,15 @@ export default class ProfilePage extends Component {
       />
       </View>
         <Text style={styles.profileheader}>
-        Welcome  {Fire.name} !
+        Welcome  {Fire.email} !
         </Text>
+
         <Text style={{padding:20}}>
         User id: {Fire.uid}
-
-
         </Text>
 
         <Text style={{padding:20}}>
-        User id: {Fire.email}
+        User email: {Fire.email}
         </Text>
 
 
@@ -46,7 +50,10 @@ export default class ProfilePage extends Component {
 
         <Button
         title="Update My Profile"
+        onPress = {Alert.alert("hello alert!")}
         onPress={Fire.updateInfo("Maggie Horowitz", 'https://i.pinimg.com/474x/e3/0b/ca/e30bcaff86a4258a1b799ca60c8c49a4.jpg')}
+
+        // onPress={Fire.updateInfo("Maggie Horowitz", 'https://i.pinimg.com/474x/e3/0b/ca/e30bcaff86a4258a1b799ca60c8c49a4.jpg')}
         />
 
 
