@@ -29,7 +29,8 @@ const NewPosts = ( state=[],action)=>{
                 id: nextId++,
                 title: action.value.title,
                 body: action.value.body,
-                email: action.value.u_email, 
+                email: action.value.u_email,
+                timestamp: action.value.timestamp 
             }
         ]
         case 'CLEAR':

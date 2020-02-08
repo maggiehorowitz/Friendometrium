@@ -95,6 +95,9 @@ class NewPostList extends React.Component {
           <CollapseBody style ={{alignItems:'center',justifyContent:'center', borderTopWidth: .25, margin: 10}}>
             <View>
               <Text style ={{fontSize: 24, margin: 10}}>{NewPost.body}</Text>
+              {/* <Text style ={{fontSize: 24, margin: 10}}>{NewPost.timestamp}</Text> */}
+
+              
             </View>
             <View>
               <Button

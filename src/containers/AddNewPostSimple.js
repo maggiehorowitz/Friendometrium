@@ -35,7 +35,8 @@ class AddNewPostSimple extends React.Component {
          [this.state.title]: {
             title: this.state.title,
             body: this.state.body,
-            u_email: FireForumData.email
+            u_email: FireForumData.email,
+            timestamp: FireForumData.timestamp,
          }
       });
     }

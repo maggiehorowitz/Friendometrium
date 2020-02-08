@@ -15,6 +15,9 @@ class FireForumData{
     firebase.database().ref('/ForumPosts/' + Post).remove();
   }
 
+ 
+
+
 
 
   init = () => {
@@ -93,7 +96,11 @@ class FireForumData{
 
   get email(){
   return(firebase.auth().currentUser.email)
-}
+  }
+
+  get timestamp() {
+    return (firebase.database.ServerValue.TIMESTAMP);
+  }
 
 // async updateProfile(){
 //   await firebase.auth().currentUser.updateProfile(update);
