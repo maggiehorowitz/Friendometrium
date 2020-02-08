@@ -116,6 +116,12 @@ class FireForumData{
     });
   }
 
+
+  get username(){
+    return firebase.auth().currentUser.email.substring(0, firebase.auth().currentUser.email.indexOf("@"));
+  }
+
+
 }
 
 export default new FireForumData();

@@ -12,6 +12,10 @@ import Fire from "../config/Firebase/FireForumData";
 
 
 export default class ProfilePage extends Component {
+
+
+
+
   render() {
     return (
 
@@ -23,7 +27,7 @@ export default class ProfilePage extends Component {
       />
       </View>
         <Text style={styles.profileheader}>
-        Welcome  {Fire.name} !
+        Welcome  {Fire.username} !
         </Text>
         <Text style={{padding:20}}>
         User id: {Fire.uid}
@@ -37,7 +41,7 @@ export default class ProfilePage extends Component {
 
 
         <Text style={{padding:20}}>
-        User name: {Fire.name}
+        User name: {Fire.username}
         </Text>
 
         <Text style={{padding:20}}>
