@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://g9-zxv.m-horowitz.friendometrium.exp.direct",
-  "packagerNgrokUrl": "https://packager.g9-zxv.m-horowitz.friendometrium.exp.direct",
-  "ngrokPid": 46234,
+  "expoServerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "devToolsPort": 19002,
-  "packagerPort": 19005,
-  "packagerPid": 46220
+  "packagerPort": null,
+  "packagerPid": null
 }
