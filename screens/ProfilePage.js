@@ -50,7 +50,7 @@ export default class ProfilePage extends Component {
         </Text>
 
         <Button
-        title="Update My Profile"
+        title="Update My Image"
         onPress = {() => this.props.navigation.navigate('ProfileUpdate')}
         // onPress={Fire.updateInfo(Fire.username, 'https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png')}
         />
