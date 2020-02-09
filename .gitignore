@@ -30,3 +30,4 @@ screens/MapPage.js
 .expo/packager-info.json
 *.json
 *.json
+*.json~Map-Redux-Firebase
