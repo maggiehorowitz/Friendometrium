@@ -31,3 +31,4 @@ screens/MapPage.js
 *.json
 *.json
 *.json~Map-Redux-Firebase
+*.json
