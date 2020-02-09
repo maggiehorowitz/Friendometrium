@@ -23,8 +23,8 @@ class FunFacts extends React.Component {
               </Text>
               <Button
                 buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                title='Chat Now!'
-                onPress = {() => this.props.navigation.navigate('FunFactsChat', {name: Fire.email})}
+                title='Go to Fun Facts!'
+                onPress = {() => this.props.navigation.navigate('FunFactsMain')}
                 // onPress = {() => navigate("ChatLoginScreen")}
                 />
           </Card>

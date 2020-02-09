@@ -6,9 +6,9 @@ import FunFacts from '../screens/Cards/FunFacts';
 import InTheWorkPlace from '../screens/Cards/InTheWorkPlace';
 import Products from '../screens/Cards/Products';
 import { watchNewPosts } from './actions';
-import VisibleFunFacts from './containers/VisibleFunFacts';
+import VisibleWorkPlace from './containers/VisibleWorkPlace';
 
-class ForumApp extends React.Component {
+class WorkPlaceMain extends React.Component {
     
     constructor(props){
         super(props);
@@ -20,15 +20,17 @@ class ForumApp extends React.Component {
     return (
       <View style={styles.container}>
           <Text style={{marginTop:10, fontSize:30, textAlign:'center'}}>Forum!</Text>
-          
+          <Button
+            title="New Post"
+            onPress={() => this.props.navigation.navigate('AddNewWP')}
+            />
 
           <ScrollView
           showsVerticalScrollIndicator = {false}>
 
            
-            <FunFacts/>
-            <InTheWorkPlace/>
-            
+            <VisibleWorkPlace/>
+
           </ScrollView>
             
         
@@ -39,7 +41,7 @@ class ForumApp extends React.Component {
   
 }
 
-export default ForumApp;
+export default WorkPlaceMain;
 
 const styles = StyleSheet.create({
   container: {

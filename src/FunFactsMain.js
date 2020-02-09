@@ -8,7 +8,7 @@ import Products from '../screens/Cards/Products';
 import { watchNewPosts } from './actions';
 import VisibleFunFacts from './containers/VisibleFunFacts';
 
-class ForumApp extends React.Component {
+class FunFactsMain extends React.Component {
     
     constructor(props){
         super(props);
@@ -20,15 +20,17 @@ class ForumApp extends React.Component {
     return (
       <View style={styles.container}>
           <Text style={{marginTop:10, fontSize:30, textAlign:'center'}}>Forum!</Text>
-          
+          <Button
+            title="New Post"
+            onPress={() => this.props.navigation.navigate('AddNewFF')}
+            />
 
           <ScrollView
           showsVerticalScrollIndicator = {false}>
 
            
-            <FunFacts/>
-            <InTheWorkPlace/>
-            
+            <VisibleFunFacts/>
+
           </ScrollView>
             
         
@@ -39,7 +41,7 @@ class ForumApp extends React.Component {
   
 }
 
-export default ForumApp;
+export default FunFactsMain;
 
 const styles = StyleSheet.create({
   container: {

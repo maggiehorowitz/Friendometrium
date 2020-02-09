@@ -14,8 +14,10 @@ class FireForumData{
   removeNow = async (Post) => {
     firebase.database().ref('/ForumPosts/' + Post).remove();
   }
+  
+  FFPost = firebase.database().ref('ForumPosts/FunFactsPosts/');
  
- 
+  WPPost = firebase.database().ref('ForumPosts/WorkPlacePosts/');
 
 
 

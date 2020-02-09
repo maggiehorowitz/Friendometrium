@@ -25,7 +25,7 @@ class InTheWorkPlace extends React.Component {
               <Button
                 buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                 title='Chat Now!'
-                onPress = {() => this.props.navigation.navigate('AdviceChat', {name: Fire.email})}
+                onPress = {() => this.props.navigation.navigate('WorkPlaceMain')}
                 />
           </Card>
 
