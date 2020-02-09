@@ -8,6 +8,7 @@ import FormInput from '../components/FormInput'
 import FormButton from '../components/FormButton'
 import ErrorMessage from '../components/ErrorMessage'
 import { withFirebaseHOC } from '../config/Firebase'
+import Fire from "../config/Firebase/FireForumData";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,6 +29,8 @@ const validationSchema = Yup.object().shape({
   check: Yup.boolean().oneOf([true], 'Please check the agreement')
 })
 
+
+
 class Signup extends Component {
   state = {
     passwordVisibility: true,
@@ -35,6 +38,9 @@ class Signup extends Component {
     passwordIcon: 'ios-eye',
     confirmPasswordIcon: 'ios-eye'
   }
+
+  setInitPhoto = () => Fire.updatePhoto('https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png')
+
 
   goToLogin = () => this.props.navigation.navigate('Login')
 
@@ -53,6 +59,10 @@ class Signup extends Component {
       confirmPasswordVisibility: !prevState.confirmPasswordVisibility
     }))
   }
+
+
+
+
 
   handleOnSignup = async (values, actions) => {
     const { name, email, password } = values
@@ -77,6 +87,13 @@ class Signup extends Component {
     }
   }
 
+
+  // setMyName = (name) => {
+  //   Fire.auth().currentUser.updateProfile({
+  //   displayName: name,
+  //   });
+  // }
+
   render() {
     const {
       passwordVisibility,
@@ -94,9 +111,10 @@ class Signup extends Component {
             confirmPassword: '',
             check: false
           }}
-          onSubmit={(values, actions) => {
-            this.handleOnSignup(values, actions)
-          }}
+          // onSubmit={(values, actions) => {
+          //   this.handleOnSignup(values, actions)
+          // }}
+          onSubmit={(values, actions) => {this.handleOnSignup(values, actions);}}
           validationSchema={validationSchema}>
           {({
             handleChange,
@@ -179,11 +197,13 @@ class Signup extends Component {
                 checkedTitle='You agreed to our terms and conditions'
                 checked={values.check}
                 onPress={() => setFieldValue('check', !values.check)}
+
               />
               <View style={styles.buttonContainer}>
                 <FormButton
                   buttonType='outline'
                   onPress={handleSubmit}
+                  // onPress={()=> {handleSubmit; this.setMyName(this.name);}}
                   title='SIGNUP'
                   buttonColor='#F57C00'
                   disabled={!isValid || isSubmitting}
@@ -206,6 +226,7 @@ class Signup extends Component {
     )
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {

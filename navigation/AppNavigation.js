@@ -15,58 +15,31 @@ import UsersMap from '../screens/UsersMap'
 import Places from '../screens/Places'
 import ForumPage from '../screens/ForumPage'
 import SignOutPage from '../screens/SignOutPage'
+import PMIndex from '../screens/PMIndex'
+
 import Sidebar from '../screens/Sidebar'
 import ChatIndex from '../screens/ChatIndex'
 import ForumApp from '../src/ForumApp'
 import AddNewPostSimple from '../src/containers/AddNewPostSimple'
+import FunFacts from '../screens/Cards/FunFacts';
+import ForumChat from '../screens/ForumChat'
+import UpdateProfileScreen from '../screens/UpdateProfileScreen';
 
-// const Home = ({navigation}) => (
-//   <View style={styles.container}>
-//     <Header name="Home" openDrawer={navigation.openDrawer}/>
-//     <HomePage/>
-//   </View>
-// )
-//
-//
-//
-// const Profile = ({navigation}) => (
-//   <View style={styles.container}>
-//     <Header name="Profile" openDrawer={navigation.openDrawer}/>
-//     <ProfilePage/>
-//   </View>
-// )
-//
-// const Forum = ({navigation}) => (
-//   <View style={styles.container}>
-//     <Header name="Forum" openDrawer={navigation.openDrawer}/>
-//     <ForumPage/>
-//   </View>
-// )
-// const Map = ({navigation}) => (
-//   <View style={styles.container}>
-//     <Header name="Map" openDrawer={navigation.openDrawer}/>
-//     <MapPage/>
-//   </View>
-// )
-//
-// const SignOut = ({navigation}) => (
-//   <View style={styles.container}>
-//     <Header name="SignOut" openDrawer={navigation.openDrawer}/>
-//     <SignOutPage/>
-//   </View>
-// )
 
 const Drawer = createDrawerNavigator(
   {
     Home:{ screen: HomePage},
     Profile:{ screen: ProfilePage},
+    UpdateProfile: {screen:UpdateProfileScreen},
     Places:{ screen: MapPage}, //can get rid of constant and put actually screen there
-    Locations: { screen: Places},
+    Locations: {screen: Places},
     People:{ screen: UsersMap}, //can get rid of constant and put actually screen there
     Forum:{ screen: ForumApp},
     SignOut:{screen:SignOutPage},
-    Chat: {screen: ChatIndex},
+    GroupChat: {screen: ChatIndex},
+    PMChat: {screen:PMIndex},
     NewPostSimple: {screen: AddNewPostSimple},
+    ForumChat: {screen: ForumChat}
 
   },
   {

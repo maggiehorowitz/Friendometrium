@@ -21,6 +21,7 @@ class AddLocationModal extends Component {
              <View style = {styles.container}>
              <TopBar
                textValue={this.props.topBarText}
+               onTopBarPress = {this.props.toggleModalVisibilityOff}
              />
                     <FormInput
                       value={this.state.description}

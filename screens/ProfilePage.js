@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Share } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Share,Alert,Dialog } from 'react-native';
 import { createAppContainer } from "react-navigation";
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from "react-navigation-stack";
@@ -8,23 +8,63 @@ import { Button } from 'react-native-elements'
 import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
 import MapPage from './MapPage';
+import Fire from "../config/Firebase/FireForumData";
+import DialogInput from 'react-native-dialog-input';
+
 
 export default class ProfilePage extends Component {
+
+
   render() {
     return (
 
       <View style={styles.container}>
-        <Image source ={require("../assets/t_roberts.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
-        <Text style={{padding:0}}>
-        This is the Profile Page!
+      <View>
+      <Image
+        style={{width: 200, height: 200}}
+        source={{uri: Fire.photo}}
+      />
+      </View>
+        <Text style={styles.profileheader}>
+        Welcome  {Fire.username} !
         </Text>
         <Text style={{padding:20}}>
-        Add some information about the Friendometrium user here
+        User id: {Fire.uid}
+
+
         </Text>
+
+        <Text style={{padding:20}}>
+        User id: {Fire.email}
+        </Text>
+
+
+        <Text style={{padding:20}}>
+        User name: {Fire.username}
+        </Text>
+
+        <Text style={{padding:20}}>
+        Photo URI: {Fire.photo}
+        </Text>
+
+        <Button
+        title="Update My Profile"
+        onPress = {()=>navigateUpdateProfile()}
+        // onPress={Fire.updateInfo(Fire.username, 'https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png')}
+        />
+        <View>
+
+
+      </View>
       </View>
     )
   }
 }
+const navigateUpdateProfile = () => {
+
+};
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -32,5 +72,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  profileheader: {
+    fontWeight: "800",
+    fontSize: 20,
+    color: '#514E5A',
+    marginTop: 32,
+    // marginBottom: 32
   }
 })
