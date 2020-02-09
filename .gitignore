@@ -18,3 +18,4 @@ screens/MapPage.js
 *.json
 *.json~Map-Redux-Firebase
 *.json
+*.json
