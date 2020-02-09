@@ -88,11 +88,11 @@ class Signup extends Component {
   }
 
 
-  setMyName = (name) => {
-    Fire.auth().currentUser.updateProfile({
-    displayName: name,
-    });
-  }
+  // setMyName = (name) => {
+  //   Fire.auth().currentUser.updateProfile({
+  //   displayName: name,
+  //   });
+  // }
 
   render() {
     const {
@@ -202,7 +202,8 @@ class Signup extends Component {
               <View style={styles.buttonContainer}>
                 <FormButton
                   buttonType='outline'
-                  onPress={()=> {handleSubmit; this.setMyName(this.name)}}
+                  onPress={handleSubmit}
+                  // onPress={()=> {handleSubmit; this.setMyName(this.name);}}
                   title='SIGNUP'
                   buttonColor='#F57C00'
                   disabled={!isValid || isSubmitting}
