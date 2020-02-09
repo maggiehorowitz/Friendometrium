@@ -68,7 +68,7 @@ class FirePrivateChat{
     this.db.off()
   }
 
-
+  
 
   get db() {
     return firebase.database().ref("PrivateMessages/" + this.cID);

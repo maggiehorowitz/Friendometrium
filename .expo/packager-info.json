@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://g9-zxv.m-horowitz.friendometrium.exp.direct",
-  "packagerNgrokUrl": "https://packager.g9-zxv.m-horowitz.friendometrium.exp.direct",
-  "ngrokPid": 46917,
   "devToolsPort": 19002,
-  "packagerPort": 19005,
-  "packagerPid": 46893
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 5284,
+  "expoServerNgrokUrl": "https://im-ewf.anonymous.thesis.exp.direct",
+  "packagerNgrokUrl": "https://packager.im-ewf.anonymous.thesis.exp.direct",
+  "ngrokPid": 5294
 }
