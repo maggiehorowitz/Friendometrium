@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Share } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Share,Alert,Dialog } from 'react-native';
 import { createAppContainer } from "react-navigation";
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from "react-navigation-stack";
@@ -9,11 +9,10 @@ import { withFirebaseHOC } from '../config/Firebase'
 import { Ionicons } from '@expo/vector-icons';
 import MapPage from './MapPage';
 import Fire from "../config/Firebase/FireForumData";
+import DialogInput from 'react-native-dialog-input';
 
 
 export default class ProfilePage extends Component {
-
-
 
 
   render() {
@@ -50,15 +49,22 @@ export default class ProfilePage extends Component {
 
         <Button
         title="Update My Profile"
-        onPress={Fire.updateInfo("Maggie Horowitz", 'https://i.pinimg.com/474x/e3/0b/ca/e30bcaff86a4258a1b799ca60c8c49a4.jpg')}
+        onPress = {()=>navigateUpdateProfile()}
+        // onPress={Fire.updateInfo(Fire.username, 'https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png')}
         />
+        <View>
 
 
-
+      </View>
       </View>
     )
   }
 }
+const navigateUpdateProfile = () => {
+
+};
+
+
 
 const styles = StyleSheet.create({
   container: {

@@ -102,6 +102,12 @@ class FireForumData{
     });
   };
 
+  updatePhoto = (photo_url) => {
+    firebase.auth().currentUser.updateProfile({
+    photoURL: photo_url
+    });
+  };
+
   get name(){
     return (firebase.auth().currentUser.displayName)
   }

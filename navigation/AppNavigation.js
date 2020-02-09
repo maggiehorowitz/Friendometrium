@@ -21,12 +21,14 @@ import ChatIndex from '../screens/ChatIndex'
 import ForumApp from '../src/ForumApp'
 import AddNewPostSimple from '../src/containers/AddNewPostSimple'
 import FunFacts from '../screens/Cards/FunFacts';
+import UpdateProfileScreen from '../screens/UpdateProfileScreen';
 
 
 const Drawer = createDrawerNavigator(
   {
     Home:{ screen: HomePage},
     Profile:{ screen: ProfilePage},
+    UpdateProfile: {screen:UpdateProfileScreen},
     Places:{ screen: MapPage}, //can get rid of constant and put actually screen there
     People:{ screen: UsersMap}, //can get rid of constant and put actually screen there
     Forum:{ screen: ForumApp},

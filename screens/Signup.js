@@ -39,6 +39,9 @@ class Signup extends Component {
     confirmPasswordIcon: 'ios-eye'
   }
 
+  setInitPhoto = () => Fire.updatePhoto('https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png')
+
+
   goToLogin = () => this.props.navigation.navigate('Login')
 
   handlePasswordVisibility = () => {
@@ -99,9 +102,10 @@ class Signup extends Component {
             confirmPassword: '',
             check: false
           }}
-          onSubmit={(values, actions) => {
-            this.handleOnSignup(values, actions)
-          }}
+          // onSubmit={(values, actions) => {
+          //   this.handleOnSignup(values, actions)
+          // }}
+          onSubmit={(values, actions) => {this.handleOnSignup(values, actions);}}
           validationSchema={validationSchema}>
           {({
             handleChange,
@@ -184,6 +188,7 @@ class Signup extends Component {
                 checkedTitle='You agreed to our terms and conditions'
                 checked={values.check}
                 onPress={() => setFieldValue('check', !values.check)}
+
               />
               <View style={styles.buttonContainer}>
                 <FormButton
