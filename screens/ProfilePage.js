@@ -10,6 +10,8 @@ import { Ionicons } from '@expo/vector-icons';
 import MapPage from './MapPage';
 import Fire from "../config/Firebase/FireForumData";
 import DialogInput from 'react-native-dialog-input';
+import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
 
 
 export default class ProfilePage extends Component {
@@ -48,8 +50,8 @@ export default class ProfilePage extends Component {
         </Text>
 
         <Button
-        title="Update My Profile"
-        onPress = {()=>navigateUpdateProfile()}
+        title="Update My Image"
+        onPress = {() => this.props.navigation.navigate('ProfileUpdate')}
         // onPress={Fire.updateInfo(Fire.username, 'https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png')}
         />
         <View>
@@ -60,9 +62,6 @@ export default class ProfilePage extends Component {
     )
   }
 }
-const navigateUpdateProfile = () => {
-
-};
 
 
 

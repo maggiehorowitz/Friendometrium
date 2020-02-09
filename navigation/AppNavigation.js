@@ -19,6 +19,7 @@ import PMIndex from '../screens/PMIndex'
 
 import Sidebar from '../screens/Sidebar'
 import ChatIndex from '../screens/ChatIndex'
+import ProfileIndex from '../screens/ProfileIndex'
 import ForumApp from '../src/ForumApp'
 import AddNewPostSimple from '../src/containers/AddNewPostSimple'
 import FunFacts from '../screens/Cards/FunFacts';
@@ -29,8 +30,8 @@ import UpdateProfileScreen from '../screens/UpdateProfileScreen';
 const Drawer = createDrawerNavigator(
   {
     Home:{ screen: HomePage},
-    Profile:{ screen: ProfilePage},
-    UpdateProfile: {screen:UpdateProfileScreen},
+    Profile:{ screen: ProfileIndex},
+    UpdateProfileScreen: {screen:UpdateProfileScreen},
     Places:{ screen: MapPage}, //can get rid of constant and put actually screen there
     Locations: {screen: Places},
     People:{ screen: UsersMap}, //can get rid of constant and put actually screen there
