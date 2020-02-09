@@ -1,11 +1,9 @@
-//Click marker of other person to start chat
-//Change color of other people
-
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableOpacity, Switch, Image} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import MapView, {Marker, ProviderPropType} from 'react-native-maps';
+import MapView, {Marker, ProviderPropType, Callout} from 'react-native-maps';
 import PubNubReact from 'pubnub-react';
+
 
 type Props = {};
 export default class UsersMap extends Component<Props> {
@@ -24,12 +22,12 @@ export default class UsersMap extends Component<Props> {
               longitude: -1
           },
       numUsers: 0, //track number of users on the app
-      username: "A Naughty Moose", //user's username
+      username: "A Naughty Moose", //user's username- eventually get from profile!
       fixedOnUUID: "",
       focusOnMe: false, //zoom map to user's current location if true
       users: new Map(), //store data of each user in a Map
       isFocused: false,
-      allowGPS: true, //toggle the app's ability to gather GPS data of the user
+      allowGPS: false, //toggle the app's ability to gather GPS data of the user
       userCount: 0
   };
 
@@ -39,6 +37,7 @@ export default class UsersMap extends Component<Props> {
   async componentDidMount() {
     this.setUpApp()
   }
+
 
   focusLoc = () => {
    if (this.state.focusOnMe || this.state.fixedOnUUID) {
@@ -229,6 +228,9 @@ this.map.animateToRegion(region, speed);
 };
 
 
+
+
+
 render() {
 
   let usersArray = Array.from(this.state.users.values());
@@ -251,6 +253,7 @@ render() {
             <Marker
               style={styles.marker}
               key={item.uuid}
+              username = {item.username}
               coordinate={{
                 latitude: item.latitude,
                 longitude: item.longitude
@@ -258,12 +261,19 @@ render() {
               ref={marker => {
                 this.marker = marker;
               }}
+              onCalloutPress={() => this.props.navigation.navigate('Chat')}
             >
               <Image
-                  style={styles.profile}
+                  style={[styles.profile, {tintColor: item.username==this.state.username?'black':'red'}]}
                   source={require('../assets/person.png')}
-
               />
+              <Callout tooltip>
+                  <View style={styles.viewStyle}>
+                      <Text style={styles.textStyle}>
+                        {"Chat with User410"}
+                      </Text>
+                </View>
+               </Callout>
             </Marker>
           ))}
         </MapView>
@@ -320,6 +330,17 @@ topBar: {
   alignItems: "center",
   marginHorizontal: wp("2%"),
 },
+viewStyle: {
+  width: 200,
+  height: 75,
+  backgroundColor: "#fff",
+  padding: 20
+},
+textStyle: {
+  fontSize: 16,
+  alignSelf: 'center',
+  padding: 5
+},
 rightBar: {
   flexDirection: "row",
   justifyContent: "flex-end",
@@ -359,6 +380,6 @@ map: {
 },
 profile: {
   width: hp("4.5%"),
-  height: hp("4.5%")
+  height: hp("4.5%"),
 },
 });

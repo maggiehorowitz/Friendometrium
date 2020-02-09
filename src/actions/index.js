@@ -1,5 +1,6 @@
-import { ADD_NEW_POST, CLICKED_POST, REMOVE_POST, FETCH_POSTS, CLEAR } from './actionTypes';
+import { ADD_NEW_POST, CLICKED_POST, REMOVE_POST, FETCH_POSTS, CLEAR , ADD_PLACES, DELETE_PLACE, FETCH_PLACES} from './actionTypes';
 import FireForumData from '../../config/Firebase/FireForumData';
+import FirePlaceData from '../../config/Firebase/FirePlaceData';
 import * as firebase from 'firebase';
 let nextId = 0
 
@@ -30,7 +31,7 @@ export const fetchPosts = (postData) => {
         type: FETCH_POSTS,
         value: postData,
     }
-    
+
 }
 
 export const watchNewPosts = ()=> {
@@ -43,12 +44,27 @@ export const watchNewPosts = ()=> {
         })
     }
 }
+export const addPlaces = (placeName, location, description, key) => {
+  return {
+    type: ADD_PLACES,
+    placeName: placeName,
+    location: location,
+    description: description,
+    key: key
+  };
 
-// firebase.database().ref('ForumPosts/').on('value', function(snapshot) {
-//     snapshot.forEach(function(childSnapshot){
-//         var postKey = childSnapshot.key;
-//         var postData = childSnapshot.val();
-//     })
-//     dispatch(fetchPosts(postData))
-// }
+};
+export const deletePlaces = (key) => {
+  return {
+    type: DELETE_PLACE,
+    key: key
+  };
+};
 
+
+export const fetchPlaces = (placeData) => {
+    return {
+        type: FETCH_PLACES,
+        value: placeData
+    }
+}
