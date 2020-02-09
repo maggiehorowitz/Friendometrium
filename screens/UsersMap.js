@@ -264,13 +264,13 @@ render() {
               onCalloutPress={() => this.props.navigation.navigate('Chat')}
             >
               <Image
-                  style={[styles.profile, {tintColor: item.username==this.state.username?'black':'red'}]}
+                  style={[styles.profile, {tintColor: item.uuid==this.state.uuid?'black':'red'}]}
                   source={require('../assets/person.png')}
               />
               <Callout tooltip>
                   <View style={styles.viewStyle}>
                       <Text style={styles.textStyle}>
-                        {"Chat with User410"}
+                        {item.uuid.toString()}
                       </Text>
                 </View>
                </Callout>
