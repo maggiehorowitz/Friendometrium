@@ -13,7 +13,8 @@ export default class UsersMap extends Component<Props> {
       super(props);
       this.pubnub = new PubNubReact({
         publishKey: "pub-c-d3b8e8f9-c334-4da8-be5e-93044d72edad",
-        subscribeKey: "sub-c-f7f6d73a-4217-11ea-afe9-722fee0ed680"
+        subscribeKey: "sub-c-f7f6d73a-4217-11ea-afe9-722fee0ed680",
+        uuid: Fire.name,
       });
 
       this.state = {
@@ -54,8 +55,6 @@ export default class UsersMap extends Component<Props> {
        longitudeDelta: 0.01
      };
      this.setState({
-       //here added
-       username: Fire.uid,
        focusOnMe: true
      });
      this.map.animateToRegion(region, 2000);
@@ -69,7 +68,7 @@ export default class UsersMap extends Component<Props> {
    };
 
 
-  
+
   async setUpApp(){
       this.pubnub.getMessage("global", msg => {
 
@@ -282,7 +281,7 @@ render() {
                 this.marker = marker;
               }}
               //HERE is Click
-               onCalloutPress={() => this.goToChat(Fire.uid, Fire.uid, Fire.email)}
+               onCalloutPress={() => this.goToChat(this.pubnub.getUUID(), item.uuid, Fire.email)}
               // onCalloutPress={() => this.props.navigation.navigate('Chat')}
             >
               <Image
@@ -292,7 +291,7 @@ render() {
               <Callout tooltip>
                   <View style={styles.viewStyle}>
                       <Text style={styles.textStyle}>
-                        {item.username}
+                        {item.uuid}
                       </Text>
                 </View>
                </Callout>
