@@ -9,48 +9,9 @@ import {Collapse, CollapseHeader, CollapseBody} from "accordion-collapse-react-n
 
 //displays the actual list
 
-
-//the clicked post method (second parameter ) will be linked with our reducer
-// const NewPostList = ({ NewPosts, removePost, watchNewPosts }) => (
-
-//     //map over all the NewPosts and display a component
-    
-    
-//     <View style={styles.container}>
-//       <Button
-//       title = 'FetchPosts' 
-//       onPress = {() => watchNewPosts()}/>
-        
-//         {NewPosts.map(NewPost => 
-//         // <TouchableOpacity key={NewPost.id} onPress = {() => ClickedPost(NewPost.id)}>
-            
-//             <Card key = {NewPost.id}
-//             title = {NewPost.title}>
-//             <Text style = {{
-//                     fontSize:24,
-//                     textDecorationLine: NewPost.completed ? 'line-through' : 'none'
-//                 }}>{NewPost.body}</Text> 
-//                 <Button 
-//                 title = 'Remove Post'
-//                 onPress = {() => {removePost(NewPost.id); FireForumData.removeNow(NewPost.title) }}/>
-//             </Card>
-                
- 
-//         // </TouchableOpacity>
-//         )}
-//     </View>
-
 const Category = 'WorkPlacePosts/';
 
 class WorkPlaceList extends React.Component {
-
-  // componentDidMount () {
-  //   this.props.watchNewPosts()
-  // }
-  
-  // componentWillUnmount (){
-  //    this.props.clearPosts() 
-  // }
   
   constructor(props){
     super(props);
@@ -65,30 +26,12 @@ class WorkPlaceList extends React.Component {
     this.props.navigation.navigate("ForumChat", {name: email});
   };
 
-
-  
-
   render(){
     return(
       <View style={styles.container}>
     
       
       {this.props.NewWorkPlacePosts.map(NewWorkPlace => 
-      // <TouchableOpacity key={NewPost.id} onPress = {() => ClickedPost(NewPost.id)}>
-          
-          // <Card key = {NewPost.id}
-          // title = {NewPost.title}>
-          // <Text style = {{
-          //         fontSize:24,
-          //         textDecorationLine: NewPost.completed ? 'line-through' : 'none'
-          //     }}>{NewPost.body}</Text> 
-          //     <Button 
-          //     title = 'Remove Post'
-          //     onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title); }}/>
-          //     <Button
-          //     title = 'Go to chat'
-          //     onPress = {() => this.goToChat(NewPost.title,NewPost.email)}/>
-          // </Card>
 
         <Collapse key={NewWorkPlace.id} 
         style={{padding:10, marginTop:10, marginBotton:10, borderWidth: .5, borderColor: '#C7C9C9'  }}>
@@ -100,9 +43,6 @@ class WorkPlaceList extends React.Component {
           <CollapseBody style ={{alignItems:'center',justifyContent:'center', borderTopWidth: .25, margin: 10}}>
             <View>
               <Text style ={{fontSize: 24, margin: 10}}>{NewWorkPlace.body}</Text>
-              {/* <Text style ={{fontSize: 24, margin: 10}}>{NewPost.timestamp}</Text> */}
-
-              
             </View>
             <View>
               <Button
@@ -116,15 +56,11 @@ class WorkPlaceList extends React.Component {
               </View> 
           </CollapseBody>
         </Collapse>
-        
-          
-
-      // </TouchableOpacity> 
       )}
-  </View>
+        </View>
     )
   }
-  //map over all the NewPosts and display a component
+
   
   
   

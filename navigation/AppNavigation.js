@@ -19,8 +19,6 @@ import PMIndex from '../screens/PMIndex'
 import Sidebar from '../screens/Sidebar'
 import ChatIndex from '../screens/ChatIndex'
 import ForumApp from '../src/ForumApp'
-import AddNewPostSimple from '../src/containers/AddNewPostSimple'
-import FunFacts from '../screens/Cards/FunFacts';
 import ForumChat from '../screens/ForumChat'
 import UpdateProfileScreen from '../screens/UpdateProfileScreen';
 import AddNewFunFact from '../src/containers/AddNewFunFact';
@@ -42,7 +40,6 @@ const Drawer = createDrawerNavigator(
     SignOut:{screen:SignOutPage},
     GroupChat: {screen: ChatIndex},
     PMChat: {screen:PMIndex},
-    NewPostSimple: {screen: AddNewPostSimple},
     ForumChat: {screen: ForumChat},
     AddNewFF: {screen: AddNewFunFact},
     FunFactsMain: {screen: FunFactsMain},
@@ -50,7 +47,6 @@ const Drawer = createDrawerNavigator(
     WorkPlaceMain: {screen: WorkPlaceMain},
     AddNewPR: {screen: AddNewProductPost},
     ProductsMain: {screen: ProductsMain},
-    
 
   },
   {

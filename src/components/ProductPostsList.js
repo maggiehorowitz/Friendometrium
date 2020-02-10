@@ -1,56 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Button, } from 'react-native';
-import { Card } from 'react-native-elements';
-import { removePost, watchNewPosts } from '../actions';
+import { View, Text, StyleSheet, Button, } from 'react-native';
 import FireForumData from '../../config/Firebase/FireForumData';
 import Fire from "../../config/Firebase/FireForumChat";
 import {withNavigation} from 'react-navigation'
 import {Collapse, CollapseHeader, CollapseBody} from "accordion-collapse-react-native";
 
-//displays the actual list
-
-
-//the clicked post method (second parameter ) will be linked with our reducer
-// const NewPostList = ({ NewPosts, removePost, watchNewPosts }) => (
-
-//     //map over all the NewPosts and display a component
-    
-    
-//     <View style={styles.container}>
-//       <Button
-//       title = 'FetchPosts' 
-//       onPress = {() => watchNewPosts()}/>
-        
-//         {NewPosts.map(NewPost => 
-//         // <TouchableOpacity key={NewPost.id} onPress = {() => ClickedPost(NewPost.id)}>
-            
-//             <Card key = {NewPost.id}
-//             title = {NewPost.title}>
-//             <Text style = {{
-//                     fontSize:24,
-//                     textDecorationLine: NewPost.completed ? 'line-through' : 'none'
-//                 }}>{NewPost.body}</Text> 
-//                 <Button 
-//                 title = 'Remove Post'
-//                 onPress = {() => {removePost(NewPost.id); FireForumData.removeNow(NewPost.title) }}/>
-//             </Card>
-                
- 
-//         // </TouchableOpacity>
-//         )}
-//     </View>
-
 const Category = 'ProductPosts/'
 
 class ProductPostsList extends React.Component {
-
-  // componentDidMount () {
-  //   this.props.watchNewPosts()
-  // }
-  
-  // componentWillUnmount (){
-  //    this.props.clearPosts() 
-  // }
   
   constructor(props){
     super(props);
@@ -74,21 +31,6 @@ class ProductPostsList extends React.Component {
     
       
       {this.props.NewProductPosts.map(NewProductPost => 
-      // <TouchableOpacity key={NewPost.id} onPress = {() => ClickedPost(NewPost.id)}>
-          
-          // <Card key = {NewPost.id}
-          // title = {NewPost.title}>
-          // <Text style = {{
-          //         fontSize:24,
-          //         textDecorationLine: NewPost.completed ? 'line-through' : 'none'
-          //     }}>{NewPost.body}</Text> 
-          //     <Button 
-          //     title = 'Remove Post'
-          //     onPress = {() => {this.props.removePost(NewPost.id); FireForumData.removeNow(NewPost.title); }}/>
-          //     <Button
-          //     title = 'Go to chat'
-          //     onPress = {() => this.goToChat(NewPost.title,NewPost.email)}/>
-          // </Card>
 
         <Collapse key={NewProductPost.id} 
         style={{padding:10, marginTop:10, marginBotton:10, borderWidth: .5, borderColor: '#C7C9C9'  }}>
@@ -100,9 +42,6 @@ class ProductPostsList extends React.Component {
           <CollapseBody style ={{alignItems:'center',justifyContent:'center', borderTopWidth: .25, margin: 10}}>
             <View>
               <Text style ={{fontSize: 24, margin: 10}}>{NewProductPost.body}</Text>
-              {/* <Text style ={{fontSize: 24, margin: 10}}>{NewPost.timestamp}</Text> */}
-
-              
             </View>
             <View>
               <Button
@@ -119,12 +58,12 @@ class ProductPostsList extends React.Component {
         
           
 
-      // </TouchableOpacity> 
+
       )}
-  </View>
+        </View>
     )
   }
-  //map over all the NewPosts and display a component
+
   
   
   

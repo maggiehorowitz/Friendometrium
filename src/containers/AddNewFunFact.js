@@ -1,8 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput,TouchableOpacity,  } from 'react-native';
-import {Ionicons} from '@expo/vector-icons';
+import { StyleSheet, Text, View, TextInput, } from 'react-native';
 import { connect } from 'react-redux';
-import { addNewPost } from '../actions';
 import { Button } from 'react-native-elements';
 import FireForumData from "../../config/Firebase/FireForumData";
 
@@ -16,19 +14,10 @@ class AddNewFunFact extends React.Component {
         body: ''
     }
 
-    addNewPost = (title, body) => {
-        //redux store
-        //this wil dispatch the action to the store
-        this.props.dispatch( addNewPost(title,body))
-        this.setState({title: ''})
-        this.setState({body: ''})
-    }
-
     goBackToForum = () => {
-      this.props.navigation.navigate('Forum')
+      this.props.navigation.navigate('FunFactsMain')
     }
 
-// firebase.database().ref("pathName").set({[variable] : 'MoreStuff'});
 
     continueNow = async () => {
       FireForumData.FFPost.update({
@@ -76,17 +65,8 @@ class AddNewFunFact extends React.Component {
               />
           </View>
 
-
-            {/* <TouchableOpacity onPress={()=> this.addNewPost(this.state.text)}> */}
-                {/* <View style={{height:50, alignItems:'center',justifyContent:'center'}}> */}
-                    {/* <Ionicons name = "md-add" size ={30} style={{padding:10}}/> */}
-                    {/* <Text>Post Now!</Text> */}
-                {/* </View> */}
-            {/* </TouchableOpacity> */}
             <Button style={{padding:20}}
-            // onPress={() => this.addNewPost(this.state.title, this.state.body)}
             onPress = {() =>{ this.continueNow(); this.goBackToForum(); }}
-            // onPress={()=>ContinueNow()}
             title = 'Post Now'
             />
             <Button 
@@ -104,16 +84,6 @@ class AddNewFunFact extends React.Component {
 }
 //connecting store to component
 export default connect()(AddNewFunFact)
-
-
-  // const ContinueNow = async () => {
-  //   FireForumData.forumPost.set({
-  //      A_Post: {
-  //         title: this.state.title,
-  //         body: this.state.body
-  //      }
-  //   });
-  // };
 
 const styles = StyleSheet.create({
   container: {

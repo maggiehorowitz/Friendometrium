@@ -1,12 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Icon } from 'react-native';
-import VisiblePosts from './containers/VisiblePosts';
 import { ScrollView } from 'react-native-gesture-handler';
 import FunFacts from '../screens/Cards/FunFacts';
 import InTheWorkPlace from '../screens/Cards/InTheWorkPlace';
 import Products from '../screens/Cards/Products';
-import { watchNewPosts } from './actions';
-import VisibleFunFacts from './containers/VisibleFunFacts';
 
 class ForumApp extends React.Component {
     
