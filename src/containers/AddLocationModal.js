@@ -8,7 +8,6 @@ import colors from '../utils/colors';
 import MapPage from '../../screens/MapPage'
 import TopBar from '../components/TopBar';
 
-
 class AddLocationModal extends Component {
 
 

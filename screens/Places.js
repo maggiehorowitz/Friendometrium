@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import LocationList from '../src/components/LocationList';
-import { connect } from 'react-redux';
-import { deletePlaces } from '../src/actions/index';
+import VisiblePlaces from '../src/containers/VisiblePlaces';
+
+
 class Places extends Component {
-placeDeletedHandler = (key) => {
-    this.props.onDeletePlace(key);
-  }
+
+    constructor(props){
+        super(props);
+    }
+
+
+
 render() {
     return (
       <View style={styles.container}>
-        <LocationList
-          locations={this.props.locations}
-          onItemSelected={this.placeDeletedHandler}
-        />
+        <VisiblePlaces/>
       </View>
     );
   }
@@ -27,14 +28,5 @@ const styles = StyleSheet.create({
 
   }
 });
-const mapStateToProps = state => {
-  return {
-    locations: state.locationsList.locations
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    onDeletePlace: (key) => dispatch(deletePlaces(key))
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Places);
+
+export default Places;

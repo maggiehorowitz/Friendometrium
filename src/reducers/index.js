@@ -5,7 +5,7 @@ import locationsReducer from '../reducers/locations';
 
 const rootReducer = combineReducers({
     NewPosts,
-    locationsList: locationsReducer
+    locationsReducer
 });
 
 export default rootReducer

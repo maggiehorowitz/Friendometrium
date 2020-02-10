@@ -11,6 +11,7 @@ const locationsReducer = (state = initialState, action) => {
         placeName: action.placeName,
         location: action.location,
         description: action.description,
+        key: action.key
       })
 
     };

@@ -11,12 +11,11 @@ import FirePlaceData from '../config/Firebase/FirePlaceData';
 
 class Map extends Component {
 
-
 state = {
     placeName: "",
     upsertingComment: false,
     description: "",
-    key: 0,
+    key: "",
     controls: {
       location: {
         value: null,
@@ -24,6 +23,8 @@ state = {
       }
     }
   };
+
+
 
   updateDesc = value => {
     this.setState({description: value});
@@ -33,7 +34,8 @@ placeNameChangedHandler = val => {
     this.setState(prevState => {
       return {
         ...prevState,
-        placeName: val
+        placeName: val,
+        key: val + FirePlaceData.uid.toString()
       };
     });
   };
@@ -72,19 +74,26 @@ locationPickedHandler = location => {
 
 
 //this is done in Ben's addnewpost container
-locationAddedHandler = () => {
+locationAddedHandler = async () => {
+    FirePlaceData.savedPlace.update({
+        [this.state.key]:{
+          placeName: this.state.placeName,
+          description: this.state.description,
+          location:this.state.controls.location.value
+      }
+    });
+
     this.props.onAddLocation(
       this.state.placeName,
       this.state.controls.location.value,
-      this.state.description
-    );
-    FirePlaceData.savedPlace.push({
-      placeName: this.state.placeName,
-      location: this.state.controls.location.value,
-      description: this.state.description
-    });
+      this.state.description,
+      this.state.key
+  );
+
+
     this.props.navigation.navigate('Locations')
   };
+
 
 
 render() {
@@ -136,11 +145,12 @@ const styles = StyleSheet.create({
     fontSize: 18
   }
 });
+
+
 const mapDispatchToProps = dispatch => {
   return {
-    onAddLocation: (placeName, location, description) =>
-      dispatch(addPlaces(placeName, location, description)),
-    watchNewPosts : () => dispatch(watchNewPosts())
+    onAddLocation: (placeName, location, description, key) =>
+      dispatch(addPlaces(placeName, location, description, key)),
   };
 };
 export default connect(null, mapDispatchToProps)(Map);
