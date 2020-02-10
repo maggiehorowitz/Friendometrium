@@ -6,9 +6,9 @@ import FunFacts from '../screens/Cards/FunFacts';
 import InTheWorkPlace from '../screens/Cards/InTheWorkPlace';
 import Products from '../screens/Cards/Products';
 import { watchNewPosts } from './actions';
-import VisibleFunFacts from './containers/VisibleFunFacts';
+import VisibleProductPosts from './containers/VisibleProductPosts';
 
-class ForumApp extends React.Component {
+class ProductsMain extends React.Component {
     
     constructor(props){
         super(props);
@@ -19,18 +19,23 @@ class ForumApp extends React.Component {
     
     return (
       <View style={styles.container}>
-          <Text style={{marginTop:10, fontSize:30, textAlign:'center'}}>Forum Main!</Text>
-          
+          <Text style={{marginTop:10, fontSize:30, textAlign:'center'}}>Products!</Text>
+          <Button
+            title="New Post"
+            onPress={() => this.props.navigation.navigate('AddNewPR')}
+            />
 
           <ScrollView
           showsVerticalScrollIndicator = {false}>
 
            
-            <FunFacts/>
-            <InTheWorkPlace/>
-            <Products/>
+            <VisibleProductPosts/>
 
           </ScrollView>
+          <Button
+            title="Back to Main Forum"
+            onPress={() => this.props.navigation.navigate('Forum')}
+            />
             
         
       </View>
@@ -40,7 +45,7 @@ class ForumApp extends React.Component {
   
 }
 
-export default ForumApp;
+export default ProductsMain;
 
 const styles = StyleSheet.create({
   container: {

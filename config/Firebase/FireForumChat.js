@@ -9,6 +9,7 @@ class FireForumChat{
 
 
   cID = "default"
+  category = 'default'
 
 
   init = () => {
@@ -69,11 +70,11 @@ class FireForumChat{
   }
 
   removeNow = async () => {
-    firebase.database().ref('/ForumChats/' + this.cID ).remove();
+    firebase.database().ref('/ForumChats/' + this.category + this.cID ).remove();
   }
 
   get db() {
-    return firebase.database().ref("ForumChats/" + this.cID );
+    return firebase.database().ref("ForumChats/" + this.category + this.cID );
     //
     // //create
     // Fire.database().ref("FunFactsChat");

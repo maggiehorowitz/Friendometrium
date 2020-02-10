@@ -24,7 +24,7 @@ class InTheWorkPlace extends React.Component {
               </Text>
               <Button
                 buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                title='Chat Now!'
+                title='Go to Workplace Posts!'
                 onPress = {() => this.props.navigation.navigate('WorkPlaceMain')}
                 />
           </Card>

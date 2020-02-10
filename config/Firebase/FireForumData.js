@@ -11,14 +11,15 @@ class FireForumData{
   forumPost = firebase.database().ref("ForumPosts/");
   // forumPost2 = firebase.database().ref("ForumPosts/" + this.uid);
 
-  removeNow = async (Post) => {
-    firebase.database().ref('/ForumPosts/' + Post).remove();
+  removeNow = async (Category, Post) => {
+    firebase.database().ref('/ForumPosts/' + Category + Post).remove();
   }
   
   FFPost = firebase.database().ref('ForumPosts/FunFactsPosts/');
  
   WPPost = firebase.database().ref('ForumPosts/WorkPlacePosts/');
 
+  PRPost = firebase.database().ref('ForumPosts/ProductPosts/');
 
 
   init = () => {

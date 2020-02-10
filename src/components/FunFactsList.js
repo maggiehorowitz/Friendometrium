@@ -40,6 +40,8 @@ import {Collapse, CollapseHeader, CollapseBody} from "accordion-collapse-react-n
 //         )}
 //     </View>
 
+const Category = 'FunFactsPosts/';
+
 class FunFactsList extends React.Component {
 
   // componentDidMount () {
@@ -59,9 +61,11 @@ class FunFactsList extends React.Component {
 
   goToChat = (title,email) => { 
     Fire.cID= title;
+    Fire.category = Category
     this.props.navigation.navigate("ForumChat", {name: email});
   };
 
+ 
 
   
 
@@ -104,7 +108,7 @@ class FunFactsList extends React.Component {
             <View>
               <Button
                 title = 'Remove Post'
-                onPress = {() => {this.props.removePost(NewFunFact.id); FireForumData.removeNow(NewFunFact.title); Fire.removeNow()}}/>
+                onPress = {() => {this.props.removeFFPost(NewFunFact.id); FireForumData.removeNow(Category,NewFunFact.title); Fire.removeNow()}}/>
             </View>
             <View>
               <Button

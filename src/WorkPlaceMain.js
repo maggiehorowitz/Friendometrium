@@ -19,7 +19,7 @@ class WorkPlaceMain extends React.Component {
     
     return (
       <View style={styles.container}>
-          <Text style={{marginTop:10, fontSize:30, textAlign:'center'}}>Forum!</Text>
+          <Text style={{marginTop:10, fontSize:30, textAlign:'center'}}>In the Work Place!</Text>
           <Button
             title="New Post"
             onPress={() => this.props.navigation.navigate('AddNewWP')}
@@ -32,7 +32,10 @@ class WorkPlaceMain extends React.Component {
             <VisibleWorkPlace/>
 
           </ScrollView>
-            
+          <Button
+            title="Back to Main Forum"
+            onPress={() => this.props.navigation.navigate('Forum')}
+            />
         
       </View>
     );

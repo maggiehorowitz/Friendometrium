@@ -27,6 +27,8 @@ import AddNewFunFact from '../src/containers/AddNewFunFact';
 import FunFactsMain from '../src/FunFactsMain';
 import AddNewWorkPlacePost from '../src/containers/AddNewWorkPlacePost';
 import WorkPlaceMain from '../src/WorkPlaceMain';
+import AddNewProductPost from '../src/containers/AddNewProductPost';
+import ProductsMain from '../src/ProductsMain';
 
 
 const Drawer = createDrawerNavigator(
@@ -46,6 +48,9 @@ const Drawer = createDrawerNavigator(
     FunFactsMain: {screen: FunFactsMain},
     AddNewWP: {screen: AddNewWorkPlacePost},
     WorkPlaceMain: {screen: WorkPlaceMain},
+    AddNewPR: {screen: AddNewProductPost},
+    ProductsMain: {screen: ProductsMain},
+    
 
   },
   {

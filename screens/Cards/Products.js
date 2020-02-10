@@ -23,8 +23,8 @@ class Products extends React.Component {
               </Text>
               <Button
                 buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                title='Chat Now!'
-                onPress = {() => this.props.navigation.navigate('ProductReviewChat', {name: Fire.email})}
+                title='Go to Products Posts!'
+                onPress = {() => this.props.navigation.navigate('ProductsMain')}
                 />
           </Card>
 

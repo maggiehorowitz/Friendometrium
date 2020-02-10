@@ -40,9 +40,9 @@ import {Collapse, CollapseHeader, CollapseBody} from "accordion-collapse-react-n
 //         )}
 //     </View>
 
-const Category = 'WorkPlacePosts/';
+const Category = 'ProductPosts/'
 
-class WorkPlaceList extends React.Component {
+class ProductPostsList extends React.Component {
 
   // componentDidMount () {
   //   this.props.watchNewPosts()
@@ -54,8 +54,8 @@ class WorkPlaceList extends React.Component {
   
   constructor(props){
     super(props);
-    this.props.clearWPPosts();
-    this.props.watchNewWPPosts();
+    this.props.clearPRPosts();
+    this.props.watchNewPRPosts();
     
   }
 
@@ -73,7 +73,7 @@ class WorkPlaceList extends React.Component {
       <View style={styles.container}>
     
       
-      {this.props.NewWorkPlacePosts.map(NewWorkPlace => 
+      {this.props.NewProductPosts.map(NewProductPost => 
       // <TouchableOpacity key={NewPost.id} onPress = {() => ClickedPost(NewPost.id)}>
           
           // <Card key = {NewPost.id}
@@ -90,16 +90,16 @@ class WorkPlaceList extends React.Component {
           //     onPress = {() => this.goToChat(NewPost.title,NewPost.email)}/>
           // </Card>
 
-        <Collapse key={NewWorkPlace.id} 
+        <Collapse key={NewProductPost.id} 
         style={{padding:10, marginTop:10, marginBotton:10, borderWidth: .5, borderColor: '#C7C9C9'  }}>
           <CollapseHeader style = {{alignItems:'center',padding:10, }}>
             <View>
-              <Text style ={{fontSize: 24}}>{NewWorkPlace.title}</Text>
+              <Text style ={{fontSize: 24}}>{NewProductPost.title}</Text>
             </View>
           </CollapseHeader>
           <CollapseBody style ={{alignItems:'center',justifyContent:'center', borderTopWidth: .25, margin: 10}}>
             <View>
-              <Text style ={{fontSize: 24, margin: 10}}>{NewWorkPlace.body}</Text>
+              <Text style ={{fontSize: 24, margin: 10}}>{NewProductPost.body}</Text>
               {/* <Text style ={{fontSize: 24, margin: 10}}>{NewPost.timestamp}</Text> */}
 
               
@@ -107,12 +107,12 @@ class WorkPlaceList extends React.Component {
             <View>
               <Button
                 title = 'Remove Post'
-                onPress = {() => {this.props.removeWPPost(NewWorkPlace.id); FireForumData.removeNow(Category, NewWorkPlace.title); Fire.removeNow()}}/>
+                onPress = {() => {this.props.removePRPost(NewProductPost.id); FireForumData.removeNow(Category, NewProductPost.title); Fire.removeNow()}}/>
             </View>
             <View>
               <Button
                 title = 'Go to chat'
-                onPress = {() => this.goToChat(NewWorkPlace.title,Fire.email)}/>            
+                onPress = {() => this.goToChat(NewProductPost.title,Fire.email)}/>            
               </View> 
           </CollapseBody>
         </Collapse>
@@ -131,7 +131,7 @@ class WorkPlaceList extends React.Component {
     
   }
   
-  export default withNavigation( WorkPlaceList ) ;
+  export default withNavigation( ProductPostsList ) ;
   
   const styles = StyleSheet.create({
     container: {
