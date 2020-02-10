@@ -3,6 +3,7 @@ import {Platform, StyleSheet, Text, View, TouchableOpacity, Switch, Image} from 
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import MapView, {Marker, ProviderPropType, Callout} from 'react-native-maps';
 import PubNubReact from 'pubnub-react';
+import Fire from '../config/Firebase/FireMapChat';
 
 
 type Props = {};
@@ -22,7 +23,7 @@ export default class UsersMap extends Component<Props> {
               longitude: -1
           },
       numUsers: 0, //track number of users on the app
-      username: "A Naughty Moose", //user's username- eventually get from profile!
+      username: "alice", //user's username- eventually get from profile!
       fixedOnUUID: "",
       focusOnMe: false, //zoom map to user's current location if true
       users: new Map(), //store data of each user in a Map
@@ -218,14 +219,27 @@ this.setState({userCount: totalUsers})
 
 
 animateToCurrent = (coords, speed) => {
-region = {
-  latitude: coords.latitude,
-  longitude: coords.longitude,
-  latitudeDelta: 0.01,
-  longitudeDelta: 0.01
+  region = {
+    latitude: coords.latitude,
+    longitude: coords.longitude,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01
+  };
+  this.map.animateToRegion(region, speed);
 };
-this.map.animateToRegion(region, speed);
-};
+
+goToChat = (user1, user2, my_identifier) => {
+  combined_uuid = "none";
+  if(user1>user2){
+    combined_uuid = "u2:"+user2+"u1:"+user1;
+  }
+  else{
+    combined_uuid = "u1:"+user1+"u2:"+user2;
+  }
+  // const combined_uuid = "pubnub1pubnub2"
+  Fire.cID = combined_uuid;
+  this.props.navigation.navigate("MapChat", {name: my_identifier});
+}
 
 
 
@@ -261,7 +275,9 @@ render() {
               ref={marker => {
                 this.marker = marker;
               }}
-              onCalloutPress={() => this.props.navigation.navigate('Chat')}
+              //HERE is Click
+               onCalloutPress={() => this.goToChat(Fire.uid, Fire.name, Fire.email)}
+              // onCalloutPress={() => this.props.navigation.navigate('Chat')}
             >
               <Image
                   style={[styles.profile, {tintColor: item.uuid==this.state.uuid?'black':'red'}]}

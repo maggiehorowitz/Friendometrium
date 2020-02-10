@@ -24,6 +24,7 @@ import ForumApp from '../src/ForumApp'
 import AddNewPostSimple from '../src/containers/AddNewPostSimple'
 import FunFacts from '../screens/Cards/FunFacts';
 import ForumChat from '../screens/ForumChat'
+import MapChat from '../screens/MapChat'
 import UpdateProfileScreen from '../screens/UpdateProfileScreen';
 
 
@@ -40,7 +41,8 @@ const Drawer = createDrawerNavigator(
     GroupChat: {screen: ChatIndex},
     PMChat: {screen:PMIndex},
     NewPostSimple: {screen: AddNewPostSimple},
-    ForumChat: {screen: ForumChat}
+    ForumChat: {screen: ForumChat},
+    MapChat: {screen:MapChat},
 
   },
   {
