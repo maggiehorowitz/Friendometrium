@@ -69,11 +69,11 @@ class FireMapChat{
   }
 
   removeNow = async () => {
-    firebase.database().ref('/MapChats/' + this.cID ).remove();
+    firebase.database().ref('/PrivateMessages/' + this.cID ).remove();
   }
 
   get db() {
-    return firebase.database().ref("MapChats/" + this.cID );
+    return firebase.database().ref("PrivateMessages/" + this.cID );
     //
     // //create
     // Fire.database().ref("FunFactsChat");

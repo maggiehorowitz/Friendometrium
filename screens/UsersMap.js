@@ -23,7 +23,7 @@ export default class UsersMap extends Component<Props> {
               longitude: -1
           },
       numUsers: 0, //track number of users on the app
-      username: "alice", //user's username- eventually get from profile!
+      username: "default", //user's username- eventually get from profile!
       fixedOnUUID: "",
       focusOnMe: false, //zoom map to user's current location if true
       users: new Map(), //store data of each user in a Map
@@ -44,7 +44,7 @@ export default class UsersMap extends Component<Props> {
    if (this.state.focusOnMe || this.state.fixedOnUUID) {
      this.setState({
        focusOnMe: false,
-       fixedOnUUID: ""
+       fixedOnUUID: "",
      });
    } else {
      region = {
@@ -54,6 +54,8 @@ export default class UsersMap extends Component<Props> {
        longitudeDelta: 0.01
      };
      this.setState({
+       //here added
+       username: Fire.uid,
        focusOnMe: true
      });
      this.map.animateToRegion(region, 2000);
@@ -62,10 +64,12 @@ export default class UsersMap extends Component<Props> {
 
   toggleGPS = () => {
      this.setState({
-       allowGPS: !this.state.allowGPS
+       allowGPS: !this.state.allowGPS,
      });
    };
 
+
+  
   async setUpApp(){
       this.pubnub.getMessage("global", msg => {
 
@@ -118,6 +122,8 @@ export default class UsersMap extends Component<Props> {
             uuid: this.pubnub.getUUID(),
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
+            //change here
+            username: this.username,
           };
           users.set(tempUser.uuid, tempUser);
           this.setState({
@@ -231,10 +237,10 @@ animateToCurrent = (coords, speed) => {
 goToChat = (user1, user2, my_identifier) => {
   combined_uuid = "none";
   if(user1>user2){
-    combined_uuid = "u2:"+user2+"u1:"+user1;
+    combined_uuid = user2+user1;
   }
   else{
-    combined_uuid = "u1:"+user1+"u2:"+user2;
+    combined_uuid = user1+user2;
   }
   // const combined_uuid = "pubnub1pubnub2"
   Fire.cID = combined_uuid;
@@ -276,7 +282,7 @@ render() {
                 this.marker = marker;
               }}
               //HERE is Click
-               onCalloutPress={() => this.goToChat(Fire.uid, Fire.name, Fire.email)}
+               onCalloutPress={() => this.goToChat(Fire.uid, Fire.uid, Fire.email)}
               // onCalloutPress={() => this.props.navigation.navigate('Chat')}
             >
               <Image
@@ -286,7 +292,7 @@ render() {
               <Callout tooltip>
                   <View style={styles.viewStyle}>
                       <Text style={styles.textStyle}>
-                        {item.uuid.toString()}
+                        {item.username}
                       </Text>
                 </View>
                </Callout>
