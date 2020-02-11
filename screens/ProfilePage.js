@@ -12,7 +12,7 @@ import Fire from "../config/Firebase/FireForumData";
 import DialogInput from 'react-native-dialog-input';
 import { NavigationContainer } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
-import Svg, { Path } from "react-native-svg";
+
 
 
 
