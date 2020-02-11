@@ -14,9 +14,9 @@ render() {
     return (
       <View style={styles.container}>
       <Image source ={require("../assets/friendometrium.jpg")} style={{width:"80%", height:"30%"}} resizeMode="contain"/>
-        <Text style={{padding:0}}>
-        Welcome to Friendometrium!
-        </Text>
+      <Text style={styles.profileheader}>
+      Welcome to Friendometrium!
+      </Text>
         <Text style={{padding:20}}>
         Friendometrium is a great app for women to form a strong community for supporting women's health. Don't forget to check
         out the maps section and the chat section!
@@ -58,5 +58,11 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     marginTop: 8
-  }
+  },
+  profileheader: {
+    fontWeight: "900",
+    fontSize: 20,
+    color: '#514E5A',
+    marginTop: 10,
+  },
 })

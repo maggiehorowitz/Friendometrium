@@ -14,9 +14,9 @@ class FireForumData{
   removeNow = async (Category, Post) => {
     firebase.database().ref('/ForumPosts/' + Category + Post).remove();
   }
-  
+
   FFPost = firebase.database().ref('ForumPosts/FunFactsPosts/');
- 
+
   WPPost = firebase.database().ref('ForumPosts/WorkPlacePosts/');
 
   PRPost = firebase.database().ref('ForumPosts/ProductPosts/');
@@ -123,7 +123,7 @@ class FireForumData{
   };
 
   get name(){
-    return (firebase.auth().currentUser.displayName)
+    return firebase.auth().currentUser.email.substring(0, firebase.auth().currentUser.email.indexOf("@"));
   }
 
   get photo(){

@@ -12,6 +12,10 @@ import Fire from "../config/Firebase/FireForumData";
 import DialogInput from 'react-native-dialog-input';
 import { NavigationContainer } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
+import Svg, { Path } from "react-native-svg";
+
+
+
 
 
 export default class ProfilePage extends Component {
@@ -21,39 +25,65 @@ export default class ProfilePage extends Component {
     return (
 
       <View style={styles.container}>
-      <View>
+
       <Image
         style={{width: 200, height: 200}}
         source={{uri: Fire.photo}}
       />
-      </View>
+
+
+<View style={styles.title_container}>
         <Text style={styles.profileheader}>
-        Welcome  {Fire.username} !
+        Hi  {Fire.username} !
         </Text>
-        <Text style={{padding:20}}>
-        User id: {Fire.uid}
+        <Text style={styles.subheader}>User ID: {Fire.uid}</Text>
+</View>
 
 
-        </Text>
+<View style={styles.container3}>
 
-        <Text style={{padding:20}}>
-        User id: {Fire.email}
-        </Text>
+  <Text style={styles.mainText}>
+  Username
+  <Text style={styles.regularText}>
+   :      {Fire.name}
+  </Text>
+  </Text>
 
 
-        <Text style={{padding:20}}>
-        User name: {Fire.username}
-        </Text>
 
-        <Text style={{padding:20}}>
-        Photo URI: {Fire.photo}
-        </Text>
+  <Text style={styles.mainText}>
+  Email
+  <Text style={styles.regularText}>
+   :      {Fire.email}
+  </Text>
+  </Text>
 
+
+  <Text style={styles.mainText}>
+  Photo URL
+    <Text style={styles.regularText}>:</Text>
+  </Text>
+  <Text style={styles.regularText}>
+  {Fire.photo}
+  </Text>
+
+</View>
+
+<View style={styles.button_container}>
         <Button
         title="Update My Image"
         onPress = {() => this.props.navigation.navigate('ProfileUpdate')}
         // onPress={Fire.updateInfo(Fire.username, 'https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png')}
         />
+        </View>
+
+
+
+
+
+
+
+
         <View>
 
 
@@ -73,10 +103,88 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   profileheader: {
-    fontWeight: "800",
-    fontSize: 20,
+    fontWeight: "900",
+    fontSize: 36,
     color: '#514E5A',
-    marginTop: 32,
-    // marginBottom: 32
-  }
+    marginTop: 10,
+  },
+  subheader: {
+    backgroundColor: "transparent",
+    color: "rgba(176,176,176,1)",
+    opacity: 0.8,
+    fontSize: 14,
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 5
+  },
+  container2: {
+    marginTop:20,
+    marginBottom:20,
+    width: 335,
+    height: 75,
+    backgroundColor: "rgba(255,255,255,1)",
+    borderRadius: 10,
+    shadowOffset: {
+      height: 5,
+      width: 0
+    },
+    shadowColor: "rgba(0,0,0,0.118064990942029)",
+    shadowOpacity: 1,
+    shadowRadius: 15
+  },
+  container3: {
+    width: 330,
+    height: 230,
+    marginTop: 10,
+    marginBottom:10,
+    backgroundColor: "rgba(255,255,255,1)",
+    borderRadius: 16,
+    shadowOffset: {
+      height: 10,
+      width: 0
+    },
+    shadowColor: "rgba(0,0,0,0.118064990942029)",
+    shadowOpacity: 1,
+    shadowRadius: 20
+  },
+  title_container: {
+    width: 335,
+    height: 100,
+    backgroundColor: "rgba(255,255,255,1)",
+    borderRadius: 16,
+    shadowOffset: {
+      height: 10,
+      width: 0
+    },
+    shadowColor: "rgba(0,0,0,0.118064990942029)",
+    shadowOpacity: 1,
+    shadowRadius: 20
+  },
+  button_container: {
+    width: 200,
+    height: 100,
+    marginTop: 30,
+    marginBottom:10,
+    backgroundColor: "rgba(255,255,255,1)",
+    borderRadius: 16,
+    shadowOffset: {
+      height: 10,
+      width: 0
+    },
+  },
+  mainText: {
+    fontWeight: "800",
+    padding: 20,
+    fontSize: 16,
+    color: '#514E5A',
+    marginTop: 0,
+  },
+  regularText: {
+    fontWeight: "400",
+    padding: 5,
+    fontSize: 14,
+    color: '#514E5A',
+    marginTop: 0,
+  },
+
 })
