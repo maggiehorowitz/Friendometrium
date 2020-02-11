@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Icon } from 'react-native';
-import VisiblePosts from './containers/VisiblePosts';
+import { Header } from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler';
 import FunFacts from '../screens/Cards/FunFacts';
 import InTheWorkPlace from '../screens/Cards/InTheWorkPlace';
 import Products from '../screens/Cards/Products';
-import { watchNewPosts } from './actions';
+import ComingSoon from '../screens/Cards/ComingSoon';
 
 class ForumApp extends React.Component {
     
@@ -17,22 +17,29 @@ class ForumApp extends React.Component {
     render(){
     
     return (
-      <View style={styles.container}>
-          <Text style={{marginTop:10, fontSize:30, textAlign:'center'}}>Forum!</Text>
-          <Button
-            title="New Post"
-            onPress={() => this.props.navigation.navigate('NewPostSimple')}
-            />
+      
+      
+      <View style = {styles.container}>
 
+          <Header
+          centerComponent = {{text: 'Forum!', style: { color: '#fff', fontSize: 32, fontWeight: 'bold'}}}
+          containerStyle={{
+            backgroundColor: '#EA5A2C',
+            justifyContent: 'center'
+          }}
+          />
           <ScrollView
-          showsVerticalScrollIndicator = {false}>
+            showsVerticalScrollIndicator= {false}>
 
-            <FunFacts/>
-            <InTheWorkPlace/>
-            <Products/>
-            <VisiblePosts/>
+              <Text style = {{fontSize:24, textAlign: 'center', padding: 10}}>Click below to explore</Text>
+            
+              <FunFacts/>
+              <InTheWorkPlace/>
+              <Products/>
+              <ComingSoon/>
 
-          </ScrollView>
+            </ScrollView>
+          
             
         
       </View>
@@ -47,7 +54,7 @@ export default ForumApp;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     
   },
+ 
 });

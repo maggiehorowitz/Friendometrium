@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-elements';
 import {withNavigation} from 'react-navigation'
 import Fire from "../../config/Firebase/Fire";
@@ -16,17 +16,18 @@ class Products extends React.Component {
     return (
       <View style={styles.container}>
 
+<TouchableOpacity
+        onPress = {()=> this.props.navigation.navigate('ProductsMain')}>
           <Card
-              title='Products'>
-              <Text style={{marginBottom: 10}}>
-                *Product *Product *Product *Product *Product *Product *Product *Product *Product
-              </Text>
-              <Button
-                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                title='Chat Now!'
-                onPress = {() => this.props.navigation.navigate('ProductReviewChat', {name: Fire.email})}
-                />
-          </Card>
+            image = {require('../Cards/Images/PR2.jpg')}
+          >
+            
+            <Text style={{marginBottom: 10, textAlign:'center', fontSize:20}}>
+              Products Forum
+            </Text>
+            
+        </Card>
+      </TouchableOpacity>
 
       </View>
     );
@@ -39,7 +40,6 @@ export default withNavigation(Products);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     padding: 20,
 
   },

@@ -21,10 +21,14 @@ import Sidebar from '../screens/Sidebar'
 import ChatIndex from '../screens/ChatIndex'
 import ProfileIndex from '../screens/ProfileIndex'
 import ForumApp from '../src/ForumApp'
-import AddNewPostSimple from '../src/containers/AddNewPostSimple'
-import FunFacts from '../screens/Cards/FunFacts';
 import ForumChat from '../screens/ForumChat'
 import UpdateProfileScreen from '../screens/UpdateProfileScreen';
+import AddNewFunFact from '../src/containers/AddNewFunFact';
+import FunFactsMain from '../src/FunFactsMain';
+import AddNewWorkPlacePost from '../src/containers/AddNewWorkPlacePost';
+import WorkPlaceMain from '../src/WorkPlaceMain';
+import AddNewProductPost from '../src/containers/AddNewProductPost';
+import ProductsMain from '../src/ProductsMain';
 
 
 const Drawer = createDrawerNavigator(
@@ -39,8 +43,13 @@ const Drawer = createDrawerNavigator(
     SignOut:{screen:SignOutPage},
     GroupChat: {screen: ChatIndex},
     PMChat: {screen:PMIndex},
-    NewPostSimple: {screen: AddNewPostSimple},
-    ForumChat: {screen: ForumChat}
+    ForumChat: {screen: ForumChat},
+    AddNewFF: {screen: AddNewFunFact},
+    FunFactsMain: {screen: FunFactsMain},
+    AddNewWP: {screen: AddNewWorkPlacePost},
+    WorkPlaceMain: {screen: WorkPlaceMain},
+    AddNewPR: {screen: AddNewProductPost},
+    ProductsMain: {screen: ProductsMain},
 
   },
   {

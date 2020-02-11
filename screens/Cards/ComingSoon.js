@@ -4,7 +4,7 @@ import { Card } from 'react-native-elements';
 import {withNavigation} from 'react-navigation'
 import Fire from "../../config/Firebase/Fire";
 
-class FunFacts extends React.Component {
+class ComingSoon extends React.Component {
 
     constructor(props){
         super(props);
@@ -17,15 +17,14 @@ class FunFacts extends React.Component {
       <View style={styles.container}>
         
         <TouchableOpacity
-          onPress = {()=> this.props.navigation.navigate('FunFactsMain')}>
+          >
             <Card
-              image = {require('../Cards/Images/FF.jpg')}
-              
+              title='Coming Soon!'
               style = {{fontSize:64, fontWeight: 'bold'}}
             >
               
               <Text style={{marginBottom: 10, textAlign:'center', fontSize:20}}>
-                Fun Facts Forum
+                More topics coming soon!
               </Text>
               
           </Card>
@@ -39,7 +38,7 @@ class FunFacts extends React.Component {
 
 }
 
-export default withNavigation(FunFacts);
+export default withNavigation(ComingSoon);
 
 const styles = StyleSheet.create({
   container: {
