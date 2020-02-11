@@ -6,7 +6,7 @@ import * as firebase from 'firebase';
 export const removeFFPost = (id) => ({
     type: REMOVE_FF_POST,
     id
-
+})
 export const clearFFPosts = () => ({
     type: CLEAR_FF,
 })
@@ -16,7 +16,6 @@ export const fetchFFPosts = (postData) => {
         type: FETCH_FF_POSTS,
         value: postData,
     }
-
 }
 
 export const watchNewFFPosts = ()=> {
