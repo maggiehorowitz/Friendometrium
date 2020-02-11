@@ -1,4 +1,4 @@
-import { ADD_NEW_POST, CLICKED_POST, ADD_PLACES, DELETE_PLACE, FETCH_PLACES  } from './actionTypes';
+import { ADD_NEW_POST, CLICKED_POST, DELETE_PLACE, FETCH_PLACES  } from './actionTypes';
 import * as firebase from 'firebase';
 let nextId = 0
 
@@ -13,21 +13,19 @@ export const ClickedPost = (id) => ({
     id
 })
 
-export const addPlaces = (placeName, location, description, key) => {
-  return {
-    type: ADD_PLACES,
-    placeName: placeName,
-    location: location,
-    description: description,
-    key: key
-  };
-};
-export const deletePlaces = (key) => {
-  return {
+// export const addPlaces = (placeName, location, description, key) => {
+//   return {
+//     type: ADD_PLACES,
+//     placeName: placeName,
+//     location: location,
+//     description: description,
+//     key: key
+//   };
+// };
+export const deletePlaces = (key) => ({
     type: DELETE_PLACE,
     key
-  };
-};
+})
 
 
 export const fetchPlaces = (placeData) => {
@@ -40,7 +38,7 @@ export const fetchPlaces = (placeData) => {
 
 export const watchNewPlaces = ()=> {
     return function(dispatch) {
-        firebase.database().ref('Places/').on('child_added', function(data) {
+        firebase.database().ref('Places').on('child_added', function(data) {
             var placeData = data.val();
             dispatch(fetchPlaces(placeData))
         }, function(error) {

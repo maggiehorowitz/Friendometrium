@@ -83,12 +83,12 @@ locationAddedHandler = async () => {
       }
     });
 
-    this.props.onAddLocation(
-      this.state.placeName,
-      this.state.controls.location.value,
-      this.state.description,
-      this.state.key
-  );
+  //   this.props.onAddLocation(
+  //     this.state.placeName,
+  //     this.state.controls.location.value,
+  //     this.state.description,
+  //     this.state.key
+  // );
 
 
     this.props.navigation.navigate('Locations')
@@ -147,10 +147,10 @@ const styles = StyleSheet.create({
 });
 
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddLocation: (placeName, location, description, key) =>
-      dispatch(addPlaces(placeName, location, description, key)),
-  };
-};
-export default connect(null, mapDispatchToProps)(Map);
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     onAddLocation: (placeName, location, description, key) =>
+//       dispatch(addPlaces(placeName, location, description, key)),
+//   };
+// };
+export default connect()(Map);
