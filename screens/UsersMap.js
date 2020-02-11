@@ -16,7 +16,7 @@ export default class UsersMap extends Component<Props> {
         publishKey: "pub-c-d3b8e8f9-c334-4da8-be5e-93044d72edad",
         subscribeKey: "sub-c-f7f6d73a-4217-11ea-afe9-722fee0ed680"
       });
-
+ 
       this.state = {
 
           currentLoc: { //Track user's current location

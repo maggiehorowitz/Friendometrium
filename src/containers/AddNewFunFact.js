@@ -31,18 +31,17 @@ class AddNewFunFact extends React.Component {
     }
 
    
-
     render(){
 
     return (
       <View style={styles.container}>
-          <Text style={{flexDirection:'row', marginTop:10, fontSize:30, textAlign:'center'}}>New Topic!</Text>
+          <Text style={{flexDirection:'row', marginTop:10, fontSize:30, textAlign:'center'}}>New Fun Fact!</Text>
           
           <View style={styles.container}>
             <TextInput
               onChangeText={(title) => this.setState({title})}
 
-
+ 
               //here set the title
               value = {this.state.title}
               //send this to firebase
@@ -57,6 +56,8 @@ class AddNewFunFact extends React.Component {
 
           <View style={styles.container}>
             <TextInput
+              multiline
+              scrollEnabled
               onChangeText={(body) => this.setState({body})}
               value = {this.state.body}
               //send this to firebase

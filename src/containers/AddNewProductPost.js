@@ -57,6 +57,8 @@ class AddNewProductPost extends React.Component {
 
           <View style={styles.container}>
             <TextInput
+              multiline
+              scrollEnabled
               onChangeText={(body) => this.setState({body})}
               value = {this.state.body}
               //send this to firebase
