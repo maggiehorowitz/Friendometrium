@@ -3,6 +3,7 @@ import {Platform, StyleSheet, Text, View, TouchableOpacity, Switch, Image} from 
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import MapView, {Marker, ProviderPropType, Callout} from 'react-native-maps';
 import PubNubReact from 'pubnub-react';
+import Fire from '../config/Firebase/FireMapChat';
 
 
 type Props = {};
@@ -12,7 +13,8 @@ export default class UsersMap extends Component<Props> {
       super(props);
       this.pubnub = new PubNubReact({
         publishKey: "pub-c-d3b8e8f9-c334-4da8-be5e-93044d72edad",
-        subscribeKey: "sub-c-f7f6d73a-4217-11ea-afe9-722fee0ed680"
+        subscribeKey: "sub-c-f7f6d73a-4217-11ea-afe9-722fee0ed680",
+        uuid: Fire.name,
       });
  
       this.state = {
@@ -22,7 +24,7 @@ export default class UsersMap extends Component<Props> {
               longitude: -1
           },
       numUsers: 0, //track number of users on the app
-      username: "A Naughty Moose", //user's username- eventually get from profile!
+      username: "default", //user's username- eventually get from profile!
       fixedOnUUID: "",
       focusOnMe: false, //zoom map to user's current location if true
       users: new Map(), //store data of each user in a Map
@@ -43,7 +45,7 @@ export default class UsersMap extends Component<Props> {
    if (this.state.focusOnMe || this.state.fixedOnUUID) {
      this.setState({
        focusOnMe: false,
-       fixedOnUUID: ""
+       fixedOnUUID: "",
      });
    } else {
      region = {
@@ -61,9 +63,11 @@ export default class UsersMap extends Component<Props> {
 
   toggleGPS = () => {
      this.setState({
-       allowGPS: !this.state.allowGPS
+       allowGPS: !this.state.allowGPS,
      });
    };
+
+
 
   async setUpApp(){
       this.pubnub.getMessage("global", msg => {
@@ -117,6 +121,8 @@ export default class UsersMap extends Component<Props> {
             uuid: this.pubnub.getUUID(),
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
+            //change here
+            username: this.username,
           };
           users.set(tempUser.uuid, tempUser);
           this.setState({
@@ -218,14 +224,27 @@ this.setState({userCount: totalUsers})
 
 
 animateToCurrent = (coords, speed) => {
-region = {
-  latitude: coords.latitude,
-  longitude: coords.longitude,
-  latitudeDelta: 0.01,
-  longitudeDelta: 0.01
+  region = {
+    latitude: coords.latitude,
+    longitude: coords.longitude,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01
+  };
+  this.map.animateToRegion(region, speed);
 };
-this.map.animateToRegion(region, speed);
-};
+
+goToChat = (user1, user2, my_identifier) => {
+  combined_uuid = "none";
+  if(user1>user2){
+    combined_uuid = user2+user1;
+  }
+  else{
+    combined_uuid = user1+user2;
+  }
+  // const combined_uuid = "pubnub1pubnub2"
+  Fire.cID = combined_uuid;
+  this.props.navigation.navigate("MapChat", {name: my_identifier});
+}
 
 
 
@@ -261,7 +280,9 @@ render() {
               ref={marker => {
                 this.marker = marker;
               }}
-              onCalloutPress={() => this.props.navigation.navigate('Chat')}
+              //HERE is Click
+               onCalloutPress={() => this.goToChat(this.pubnub.getUUID(), item.uuid, Fire.email)}
+              // onCalloutPress={() => this.props.navigation.navigate('Chat')}
             >
               <Image
                   style={[styles.profile, {tintColor: item.uuid==this.state.uuid?'black':'red'}]}
@@ -270,7 +291,7 @@ render() {
               <Callout tooltip>
                   <View style={styles.viewStyle}>
                       <Text style={styles.textStyle}>
-                        {item.uuid.toString()}
+                        {item.uuid}
                       </Text>
                 </View>
                </Callout>

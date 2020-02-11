@@ -22,6 +22,7 @@ import ChatIndex from '../screens/ChatIndex'
 import ProfileIndex from '../screens/ProfileIndex'
 import ForumApp from '../src/ForumApp'
 import ForumChat from '../screens/ForumChat'
+import MapChat from '../screens/MapChat'
 import UpdateProfileScreen from '../screens/UpdateProfileScreen';
 import AddNewFunFact from '../src/containers/AddNewFunFact';
 import FunFactsMain from '../src/FunFactsMain';
@@ -50,6 +51,9 @@ const Drawer = createDrawerNavigator(
     WorkPlaceMain: {screen: WorkPlaceMain},
     AddNewPR: {screen: AddNewProductPost},
     ProductsMain: {screen: ProductsMain},
+    NewPostSimple: {screen: AddNewPostSimple},
+    ForumChat: {screen: ForumChat},
+    MapChat: {screen:MapChat},
 
   },
   {
