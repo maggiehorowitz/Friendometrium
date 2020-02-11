@@ -10,4 +10,4 @@ const rootReducer = combineReducers({
     NewProductPosts,
     locations
 });
-export default rootReduce;
+export default rootReducer;

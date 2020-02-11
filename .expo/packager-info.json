@@ -2,9 +2,9 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://im-ewf.anonymous.friendometrium.exp.direct",
   "packagerNgrokUrl": "https://packager.im-ewf.anonymous.friendometrium.exp.direct",
-  "ngrokPid": 21771,
+  "ngrokPid": 22355,
   "packagerPort": 19004,
-  "packagerPid": 21760,
+  "packagerPid": 22345,
   "webpackServerPort": null,
   "devToolsPort": 19002
 }

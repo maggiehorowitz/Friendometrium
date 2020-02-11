@@ -14,7 +14,7 @@ export const clearFFPosts = () => ({
 export const fetchFFPosts = (postData) => {
     return {
         type: FETCH_FF_POSTS,
-        value: postData,
+        value: postData
     }
 }
 
@@ -43,7 +43,6 @@ export const fetchWPPosts = (postData) => {
         type: FETCH_WP_POSTS,
         value: postData,
     }
-
 }
 
 export const watchNewWPPosts = ()=> {
@@ -78,7 +77,9 @@ export const watchNewPRPosts = ()=> {
         firebase.database().ref('ForumPosts/ProductPosts/').on('child_added', function(data) {
             var postData = data.val();
             dispatch(fetchPRPosts(postData))
-        }
+        }, function(error) {
+
+        })
     }
 }
 
