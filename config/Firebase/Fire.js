@@ -96,7 +96,7 @@ class Fire{
   };
 
   get name(){
-    return (firebase.auth().currentUser.displayName)
+    return firebase.auth().currentUser.email.substring(0, firebase.auth().currentUser.email.indexOf("@"));
   }
 
   get photo(){
