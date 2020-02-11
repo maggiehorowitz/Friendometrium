@@ -68,12 +68,13 @@ class AddNewFunFact extends React.Component {
 
           <View style={styles.postBox}>
             <TextInput
+              onChangeText={(body) => this.setState({body})}
               multiline
               scrollEnabled
-              onChangeText={(body) => this.setState({body})}
               value = {this.state.body}
               //send this to firebase
               placeholder = "Body"
+
               style = {{borderWidth:1,height:100,padding:20}}
               />
           </View>
