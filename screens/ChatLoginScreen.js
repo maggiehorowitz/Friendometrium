@@ -6,36 +6,21 @@ import Fire from "../config/Firebase/Fire";
 
 export default class ChatLoginScreen extends React.Component {
   state = {
-    name: ""
+    // name: ""
+    name: Fire.name
   }
 
 
   continue = () => {
-    if (this.state.name== ""){
-      Alert.alert('Please enter a name');
-    }
-    else{
     this.props.navigation.navigate("FunFactsChat", {name: this.state.name})
-
-  }
   };
 
   continue2 = () => {
-    if (this.state.name== ""){
-      Alert.alert('Please enter a name');
-    }
-    else{
     this.props.navigation.navigate("AdviceChat", {name: this.state.name})
-  }
   };
 
   continue3 = () => {
-    if (this.state.name== ""){
-      Alert.alert('Please enter a name');
-    }
-    else{
     this.props.navigation.navigate("ProductReviewChat", {name: this.state.name})
-  }
   };
 
 
@@ -51,12 +36,7 @@ export default class ChatLoginScreen extends React.Component {
         </View>
         <View style={{marginHorizontal: 32}}>
           <Text style={styles.header}>Friendometrium Chat Groups</Text>
-          <TextInput
-            style={styles.input}
-            placeholder = "Enter your name and then select a chat group"
-            onChangeText = {name => {this.setState({name});}}
-            value = {this.state.name}
-            />
+
 
             <View style={styles.chatbuttons}>
             <Button

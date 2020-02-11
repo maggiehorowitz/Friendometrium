@@ -3,7 +3,7 @@ import { Platform, KeyboardAvoidingView,SafeAreaView } from 'react-native';
 import {GiftedChat} from 'react-native-gifted-chat';
 import Fire from "../config/Firebase/FirePrivateChat";
 
-export default class AdviceChat extends React.Component {
+export default class PrivateMessagingChat extends React.Component {
 
 
   state = {

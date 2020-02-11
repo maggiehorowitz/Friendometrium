@@ -68,7 +68,7 @@ class FirePrivateChat{
     this.db.off()
   }
 
-  
+
 
   get db() {
     return firebase.database().ref("PrivateMessages/" + this.cID);
@@ -101,7 +101,7 @@ class FirePrivateChat{
   };
 
   get name(){
-    return (firebase.auth().currentUser.displayName)
+    return firebase.auth().currentUser.email.substring(0, firebase.auth().currentUser.email.indexOf("@"));
   }
 
   get photo(){
