@@ -1,5 +1,6 @@
 import React from 'react';
-import { Platform, KeyboardAvoidingView,SafeAreaView } from 'react-native';
+import { Platform, KeyboardAvoidingView,View } from 'react-native';
+import { Header, Icon } from 'react-native-elements'
 import {GiftedChat} from 'react-native-gifted-chat';
 import Fire from "../config/Firebase/FirePrivateChat";
 
@@ -45,7 +46,22 @@ export default class PrivateMessagingChat extends React.Component {
       );
     }
 
-    return <SafeAreaView style = {{flex : 1}}>{chat}</SafeAreaView>;
+    return <View style = {{flex : 1}}>
+            <Header
+              leftComponent = {<Icon
+                name="arrow-back"
+                color = '#fff'
+                size = {32}
+                onPress={() => this.props.navigation.navigate('PMLogin')}
+                />}
+              centerComponent = {{text: 'Chat', style: { color: '#fff', fontSize: 32, fontWeight: 'bold'}}}
+              containerStyle={{
+                backgroundColor: '#E06666',
+                justifyContent: 'center'
+              }}
+              />
+            {chat}
+          </View>;
 
   }
 }

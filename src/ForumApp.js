@@ -24,7 +24,7 @@ class ForumApp extends React.Component {
           <Header
           centerComponent = {{text: 'Forum!', style: { color: '#fff', fontSize: 32, fontWeight: 'bold'}}}
           containerStyle={{
-            backgroundColor: '#EA5A2C',
+            backgroundColor: '#E06666',
             justifyContent: 'center'
           }}
           />

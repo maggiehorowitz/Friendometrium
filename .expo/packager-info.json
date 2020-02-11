@@ -1,11 +1,10 @@
 {
   "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://im-ewf.anonymous.friendometrium.exp.direct",
-  "packagerNgrokUrl": "https://packager.im-ewf.anonymous.friendometrium.exp.direct",
-  "ngrokPid": 22355,
-  "packagerPort": 19004,
-  "packagerPid": 22345,
+  "expoServerNgrokUrl": "https://im-ewf.anonymous.thesis.exp.direct",
+  "packagerNgrokUrl": "https://packager.im-ewf.anonymous.thesis.exp.direct",
+  "ngrokPid": 27818,
+  "packagerPort": 19008,
+  "packagerPid": 27808,
   "webpackServerPort": null,
   "devToolsPort": 19002
-
 }
