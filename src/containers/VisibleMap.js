@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import LocationList from '../components/LocationList'
+import LocationsOnMap from '../components/LocationsOnMap'
 import { deletePlaces, watchNewPlaces, clearPlaces } from '../actions';
 
 
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 //This is where we connect our FunFactsList UI to redux
-export default connect(mapStateToProps,mapDispatchToProps)(LocationList)
+export default connect(mapStateToProps,mapDispatchToProps)(LocationsOnMap)

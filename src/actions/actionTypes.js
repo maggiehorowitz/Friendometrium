@@ -12,3 +12,4 @@ export const REMOVE_PR_POST = 'REMOVE_PR_POST'
 
 export const DELETE_PLACE = 'DELETE_PLACE';
 export const FETCH_PLACES = 'FETCH_PLACES'
+export const CLEAR_PLACES = 'CLEAR_PLACES'

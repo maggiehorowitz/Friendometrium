@@ -1,6 +1,7 @@
 import { REMOVE_FF_POST, FETCH_FF_POSTS, CLEAR_FF,
     FETCH_WP_POSTS, CLEAR_WP, REMOVE_WP_POST,
-    FETCH_PR_POSTS, CLEAR_PR, REMOVE_PR_POST, DELETE_PLACE, FETCH_PLACES } from './actionTypes';
+    FETCH_PR_POSTS, CLEAR_PR, REMOVE_PR_POST, DELETE_PLACE, FETCH_PLACES, CLEAR_PLACES } from './actionTypes';
+
 import * as firebase from 'firebase';
 
 export const removeFFPost = (id) => ({
@@ -95,6 +96,10 @@ export const fetchPlaces = (placeData) => {
         value: placeData
     }
 }
+
+export const clearPlaces = () => ({
+    type: CLEAR_PLACES,
+})
 
 export const watchNewPlaces = ()=> {
     return function(dispatch) {
