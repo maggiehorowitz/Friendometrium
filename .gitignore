@@ -21,3 +21,5 @@ screens/MapPage.js
 *.json
 *.json
 *.json
+node_modules/fsevents/build/Release/fse.node
+.expo/packager-info.json
