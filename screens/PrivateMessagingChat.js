@@ -14,7 +14,8 @@ export default class PrivateMessagingChat extends React.Component {
   get user(){
     return{
       _id: Fire.uid,
-      name: this.props.navigation.state.params.name
+      name: Fire.name
+      // name: this.props.navigation.state.params.name
 
     };
   }
