@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, } from 'react-native';
 import { connect } from 'react-redux';
-import { Button } from 'react-native-elements';
+import { Header, Icon, Button } from 'react-native-elements'
 import FireForumData from "../../config/Firebase/FireForumData";
 
 
@@ -35,9 +35,21 @@ class AddNewFunFact extends React.Component {
 
     return (
       <View style={styles.container}>
-          <Text style={{flexDirection:'row', marginTop:10, fontSize:30, textAlign:'center'}}>New Fun Fact!</Text>
+          <Header
+              leftComponent = {<Icon
+                name="arrow-back"
+                color = '#fff'
+                size = {32}
+                onPress={() => this.props.navigation.navigate('FunFactsMain')}
+                />}
+              centerComponent = {{text: 'New Post!', style: { color: '#fff', fontSize: 32, fontWeight: 'bold'}}}
+              containerStyle={{
+                backgroundColor: '#E06666',
+                justifyContent: 'center'
+              }}
+              /> 
           
-          <View style={styles.container}>
+          <View style={styles.titleBox}>
             <TextInput
               onChangeText={(title) => this.setState({title})}
 
@@ -54,25 +66,26 @@ class AddNewFunFact extends React.Component {
 
           </View>
 
-          <View style={styles.container}>
+          <View style={styles.postBox}>
             <TextInput
+              onChangeText={(body) => this.setState({body})}
               multiline
               scrollEnabled
-              onChangeText={(body) => this.setState({body})}
               value = {this.state.body}
               //send this to firebase
               placeholder = "Body"
+
               style = {{borderWidth:1,height:100,padding:20}}
               />
           </View>
 
-            <Button style={{padding:20}}
-            onPress = {() =>{ this.continueNow(); this.goBackToForum(); }}
+          <View style = {{padding: 20}}>
+            <Button
             title = 'Post Now'
+            onPress={() => { this.continueNow(); this.goBackToForum(); }}
             />
-            <Button 
-          title = "Back"
-          onPress ={()=> this.goBackToForum()}/> 
+           </View> 
+
 
       </View>
     );
@@ -89,6 +102,13 @@ export default connect()(AddNewFunFact)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
   },
+  titleBox: {
+    flex: 1,
+    padding: 20
+  },
+  postBox: {
+    flex: 2,
+    padding: 20
+  }
 });
