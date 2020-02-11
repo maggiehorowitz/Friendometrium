@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
   },
   map: {
     width: "100%",
-    height: 600
+    height: 700,
+
   },
   button: {
     margin: 8

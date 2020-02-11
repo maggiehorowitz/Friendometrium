@@ -1,4 +1,4 @@
-import { ADD_NEW_POST, CLICKED_POST, DELETE_PLACE, FETCH_PLACES  } from './actionTypes';
+import { ADD_NEW_POST, CLICKED_POST, DELETE_PLACE, FETCH_PLACES, CLEAR_PLACES  } from './actionTypes';
 import * as firebase from 'firebase';
 let nextId = 0
 
@@ -35,6 +35,10 @@ export const fetchPlaces = (placeData) => {
     }
 
 }
+
+export const clearPlaces = () => ({
+    type: CLEAR_PLACES,
+})
 
 export const watchNewPlaces = ()=> {
     return function(dispatch) {

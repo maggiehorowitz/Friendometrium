@@ -9,27 +9,25 @@ class LocationList extends Component {
 
     constructor(props){
       super(props);
+      this.props.clearPlaces();
       this.props.watchNewPlaces();
     }
     render(){
       return (
         <View>
-             {this.props.locations.map(Location =>
             <FlatList
               keyExtractor = {(item, index) => item.key}
-              style={styles.listContainer}
               data={this.props.locations}
               extraData={this.state}
               renderItem={(Location) => (
                 <ListItem
-                  key = {Location.key}
-                  placeName={Location.placeName}
-                  location={Location.location}
-                  description = {Location.description}
+                  key = {Location.item.key}
+                  placeName={Location.item.placeName}
+                  location={Location.item.location}
+                  description = {Location.item.description}
                 />
                 )}
               />
-            )}
         </View>
     );
     }

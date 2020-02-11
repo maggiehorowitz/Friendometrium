@@ -1,4 +1,4 @@
-import { ADD_PLACES, DELETE_PLACE, FETCH_PLACES } from '../actions/actionTypes';
+import { ADD_PLACES, DELETE_PLACE, FETCH_PLACES, CLEAR_PLACES } from '../actions/actionTypes';
 
 const locations = (state = [], action) => {
   switch(action.type) {
@@ -14,8 +14,10 @@ const locations = (state = [], action) => {
     //
     // };
     case DELETE_PLACE:
-    return state.filter(Location => Location.key !== action.key)
+        return state.filter(Location => Location.key !== action.key)
 
+    case CLEAR_PLACES:
+        return state = []
 
     case FETCH_PLACES:
             return [...state, {

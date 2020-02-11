@@ -5,3 +5,4 @@ export const CLICKED_POST = 'CLICK_POST'
 //export const ADD_PLACES = 'ADD_PLACES';
 export const DELETE_PLACE = 'DELETE_PLACE';
 export const FETCH_PLACES = 'FETCH_PLACES'
+export const CLEAR_PLACES = 'CLEAR_PLACES'
