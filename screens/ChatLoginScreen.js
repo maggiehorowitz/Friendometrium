@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     top: -20
   },
   header: {
-    fontWeight: "800",
+    fontWeight: "900",
     fontSize: 20,
     color: '#514E5A',
     marginTop: 32,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     padding: 10,
     paddingTop: 20,
-    marginTop: 20,
+    marginTop: 40,
     textAlign:'center',
   }
 });
