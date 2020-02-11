@@ -7,9 +7,8 @@ class TopBar extends React.Component {
 
   render() {
     return (
-
         <View style={styles.topBar}>
-        <TouchableHighlight onPress={() => this.props.onTopBarPress()}>
+        <TouchableHighlight onPress= {this.props.onTopBarPress}>
           <Icon name="chevron-left" color="white" />
           </TouchableHighlight>
           <Text style={styles.topBarText}>{this.props.textValue}</Text>
@@ -19,10 +18,6 @@ class TopBar extends React.Component {
 
 }
 
-TopBar.propTypes = {
- onPress: PropTypes.func,
- textValue: PropTypes.string
-}
 
 const styles = StyleSheet.create({
   topBar: {

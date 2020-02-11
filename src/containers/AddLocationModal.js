@@ -8,8 +8,8 @@ import colors from '../utils/colors';
 import MapPage from '../../screens/MapPage'
 import TopBar from '../components/TopBar';
 
-
 class AddLocationModal extends Component {
+
 
    render() {
       return (
@@ -21,7 +21,7 @@ class AddLocationModal extends Component {
              <View style = {styles.container}>
              <TopBar
                textValue={this.props.topBarText}
-               onTopBarPress = {this.props.toggleModalVisibilityOff}
+               onTopBarPress = {this.props.onTopBarPress}
              />
                     <FormInput
                       value={this.state.description}

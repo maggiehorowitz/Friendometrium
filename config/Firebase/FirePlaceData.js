@@ -6,7 +6,7 @@ class FirePlaceData{
     this.checkAuth()
   }
 
-  savedPlace = firebase.database().ref("Places/");
+  savedPlace = firebase.database().ref('Places');
 
   removeNow = async (Place) => {
     firebase.database().ref('/Places/' + Place).remove();
@@ -34,6 +34,9 @@ class FirePlaceData{
     });
   };
 
+  get uid(){
+    return(firebase.auth().currentUser || {}).uid;
+  }
 
   get db() {
     return firebase.database().ref("Places");

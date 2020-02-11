@@ -1,23 +1,35 @@
 //after line 13 add something for a dropdown of description? go back to cards to navigate
 
 import React from 'react';
-import { deletePlaces } from '../actions/index';
 import { TouchableOpacity, View, Text, StyleSheet, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {Collapse, CollapseHeader, CollapseBody} from "accordion-collapse-react-native";
+
 const ListItem = props => (
     <View style={styles.listItem}>
-      <View style={styles.contain}>
-        <View style={{width: "70%"}}>
-            <Text style={styles.text}>
-                {props.placeName}
-            </Text>
-        </View>
-          <TouchableOpacity >
-            <View style={styles.trash}>
-              <Icon size={25} name="ios-trash" color="red"/>
+        <Collapse key={props.key} >
+        <CollapseHeader style = {{alignItems:'center',padding:10, }}>
+          <View style={styles.contain}>
+            <View style={{width: "70%"}}>
+                <Text style={styles.text}>
+                    {props.placeName}
+                </Text>
             </View>
-          </TouchableOpacity>
-      </View>
+              <TouchableOpacity>
+                <View style={styles.mapIcon}>
+                  <Icon size={25} name="ios-map" color="blue"/>
+                </View>
+              </TouchableOpacity>
+          </View>
+          </CollapseHeader>
+          <CollapseBody style ={{alignItems:'center',justifyContent:'center', borderTopWidth: .25, margin: 10}}>
+          <View style={{width: "70%"}}>
+              <Text style={styles.text}>
+                  {props.description}
+              </Text>
+          </View>
+          </CollapseBody>
+      </Collapse>
     </View>
 );
 const styles = StyleSheet.create({
@@ -42,7 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold"
   },
-  trash: {
+  mapIcon: {
     alignItems: "center",
     paddingTop: 5
   }

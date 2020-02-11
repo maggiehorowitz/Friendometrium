@@ -1,14 +1,11 @@
-import { REMOVE_FF_POST, FETCH_FF_POSTS, CLEAR_FF, 
+import { REMOVE_FF_POST, FETCH_FF_POSTS, CLEAR_FF,
     FETCH_WP_POSTS, CLEAR_WP, REMOVE_WP_POST,
-    FETCH_PR_POSTS, CLEAR_PR, REMOVE_PR_POST, } from './actionTypes';
-
+    FETCH_PR_POSTS, CLEAR_PR, REMOVE_PR_POST, DELETE_PLACE, FETCH_PLACES } from './actionTypes';
 import * as firebase from 'firebase';
-
 
 export const removeFFPost = (id) => ({
     type: REMOVE_FF_POST,
     id
-})
 
 export const clearFFPosts = () => ({
     type: CLEAR_FF,
@@ -61,7 +58,6 @@ export const watchNewWPPosts = ()=> {
     }
 }
 
-
 export const removePRPost = (id) => ({
     type: REMOVE_PR_POST,
     id
@@ -76,7 +72,6 @@ export const fetchPRPosts = (postData) => {
         type: FETCH_PR_POSTS,
         value: postData,
     }
-
 }
 
 export const watchNewPRPosts = ()=> {
@@ -84,32 +79,29 @@ export const watchNewPRPosts = ()=> {
         firebase.database().ref('ForumPosts/ProductPosts/').on('child_added', function(data) {
             var postData = data.val();
             dispatch(fetchPRPosts(postData))
-        }, function(error) {
-
-        })
+        }
     }
 }
-export const addPlaces = (placeName, location, description, key) => {
-  return {
-    type: ADD_PLACES,
-    placeName: placeName,
-    location: location,
-    description: description,
-    key: key
-  };
 
-};
-export const deletePlaces = (key) => {
-  return {
+export const deletePlaces = (key) => ({
     type: DELETE_PLACE,
-    key: key
-  };
-};
+    key
+})
 
 
 export const fetchPlaces = (placeData) => {
     return {
         type: FETCH_PLACES,
         value: placeData
+    }
+}
+
+export const watchNewPlaces = ()=> {
+    return function(dispatch) {
+        firebase.database().ref('Places').on('child_added', function(data) {
+            var placeData = data.val();
+            dispatch(fetchPlaces(placeData))
+        }, function(error) {
+        })
     }
 }

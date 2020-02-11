@@ -16,7 +16,7 @@ export default class UsersMap extends Component<Props> {
         subscribeKey: "sub-c-f7f6d73a-4217-11ea-afe9-722fee0ed680",
         uuid: Fire.name,
       });
- 
+
       this.state = {
 
           currentLoc: { //Track user's current location
