@@ -32,12 +32,22 @@ export default class ChatLoginScreen extends React.Component {
     if (this.state.name== ""){
       Alert.alert('Please enter a name');
     }
-    else{
-    Fire.cID= this.state.name;
-    this.props.navigation.navigate("PMChat", {name: this.state.name});
+      if(this.state.name > Fire.name){
+        Fire.cID= Fire.name + this.state.name;
+        this.props.navigation.navigate("PMChat", {name: this.state.name});
 
-  }
+      }
+      if(Fire.name > this.state.name){
+    Fire.cID= this.state.name + Fire.name;
+    this.props.navigation.navigate("PMChat", {name: this.state.name});
+    }
+
   };
+    // Fire.cID= this.state.name;
+    // this.props.navigation.navigate("PMChat", {name: this.state.name});
+
+  // }
+  // };
 
 
     render(){
@@ -54,7 +64,7 @@ export default class ChatLoginScreen extends React.Component {
             <Text style={styles.header}>Private Messaging</Text>
             <TextInput
               style={styles.input}
-              placeholder = "Enter Chat ID"
+              placeholder = "Enter a user's username"
               onChangeText = {name => {this.setState({name});}}
               value = {this.state.name}
               />
