@@ -51,7 +51,6 @@ const Drawer = createDrawerNavigator(
     WorkPlaceMain: {screen: WorkPlaceMain},
     AddNewPR: {screen: AddNewProductPost},
     ProductsMain: {screen: ProductsMain},
-    NewPostSimple: {screen: AddNewPostSimple},
     ForumChat: {screen: ForumChat},
     MapChat: {screen:MapChat},
 
