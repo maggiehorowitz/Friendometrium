@@ -90,28 +90,34 @@ locationAddedHandler = async () => {
   };
 
 
+// //put this back if you need to on line 122 after </View> </View>
+  // <View style={styles.topBar}>
+  //   // <View style={styles.rightBar}>
+  //   //     <TouchableOpacity>
+  //   //         <View>
+  //   //             <Icon size={25} name="ios-list" color="black" onPress={() => {this.props.navigation.navigate('Locations')}}/>
+  //   //         </View>
+  //   //     </TouchableOpacity>
+  //   // </View>
+  // </View>
+
 render() {
     return (
         <View style={styles.container}>
-            <View style={styles.topBar}>
-                <View style={styles.leftBar}>
+            <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center', marginTop: 35}}>
                     <TextInput
                       placeholder="Type a Place Name"
                       value={this.state.placeName}
                       onChangeText= {this.placeNameChangedHandler}
                       style={styles.placeInput}
                     />
+                <TouchableOpacity>
+                    <View style = {styles.menuButton}>
+                        <Icon size={25} position= {{top:10}} name="ios-list" color="black" onPress={() => {this.props.navigation.navigate('Locations')}}/>
+                    </View>
+                </TouchableOpacity>
                 </View>
-            </View>
-            <View style={styles.topBar}>
-              <View style={styles.rightBar}>
-                  <TouchableOpacity>
-                      <View>
-                          <Icon size={25} name="ios-list" color="black" onPress={() => {this.props.navigation.navigate('Locations')}}/>
-                      </View>
-                  </TouchableOpacity>
-              </View>
-            </View>
+
             <View style={styles.bottom}>
                 <View style={styles.bottomRow}>
                     <Button title="Save Location" onPress={this.toggleModalVisibilityOn} />
@@ -124,23 +130,25 @@ render() {
                 updateDesc = {this.updateDesc}
                 onSubmit={this.locationAddedHandler}
             />
-            <View >
                 <PickLocation onLocationPick={this.locationPickedHandler} />
-            </View>
         </View>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
+    marginTop: 5,
+    marginBottom: 0,
     flex: 1,
   },
   rightBar: {
+    marginTop: 0,
     flexDirection: "row",
     justifyContent: "flex-end",
     alignItems: "center"
   },
   leftBar: {
+    marginTop: 20,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center"
@@ -151,7 +159,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginHorizontal: wp("2%"),
-    marginTop: 10
+    marginTop: 10,
+    marginBottom: 0
   },
   placeholder: {
     borderWidth: 1,
@@ -187,8 +196,25 @@ const styles = StyleSheet.create({
     marginBottom: hp("4%"),
   },
   map: {
-    ...StyleSheet.absoluteFillObject
+    paddingTop: 35,
+    paddingHorizontal: 0,
+    paddingBottom: 100,
+    width: "100%",
+    height: "70",
+     ...StyleSheet.absoluteFillObject
   },
+  menuIcon: {
+
+    top: 10,
+    alignItems: 'flex-end'  // Add this line
+  },
+  placeName:{
+    marginLeft: 20,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 400,
+  }
 });
 
 

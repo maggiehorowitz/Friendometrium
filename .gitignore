@@ -24,3 +24,4 @@ screens/MapPage.js
 node_modules/fsevents/build/Release/fse.node
 .expo/packager-info.json
 *.json
+screens/.DS_Store
